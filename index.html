@@ -123,29 +123,27 @@
   <section id="reservation" class="bg-blue-50 py-16 px-6 md:px-12">
   <div class="max-w-4xl mx-auto text-center">
     <h2 class="text-3xl font-bold text-blue-700 mb-6">Réserver une retraite</h2>
-    <p class="mb-4">Remplissez le formulaire ci-dessous pour réserver votre place à l'une de nos retraites spirituelles.</p>
+    <p class="mb-4">Remplissez ce formulaire pour envoyer votre demande de réservation.</p>
 
-    <form action="https://formsubmit.co/coulibalyangearmel@gmail.com" method="POST" class="bg-white p-6 rounded-lg shadow-md text-left space-y-4">
+    <form action="https://formsubmit.co/el/fovusi" method="POST" class="bg-white p-6 rounded-lg shadow-md text-left space-y-4">
       <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border border-gray-300 rounded">
-
       <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border border-gray-300 rounded">
-
       <select name="Type de retraite" required class="w-full p-3 border border-gray-300 rounded">
         <option value="">-- Sélectionnez une retraite --</option>
         <option>Retraite de Carême</option>
-        <option>Retraite de Guérison intérieure</option>
-        <option>Retraite de Discernement</option>
-        <option>Autre retraite</option>
+        <option>Guérison intérieure</option>
+        <option>Discernement vocationnel</option>
       </select>
+      <input type="date" name="Date souhaitée" class="w-full p-3 border border-gray-300 rounded">
+      <textarea name="Message" placeholder="Détails ou intentions de prière..." rows="4" class="w-full p-3 border border-gray-300 rounded"></textarea>
 
-      <input type="date" name="Date souhaitée" required class="w-full p-3 border border-gray-300 rounded">
+      <!-- Anti-spam invisible -->
+      <input type="text" name="_honey" style="display:none">
 
-      <textarea name="Message" placeholder="Détails supplémentaires ou intentions de prière..." rows="4" class="w-full p-3 border border-gray-300 rounded"></textarea>
-
-      <!-- Options FormSubmit -->
-      <input type="hidden" name="_template" value="box">
+      <!-- Configuration Formsubmit -->
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://ton-site.github.io/centre-bethesda/merci.html">
+      <input type="hidden" name="_template" value="box">
+      <input type="hidden" name="_next" value="https://ton-pseudo.github.io/centre-bethesda/merci.html">
 
       <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Envoyer ma réservation</button>
     </form>
