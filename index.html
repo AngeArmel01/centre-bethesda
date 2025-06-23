@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Centre de Retraite Bethesda</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centre de Retraite Spirituel Bethesda</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { scroll-behavior: smooth; }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
-  <header class="bg-white shadow-md">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-6xl mx-auto py-6 px-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-blue-700">Centre Bethesda</h1>
       <nav>
@@ -23,14 +27,110 @@
     </div>
   </header>
 
-  <section class="bg-cover bg-center h-[500px] flex items-center justify-center" style="background-image: url('https://source.unsplash.com/1600x900/?nature,chapel');">
-    <div class="bg-white bg-opacity-70 p-8 rounded-lg text-center">
-      <h2 class="text-3xl md:text-5xl font-bold mb-4">« Venez à moi, vous tous qui êtes fatigués… »</h2>
+  <!-- HERO SECTION -->
+  <section class="bg-cover bg-center h-[500px] flex items-center justify-center" style="background-image: url('https://source.unsplash.com/1600x900/?chapel,garden');">
+    <div class="bg-white bg-opacity-80 p-8 rounded-lg text-center">
+      <h2 class="text-4xl font-bold mb-4">« Venez à moi, vous tous qui êtes fatigués... »</h2>
       <p class="text-xl mb-6">Matthieu 11.28</p>
       <a href="#reservation" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Réservez votre retraite</a>
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <!-- NOTRE MISSION -->
+  <section id="mission" class="bg-white py-16 px-6 md:px-12">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-blue-700 mb-4">Notre Mission</h2>
+      <p class="text-lg mb-6">
+        Un sanctuaire de silence et de prière, fondé sur l'évangile et la compassion. Inspiré de la piscine de Bethesda (Jean 5), notre centre est un lieu de guérison, d'écoute et de transformation.
+      </p>
+      <div class="grid md:grid-cols-2 gap-10 text-left mt-10">
+        <div>
+          <h3 class="text-xl font-semibold text-blue-600 mb-2">Histoire et spiritualité</h3>
+          <p>Fondé par une communauté religieuse, le centre incarne la foi vivante et l'hospitalité chrétienne. Il s'inspire de la Parole pour offrir repos et réconfort.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-blue-600 mb-2">Notre équipe</h3>
+          <p>Une équipe d'accompagnateurs spirituels vous accueille avec bienveillance : prêtres, religieuses, laïfcs formés à l'écoute et à la présence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMMES -->
+  <section id="programmes" class="bg-gray-50 py-16 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center text-blue-700 mb-10">Programmes</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold text-blue-600 mb-2">Retraite de Carême</h3>
+          <p>Dates : 15 au 20 mars<br>Public : Adultes<br>Activités : Messe, confessions, adoration, accompagnement</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold text-blue-600 mb-2">Guérison intérieure</h3>
+          <p>Dates : 10 au 12 avril<br>Public : Tous<br>Activités : Louange, prières de guérison, silence guidé</p>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="#reservation" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Voir le calendrier complet</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFOS PRATIQUES -->
+  <section id="infos" class="bg-white py-16 px-6 md:px-12">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">Infos Pratiques</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="font-semibold text-blue-600 mb-2">Tarifs</h3>
+          <p>Tarif solidaire selon les moyens. Possibilité de bourse sur demande.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-blue-600 mb-2">Hébergement</h3>
+          <p>Chambres simples et réfectoire. Vie communautaire et silence après 21h.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-blue-600 mb-2">Accès</h3>
+          <p>Accessible en voiture et transports. Parking gratuit sur place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section id="temoignages" class="bg-gray-50 py-16 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6">Témoignages</h2>
+      <blockquote class="italic text-gray-600 mb-6">"Cette retraite a transformé ma vie intérieure. J'ai retrouvé la paix."</blockquote>
+      <blockquote class="italic text-gray-600">"Le silence et la prière m'ont reconnecté à Dieu. Merci au Centre Bethesda."</blockquote>
+    </div>
+  </section>
+
+  <!-- CONTACT + RÉSERVATION -->
+  <section id="contact" class="bg-white py-16 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">Contact</h2>
+      <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-4">
+        <input type="text" name="nom" placeholder="Votre nom" required class="w-full p-3 border rounded">
+        <input type="email" name="email" placeholder="Votre email" required class="w-full p-3 border rounded">
+        <textarea name="message" placeholder="Votre message ou demande de prière" rows="4" class="w-full p-3 border rounded"></textarea>
+        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- RÉSERVATION EN LIGNE -->
+  <section id="reservation" class="bg-blue-50 py-16 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6">Réserver une retraite</h2>
+      <iframe src="https://tally.so/r/yourform" width="100%" height="500" frameborder="0" title="Formulaire de réservation"></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+    <p>&copy; 2025 Centre de Retraite Spirituel Bethesda. Tous droits réservés.</p>
+  </footer>
+
 </body>
 </html>
