@@ -10,48 +10,13 @@
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
+  
 <!-- DATE + VERSET DU JOUR -->
 <div class="bg-blue-50 text-blue-900 py-2 px-4 flex justify-between items-center text-sm font-semibold border-b border-blue-200">
   <div id="datetime"></div>
-  <marquee behavior="scroll" direction="left" scrollamount="5" class="w-full ml-4 text-center" id="verseMarquee"></marquee>
+  <marquee behavior="scroll" direction="left" scrollamount="5" class="w-full ml-4 text-center" id="verse"></marquee>
 </div>
   
-<script>
-// Table des versets (extrait, complète à ajouter)
-const dailyVerses = {
-  1: '« Le Seigneur est mon berger : je ne manquerai de rien. » – Psaume 23:1',
-  2: '« Je puis tout par celui qui me fortifie. » – Philippiens 4:13',
-  3: '« Car Dieu a tant aimé le monde… » – Jean 3:16',
-  4: '« Sois fort et courageux. » – Josué 1:9',
-  5: '« L’Éternel combattra pour vous. » – Exode 14:14',
-  6: '« Que tout ce qui respire loue l’Éternel ! » – Psaume 150:6',
-  7: '« L’amour est patient, il est plein de bonté. » – 1 Corinthiens 13:4',
-  8: '« Confie-toi en l’Éternel de tout ton cœur. » – Proverbes 3:5',
-  9: '« Ne vous inquiétez de rien. » – Philippiens 4:6',
-  10: '« Le Seigneur est bon, sa fidélité dure toujours. » – Psaume 100:5',
-  11: '« Approchez-vous de Dieu, et il s’approchera de vous. » – Jacques 4:8',
-  12: '« L’Éternel est mon rocher, ma forteresse. » – Psaume 18:2',
-  13: '« Jésus lui dit : Je suis le chemin, la vérité, et la vie. » – Jean 14:6',
-  14: '« Ceux qui espèrent en l’Éternel renouvellent leur force. » – Ésaïe 40:31',
-  15: '« Il guérit ceux qui ont le cœur brisé. » – Psaume 147:3',
-  16: '« Car je connais les projets que j’ai formés pour vous. » – Jérémie 29:11',
-  17: '« Ta parole est une lampe à mes pieds. » – Psaume 119:105',
-  18: '« Soyez toujours joyeux. » – 1 Thessaloniciens 5:16',
-  19: '« L’Éternel est près de ceux qui ont le cœur brisé. » – Psaume 34:18',
-  20: '« Il n’y a donc maintenant aucune condamnation. » – Romains 8:1',
-  21: '« Mon âme se repose en paix sur Dieu seul. » – Psaume 62:1',
-  22: '« Recommande ton sort à l’Éternel, mets en lui ta confiance. » – Psaume 37:5',
-  23: '« L’Éternel est mon secours, je ne craindrai rien. » – Hébreux 13:6',
-  24: '« Le fruit de l’Esprit, c’est l’amour, la joie, la paix… » – Galates 5:22',
-  25: '« Dieu est amour. » – 1 Jean 4:8',
-  26: '« Jésus-Christ est le même hier, aujourd’hui, et éternellement. » – Hébreux 13:8',
-  27: '« Il fait concourir toutes choses au bien de ceux qui l’aiment. » – Romains 8:28',
-  28: '« L’Éternel est ma lumière et mon salut. » – Psaume 27:1',
-  29: '« Heureux ceux qui ont faim et soif de justice. » – Matthieu 5:6',
-  30: '« Demeurez dans mon amour. » – Jean 15:9',
-  31: '« Soyez remplis de l’Esprit. » – Éphésiens 5:18'
-};
-
 <!-- HEADER -->
 <header class="bg-white shadow-md sticky top-0 z-50">
   <div class="max-w-6xl mx-auto py-6 px-4 flex justify-between items-center">
@@ -237,29 +202,42 @@ const dailyVerses = {
   showSlide(1);
 </script>
 
-
 <script>
-function updateDateTimeAndVerse(lang = 'fr') {
-  const now = new Date();
-  const day = now.getDate();
-  
-  // Format date
-  const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-  const dateStr = now.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-GB', options);
-  const timeStr = now.toLocaleTimeString(lang === 'fr' ? 'fr-FR' : 'en-GB');
-  
-  document.getElementById('datetime').textContent = `${dateStr} ${timeStr}`;
-  
-  // Verset
-  const verse = dailyVerses[day] ? dailyVerses[day][lang] : '';
-  document.getElementById('verseMarquee').textContent = `📖 ${verse}`;
-}
+  // Fonction pour la date et l'heure en français
+  function updateDateTime() {
+    const now = new Date();
+    const jourSemaine = now.toLocaleDateString('fr-FR', { weekday: 'long' });
+    const jour = now.getDate();
+    const mois = now.toLocaleDateString('fr-FR', { month: 'long' });
+    const annee = now.getFullYear();
+    const heure = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
-// Initial call
-updateDateTimeAndVerse('fr');
+    const dateComplete = `${jourSemaine.charAt(0).toUpperCase() + jourSemaine.slice(1)} ${jour} ${mois} ${annee} ${heure}`;
+    document.getElementById('datetime').textContent = dateComplete;
+  }
 
-// Update every second
-setInterval(() => updateDateTimeAndVerse('fr'), 1000);
+  // Liste des versets (tu peux en ajouter autant que tu veux)
+  const verses = [
+    "📖 « L'Éternel est mon berger : je ne manquerai de rien. » – Psaume 23:1",
+    "📖 « Je puis tout par celui qui me fortifie. » – Philippiens 4:13",
+    "📖 « Ne vous inquiétez de rien. » – Philippiens 4:6",
+    "📖 « Car je connais les projets que j'ai formés sur vous. » – Jérémie 29:11",
+    "📖 « Jésus lui dit : Je suis le chemin, la vérité, et la vie. » – Jean 14:6",
+    "📖 « Venez à moi, vous tous qui êtes fatigués. » – Matthieu 11:28",
+    "📖 « Dieu est notre refuge et notre force. » – Psaume 46:1"
+  ];
+
+  // Fonction pour choisir un verset différent chaque jour
+  function setDailyVerse() {
+    const today = new Date();
+    const index = today.getDate() % verses.length;
+    document.getElementById('verse').textContent = verses[index];
+  }
+
+  // Exécution
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
+  setDailyVerse();
 </script>
   
 </body>
