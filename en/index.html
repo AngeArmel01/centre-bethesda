@@ -11,12 +11,10 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 
- <!-- DATE ET HEURE + VERSET DU JOUR -->
+<!-- DATE + VERSE OF THE DAY -->
 <div class="bg-blue-50 text-blue-900 py-2 px-4 flex justify-between items-center text-sm font-semibold border-b border-blue-200">
-  <div id="datetime"></div>
-  <marquee behavior="scroll" direction="left" scrollamount="5" class="w-full ml-4 text-center">
-    📖 Verse of the Day: "The Lord is my shepherd, I shall not want." – Psalm 23:1
-  </marquee>
+  <div id="datetime-en"></div>
+  <marquee behavior="scroll" direction="left" scrollamount="5" class="w-full ml-4 text-center" id="verse-en"></marquee>
 </div>
  
 <!-- HEADER -->
@@ -204,23 +202,42 @@
   showSlide(1);
 </script>
 
-   <script>
-  function updateDateTime() {
+   script>
+  // Function to display date and time in English
+  function updateDateTimeEn() {
     const now = new Date();
-    const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    };
-    document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+    const weekday = now.toLocaleDateString('en-US', { weekday: 'long' });
+    const day = now.getDate();
+    const month = now.toLocaleDateString('en-US', { month: 'long' });
+    const year = now.getFullYear();
+    const time = now.toLocaleTimeString('en-US');
+
+    const fullDateTime = `${weekday}, ${month} ${day}, ${year} ${time}`;
+    document.getElementById('datetime-en').textContent = fullDateTime;
   }
 
-  setInterval(updateDateTime, 1000);
-  updateDateTime();
+  // Array of daily Bible verses
+  const versesEn = [
+    '📖 "The Lord is my shepherd, I shall not want." – Psalm 23:1',
+    '📖 "I can do all things through Christ who strengthens me." – Philippians 4:13',
+    '📖 "Do not be anxious about anything." – Philippians 4:6',
+    '📖 "For I know the plans I have for you." – Jeremiah 29:11',
+    '📖 "Jesus said, I am the way and the truth and the life." – John 14:6',
+    '📖 "Come to me, all who are weary and burdened." – Matthew 11:28',
+    '📖 "God is our refuge and strength." – Psalm 46:1'
+  ];
+
+  // Set verse of the day based on current day of month
+  function setDailyVerseEn() {
+    const today = new Date();
+    const index = today.getDate() % versesEn.length;
+    document.getElementById('verse-en').textContent = versesEn[index];
+  }
+
+  // Initial call and interval
+  updateDateTimeEn();
+  setInterval(updateDateTimeEn, 1000);
+  setDailyVerseEn();
 </script>
 
 </body>
