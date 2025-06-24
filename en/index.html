@@ -224,15 +224,40 @@
     '📖 "For I know the plans I have for you." – Jeremiah 29:11',
     '📖 "Jesus said, I am the way and the truth and the life." – John 14:6',
     '📖 "Come to me, all who are weary and burdened." – Matthew 11:28',
-    '📖 "God is our refuge and strength." – Psalm 46:1'
-  ];
+    '📖 "God is our refuge and strength." – Psalm 46:1',
+    '📖 "Be strong and courageous." – Joshua 1:9',
+    '📖 "The Lord will fight for you." – Exodus 14:14',
+    '📖 "Let everything that has breath praise the Lord!" – Psalm 150:6',
+    '📖 "Love is patient, love is kind." – 1 Corinthians 13:4',
+    '📖 "Trust in the Lord with all your heart." – Proverbs 3:5',
+    '📖 "The Lord is good; His faithfulness continues forever." – Psalm 100:5',
+    '📖 "Draw near to God and He will draw near to you." – James 4:8',
+    '📖 "The Lord is my rock and my fortress." – Psalm 18:2',
+    '📖 "Those who hope in the Lord will renew their strength." – Isaiah 40:31',
+    '📖 "He heals the brokenhearted." – Psalm 147:3',
+    '📖 "Your word is a lamp to my feet." – Psalm 119:105',
+    '📖 "Rejoice always." – 1 Thessalonians 5:16',
+    '📖 "The Lord is close to the brokenhearted." – Psalm 34:18',
+    '📖 "There is now no condemnation." – Romans 8:1',
+    '📖 "My soul finds rest in God alone." – Psalm 62:1',
+    '📖 "Commit your way to the Lord; trust in Him." – Psalm 37:5',
+    '📖 "The Lord is my helper; I will not be afraid." – Hebrews 13:6',
+    '📖 "The fruit of the Spirit is love, joy, peace…" – Galatians 5:22',
+    '📖 "God is love." – 1 John 4:8',
+    '📖 "Jesus Christ is the same yesterday and today and forever." – Hebrews 13:8',
+    '📖 "God works all things together for good." – Romans 8:28',
+    '📖 "The Lord is my light and my salvation." – Psalm 27:1',
+    '📖 "Blessed are those who hunger and thirst for righteousness." – Matthew 5:6',
+    '📖 "Remain in my love." – John 15:9',
+    '📖 "Be filled with the Spirit." – Ephesians 5:18'
+];
 
   // Set verse of the day based on current day of month
-  function setDailyVerseEn() {
-    const today = new Date();
-    const index = today.getDate() % versesEn.length;
-    document.getElementById('verse-en').textContent = versesEn[index];
-  }
+ function setDailyVerse() {
+  const today = new Date();
+  const index = (today.getDate() - 1) % verses.length; // offset by 1 to start at 0
+  document.getElementById('verse').textContent = verses[index];
+}
 
   // Initial call and interval
   updateDateTimeEn();
