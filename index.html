@@ -10,6 +10,13 @@
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
+<!-- DATE ET HEURE + VERSET DU JOUR -->
+<div class="bg-blue-50 text-blue-900 py-2 px-4 flex justify-between items-center text-sm font-semibold border-b border-blue-200">
+  <div id="datetime"></div>
+  <marquee behavior="scroll" direction="left" scrollamount="5" class="w-full ml-4 text-center">
+    📖 Verse of the Day: "The Lord is my shepherd, I shall not want." – Psalm 23:1
+  </marquee>
+</div>
 
 <!-- HEADER -->
 <header class="bg-white shadow-md sticky top-0 z-50">
@@ -194,6 +201,25 @@
 
   interval = setInterval(nextSlide, intervalTime);
   showSlide(1);
+</script>
+
+  <script>
+  function updateDateTime() {
+    const now = new Date();
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    };
+    document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+  }
+
+  setInterval(updateDateTime, 1000);
+  updateDateTime();
 </script>
 
 </body>
