@@ -10,11 +10,11 @@
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
-<!-- DATE ET HEURE + VERSET DU JOUR -->
+<!-- DATE + VERSET DU JOUR -->
 <div class="bg-blue-50 text-blue-900 py-2 px-4 flex justify-between items-center text-sm font-semibold border-b border-blue-200">
   <div id="datetime"></div>
   <marquee behavior="scroll" direction="left" scrollamount="5" class="w-full ml-4 text-center">
-    📖 Verse of the Day: "The Lord is my shepherd, I shall not want." – Psalm 23:1
+    📖 Verset du jour : « L'Éternel est mon berger : je ne manquerai de rien. » – Psaume 23:1
   </marquee>
 </div>
 
@@ -215,7 +215,8 @@
       minute: '2-digit',
       second: '2-digit'
     };
-    document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+    const dateTimeString = now.toLocaleString('fr-FR', options);
+    document.getElementById('datetime').textContent = dateTimeString;
   }
 
   setInterval(updateDateTime, 1000);
