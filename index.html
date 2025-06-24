@@ -13,9 +13,7 @@
 <!-- DATE + VERSET DU JOUR -->
 <div class="bg-blue-50 text-blue-900 py-2 px-4 flex justify-between items-center text-sm font-semibold border-b border-blue-200">
   <div id="datetime"></div>
-  <marquee behavior="scroll" direction="left" scrollamount="5" class="w-full ml-4 text-center">
-    📖 Verset du jour : « L'Éternel est mon berger : je ne manquerai de rien. » – Psaume 23:1
-  </marquee>
+  <marquee behavior="scroll" direction="left" scrollamount="5" class="w-full ml-4 text-center" id="verse"></marquee>
 </div>
 
 <!-- HEADER -->
@@ -204,24 +202,42 @@
 </script>
 
   <script>
+  // Fonction pour la date et l'heure en français
   function updateDateTime() {
     const now = new Date();
-    const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    };
-    const dateTimeString = now.toLocaleString('fr-FR', options);
-    document.getElementById('datetime').textContent = dateTimeString;
+    const jourSemaine = now.toLocaleDateString('fr-FR', { weekday: 'long' });
+    const jour = now.getDate();
+    const mois = now.toLocaleDateString('fr-FR', { month: 'long' });
+    const annee = now.getFullYear();
+    const heure = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+    const dateComplete = `${jourSemaine.charAt(0).toUpperCase() + jourSemaine.slice(1)} ${jour} ${mois} ${annee} ${heure}`;
+    document.getElementById('datetime').textContent = dateComplete;
   }
 
-  setInterval(updateDateTime, 1000);
-  updateDateTime();
-</script>
+  // Liste des versets (tu peux en ajouter autant que tu veux)
+  const verses = [
+    "📖 « L'Éternel est mon berger : je ne manquerai de rien. » – Psaume 23:1",
+    "📖 « Je puis tout par celui qui me fortifie. » – Philippiens 4:13",
+    "📖 « Ne vous inquiétez de rien. » – Philippiens 4:6",
+    "📖 « Car je connais les projets que j'ai formés sur vous. » – Jérémie 29:11",
+    "📖 « Jésus lui dit : Je suis le chemin, la vérité, et la vie. » – Jean 14:6",
+    "📖 « Venez à moi, vous tous qui êtes fatigués. » – Matthieu 11:28",
+    "📖 « Dieu est notre refuge et notre force. » – Psaume 46:1"
+  ];
 
+  // Fonction pour choisir un verset différent chaque jour
+  function setDailyVerse() {
+    const today = new Date();
+    const index = today.getDate() % verses.length;
+    document.getElementById('verse').textContent = verses[index];
+  }
+
+  // Exécution
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
+  setDailyVerse();
+</script>
+  
 </body>
 </html>
