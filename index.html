@@ -15,131 +15,41 @@
   <div id="datetime"></div>
   <marquee behavior="scroll" direction="left" scrollamount="5" class="w-full ml-4 text-center" id="verseMarquee"></marquee>
 </div>
+  
+<script>
+// Table des versets (extrait, complète à ajouter)
 const dailyVerses = {
-  1: {
-    fr: '« Le Seigneur est mon berger : je ne manquerai de rien. » – Psaume 23:1',
-    en: '"The Lord is my shepherd; I shall not want." – Psalm 23:1'
-  },
-  2: {
-    fr: '« Je puis tout par celui qui me fortifie. » – Philippiens 4:13',
-    en: '"I can do all things through Christ who strengthens me." – Philippians 4:13'
-  },
-  3: {
-    fr: '« Car Dieu a tant aimé le monde… » – Jean 3:16',
-    en: '"For God so loved the world…" – John 3:16'
-  },
-  4: {
-    fr: '« Sois fort et courageux. » – Josué 1:9',
-    en: '"Be strong and courageous." – Joshua 1:9'
-  },
-  5: {
-    fr: '« L’Éternel combattra pour vous. » – Exode 14:14',
-    en: '"The Lord will fight for you." – Exodus 14:14'
-  },
-  6: {
-    fr: '« Que tout ce qui respire loue l’Éternel ! » – Psaume 150:6',
-    en: '"Let everything that has breath praise the Lord!" – Psalm 150:6'
-  },
-  7: {
-    fr: '« L’amour est patient, il est plein de bonté. » – 1 Corinthiens 13:4',
-    en: '"Love is patient, love is kind." – 1 Corinthians 13:4'
-  },
-  8: {
-    fr: '« Confie-toi en l’Éternel de tout ton cœur. » – Proverbes 3:5',
-    en: '"Trust in the Lord with all your heart." – Proverbs 3:5'
-  },
-  9: {
-    fr: '« Ne vous inquiétez de rien. » – Philippiens 4:6',
-    en: '"Do not be anxious about anything." – Philippians 4:6'
-  },
-  10: {
-    fr: '« Le Seigneur est bon, sa fidélité dure toujours. » – Psaume 100:5',
-    en: '"The Lord is good; His faithfulness continues forever." – Psalm 100:5'
-  },
-  11: {
-    fr: '« Approchez-vous de Dieu, et il s’approchera de vous. » – Jacques 4:8',
-    en: '"Draw near to God and He will draw near to you." – James 4:8'
-  },
-  12: {
-    fr: '« L’Éternel est mon rocher, ma forteresse. » – Psaume 18:2',
-    en: '"The Lord is my rock and my fortress." – Psalm 18:2'
-  },
-  13: {
-    fr: '« Jésus lui dit : Je suis le chemin, la vérité, et la vie. » – Jean 14:6',
-    en: '"I am the way, the truth, and the life." – John 14:6'
-  },
-  14: {
-    fr: '« Ceux qui espèrent en l’Éternel renouvellent leur force. » – Ésaïe 40:31',
-    en: '"Those who hope in the Lord will renew their strength." – Isaiah 40:31'
-  },
-  15: {
-    fr: '« Il guérit ceux qui ont le cœur brisé. » – Psaume 147:3',
-    en: '"He heals the brokenhearted." – Psalm 147:3'
-  },
-  16: {
-    fr: '« Car je connais les projets que j’ai formés pour vous. » – Jérémie 29:11',
-    en: '"For I know the plans I have for you." – Jeremiah 29:11'
-  },
-  17: {
-    fr: '« Ta parole est une lampe à mes pieds. » – Psaume 119:105',
-    en: '"Your word is a lamp to my feet." – Psalm 119:105'
-  },
-  18: {
-    fr: '« Soyez toujours joyeux. » – 1 Thessaloniciens 5:16',
-    en: '"Rejoice always." – 1 Thessalonians 5:16'
-  },
-  19: {
-    fr: '« L’Éternel est près de ceux qui ont le cœur brisé. » – Psaume 34:18',
-    en: '"The Lord is close to the brokenhearted." – Psalm 34:18'
-  },
-  20: {
-    fr: '« Il n’y a donc maintenant aucune condamnation. » – Romains 8:1',
-    en: '"There is now no condemnation." – Romans 8:1'
-  },
-  21: {
-    fr: '« Mon âme se repose en paix sur Dieu seul. » – Psaume 62:1',
-    en: '"My soul finds rest in God alone." – Psalm 62:1'
-  },
-  22: {
-    fr: '« Recommande ton sort à l’Éternel, mets en lui ta confiance. » – Psaume 37:5',
-    en: '"Commit your way to the Lord; trust in Him." – Psalm 37:5'
-  },
-  23: {
-    fr: '« L’Éternel est mon secours, je ne craindrai rien. » – Hébreux 13:6',
-    en: '"The Lord is my helper; I will not be afraid." – Hebrews 13:6'
-  },
-  24: {
-    fr: '« Le fruit de l’Esprit, c’est l’amour, la joie, la paix… » – Galates 5:22',
-    en: '"The fruit of the Spirit is love, joy, peace…" – Galatians 5:22'
-  },
-  25: {
-    fr: '« Dieu est amour. » – 1 Jean 4:8',
-    en: '"God is love." – 1 John 4:8'
-  },
-  26: {
-    fr: '« Jésus-Christ est le même hier, aujourd’hui, et éternellement. » – Hébreux 13:8',
-    en: '"Jesus Christ is the same yesterday and today and forever." – Hebrews 13:8'
-  },
-  27: {
-    fr: '« Il fait concourir toutes choses au bien de ceux qui l’aiment. » – Romains 8:28',
-    en: '"God works all things together for good." – Romans 8:28'
-  },
-  28: {
-    fr: '« L’Éternel est ma lumière et mon salut. » – Psaume 27:1',
-    en: '"The Lord is my light and my salvation." – Psalm 27:1'
-  },
-  29: {
-    fr: '« Heureux ceux qui ont faim et soif de justice. » – Matthieu 5:6',
-    en: '"Blessed are those who hunger and thirst for righteousness." – Matthew 5:6'
-  },
-  30: {
-    fr: '« Demeurez dans mon amour. » – Jean 15:9',
-    en: '"Remain in my love." – John 15:9'
-  },
-  31: {
-    fr: '« Soyez remplis de l’Esprit. » – Éphésiens 5:18',
-    en: '"Be filled with the Spirit." – Ephesians 5:18'
-  }
+  1: '« Le Seigneur est mon berger : je ne manquerai de rien. » – Psaume 23:1',
+  2: '« Je puis tout par celui qui me fortifie. » – Philippiens 4:13',
+  3: '« Car Dieu a tant aimé le monde… » – Jean 3:16',
+  4: '« Sois fort et courageux. » – Josué 1:9',
+  5: '« L’Éternel combattra pour vous. » – Exode 14:14',
+  6: '« Que tout ce qui respire loue l’Éternel ! » – Psaume 150:6',
+  7: '« L’amour est patient, il est plein de bonté. » – 1 Corinthiens 13:4',
+  8: '« Confie-toi en l’Éternel de tout ton cœur. » – Proverbes 3:5',
+  9: '« Ne vous inquiétez de rien. » – Philippiens 4:6',
+  10: '« Le Seigneur est bon, sa fidélité dure toujours. » – Psaume 100:5',
+  11: '« Approchez-vous de Dieu, et il s’approchera de vous. » – Jacques 4:8',
+  12: '« L’Éternel est mon rocher, ma forteresse. » – Psaume 18:2',
+  13: '« Jésus lui dit : Je suis le chemin, la vérité, et la vie. » – Jean 14:6',
+  14: '« Ceux qui espèrent en l’Éternel renouvellent leur force. » – Ésaïe 40:31',
+  15: '« Il guérit ceux qui ont le cœur brisé. » – Psaume 147:3',
+  16: '« Car je connais les projets que j’ai formés pour vous. » – Jérémie 29:11',
+  17: '« Ta parole est une lampe à mes pieds. » – Psaume 119:105',
+  18: '« Soyez toujours joyeux. » – 1 Thessaloniciens 5:16',
+  19: '« L’Éternel est près de ceux qui ont le cœur brisé. » – Psaume 34:18',
+  20: '« Il n’y a donc maintenant aucune condamnation. » – Romains 8:1',
+  21: '« Mon âme se repose en paix sur Dieu seul. » – Psaume 62:1',
+  22: '« Recommande ton sort à l’Éternel, mets en lui ta confiance. » – Psaume 37:5',
+  23: '« L’Éternel est mon secours, je ne craindrai rien. » – Hébreux 13:6',
+  24: '« Le fruit de l’Esprit, c’est l’amour, la joie, la paix… » – Galates 5:22',
+  25: '« Dieu est amour. » – 1 Jean 4:8',
+  26: '« Jésus-Christ est le même hier, aujourd’hui, et éternellement. » – Hébreux 13:8',
+  27: '« Il fait concourir toutes choses au bien de ceux qui l’aiment. » – Romains 8:28',
+  28: '« L’Éternel est ma lumière et mon salut. » – Psaume 27:1',
+  29: '« Heureux ceux qui ont faim et soif de justice. » – Matthieu 5:6',
+  30: '« Demeurez dans mon amour. » – Jean 15:9',
+  31: '« Soyez remplis de l’Esprit. » – Éphésiens 5:18'
 };
 
 <!-- HEADER -->
