@@ -202,7 +202,7 @@
   showSlide(1);
 </script>
 
-  <script>
+ <script>
   // Function to display date and time in English
   function updateDateTimeEn() {
     const now = new Date();
@@ -210,13 +210,13 @@
     const day = now.getDate();
     const month = now.toLocaleDateString('en-US', { month: 'long' });
     const year = now.getFullYear();
-    const time = now.toLocaleTimeString('en-US');
+    const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
     const fullDateTime = `${weekday}, ${month} ${day}, ${year} ${time}`;
-    document.getElementById('datetime-en').textContent = fullDateTime;
+    document.getElementById('datetime').textContent = fullDateTime; // id corrigé ici
   }
 
-  // Array of daily Bible verses
+  // Array of daily Bible verses in English
   const versesEn = [
     '📖 "The Lord is my shepherd, I shall not want." – Psalm 23:1',
     '📖 "I can do all things through Christ who strengthens me." – Philippians 4:13',
@@ -250,19 +250,20 @@
     '📖 "Blessed are those who hunger and thirst for righteousness." – Matthew 5:6',
     '📖 "Remain in my love." – John 15:9',
     '📖 "Be filled with the Spirit." – Ephesians 5:18'
-];
+  ];
 
   // Set verse of the day based on current day of month
- function setDailyVerse() {
-  const today = new Date();
-  const index = (today.getDate() - 1) % verses.length; // offset by 1 to start at 0
-  document.getElementById('verse').textContent = verses[index];
-}
+  function setDailyVerse() {
+    const today = new Date();
+    const index = (today.getDate() - 1) % versesEn.length; // offset by 1 to start at 0
+    document.getElementById('verse').textContent = versesEn[index];
+  }
 
-  // Initial call and interval
+  // Initial calls and interval timers
   updateDateTimeEn();
   setInterval(updateDateTimeEn, 1000);
-  setDailyVerseEn();
+  setDailyVerse();
 </script>
+
 </body>
 </html>
