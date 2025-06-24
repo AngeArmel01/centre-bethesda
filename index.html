@@ -13,6 +13,14 @@
   <div class="max-w-6xl mx-auto py-6 px-4 flex justify-between items-center">
     <h1 class="text-2xl font-bold text-blue-700">Centre Bethesda</h1>
     <nav class="flex items-center space-x-6">
+      <div class="flex space-x-3 absolute top-6 right-6">
+        <a href="/centre-bethesda/index.html" class="flex items-center text-blue-700 font-semibold">
+          <img src="https://flagcdn.com/fr.svg" alt="Français" class="w-5 h-4 mr-1"> FR
+        </a>
+        <a href="/centre-bethesda/en/index.html" class="flex items-center text-gray-500 hover:text-blue-600 font-semibold">
+          <img src="https://flagcdn.com/gb.svg" alt="English" class="w-5 h-4 mr-1"> EN
+        </a>
+      </div>
       <a href="index.html" class="text-blue-700 font-semibold">Accueil</a>
       <a href="mission.html" class="text-gray-600 hover:text-blue-600">Mission</a>
       <a href="programmes.html" class="text-gray-600 hover:text-blue-600">Programmes</a>
@@ -34,7 +42,6 @@
       <p class="mt-4 text-xl italic">Matthieu 11:28</p>
     </div>
   </div>
-
   <!-- Slide 2 -->
   <div class="w-full h-full absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0" id="slide2">
     <img src="images/banner2.jpg" alt="Bannière 2" class="w-full h-full object-cover brightness-75">
@@ -43,7 +50,6 @@
       <p class="mt-4 text-xl italic">Jean 14:6</p>
     </div>
   </div>
-
   <!-- Slide 3 -->
   <div class="w-full h-full absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0" id="slide3">
     <img src="images/banner3.jpg" alt="Bannière 3" class="w-full h-full object-cover brightness-75">
@@ -103,6 +109,7 @@
     document.getElementById(`slide${currentSlide}`).style.opacity = 1;
   }, 5000);
 </script>
+
 </body>
 </html>
 
