@@ -61,6 +61,17 @@
       <p class="mt-4 text-xl italic">Psalm 46:1</p>
     </div>
   </div>
+
+  <!-- Buttons -->
+  <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-blue-700 text-white p-2 rounded-full hover:bg-blue-800 focus:outline-none">‹</button>
+  <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-700 text-white p-2 rounded-full hover:bg-blue-800 focus:outline-none">›</button>
+
+  <!-- Pagination dots -->
+  <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+    <button class="w-3 h-3 rounded-full bg-white opacity-100" data-slide="1"></button>
+    <button class="w-3 h-3 rounded-full bg-white opacity-40" data-slide="2"></button>
+    <button class="w-3 h-3 rounded-full bg-white opacity-40" data-slide="3"></button>
+  </div>
 </div>
 
 <!-- INTRO SECTIONS -->
@@ -94,7 +105,7 @@
   <a href="contact.html" class="bg-white text-blue-700 px-6 py-3 rounded border border-blue-700 hover:bg-blue-50">Contact Us</a>
 </section>
 
-<!-- PARTNERS IMPROVED DESIGN -->
+<!-- PARTNERS -->
 <section class="bg-gradient-to-b from-white via-blue-50 to-white py-20 px-6 md:px-12">
   <div class="max-w-6xl mx-auto text-center">
     <h2 class="text-3xl font-bold text-blue-800 mb-6">Our Partners</h2>
@@ -126,12 +137,54 @@
 <script>
   let currentSlide = 1;
   const totalSlides = 3;
+  const slides = [1, 2, 3];
+  const intervalTime = 5000;
+  let interval;
 
-  setInterval(() => {
-    document.getElementById(`slide${currentSlide}`).style.opacity = 0;
-    currentSlide = currentSlide === totalSlides ? 1 : currentSlide + 1;
-    document.getElementById(`slide${currentSlide}`).style.opacity = 1;
-  }, 5000);
+  function showSlide(n) {
+    slides.forEach(i => {
+      document.getElementById(`slide${i}`).style.opacity = i === n ? '1' : '0';
+      const dot = document.querySelector(`button[data-slide="${i}"]`);
+      if(dot) dot.style.opacity = i === n ? '1' : '0.4';
+    });
+    currentSlide = n;
+  }
+
+  function nextSlide() {
+    let next = currentSlide === totalSlides ? 1 : currentSlide + 1;
+    showSlide(next);
+  }
+
+  function prevSlide() {
+    let prev = currentSlide === 1 ? totalSlides : currentSlide - 1;
+    showSlide(prev);
+  }
+
+  document.getElementById('next').addEventListener('click', () => {
+    nextSlide();
+    resetInterval();
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    prevSlide();
+    resetInterval();
+  });
+
+  document.querySelectorAll('[data-slide]').forEach(button => {
+    button.addEventListener('click', () => {
+      const slideNum = Number(button.getAttribute('data-slide'));
+      showSlide(slideNum);
+      resetInterval();
+    });
+  });
+
+  function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, intervalTime);
+  }
+
+  interval = setInterval(nextSlide, intervalTime);
+  showSlide(1);
 </script>
 
 </body>
