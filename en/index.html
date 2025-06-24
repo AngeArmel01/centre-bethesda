@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bethesda Center – Home</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
@@ -13,34 +16,26 @@
   <div class="max-w-6xl mx-auto py-6 px-4 flex justify-between items-center">
     <h1 class="text-2xl font-bold text-blue-700">Bethesda Center</h1>
     <nav class="flex items-center space-x-6">
-      <div class="flex space-x-3 absolute top-6 right-6 pr-20">
-        <a href="/centre-bethesda/index.html" class="flex items-center text-blue-700 font-semibold">
-          <img src="https://flagcdn.com/fr.svg" alt="Français" class="w-5 h-4 mr-1"> FR
+      <div class="flex space-x-3 absolute top-6 right-6">
+        <a href="/centre-bethesda/index.html" class="flex items-center text-gray-500 hover:text-blue-600 font-semibold">
+          <img src="https://flagcdn.com/fr.svg" alt="French" class="w-5 h-4 mr-1"> FR
         </a>
-        <a href="/centre-bethesda/en/index.html" class="flex items-center text-gray-500 hover:text-blue-600 font-semibold">
+        <a href="/centre-bethesda/en/index.html" class="flex items-center text-blue-700 font-semibold">
           <img src="https://flagcdn.com/gb.svg" alt="English" class="w-5 h-4 mr-1"> EN
         </a>
       </div>
-      <div class="flex space-x-3 absolute top-6 right-6 pr-20">
-  <a href="/centre-bethesda/index.html" class="flex items-center text-gray-500 hover:text-blue-600 font-semibold">
-    <img src="https://flagcdn.com/fr.svg" alt="Français" class="w-5 h-4 mr-1"> FR
-  </a>
-  <a href="/centre-bethesda/en/index.html" class="flex items-center text-blue-700 font-semibold">
-    <img src="https://flagcdn.com/gb.svg" alt="English" class="w-5 h-4 mr-1"> EN
-  </a>
-</div>
       <a href="index.html" class="text-blue-700 font-semibold">Home</a>
       <a href="mission.html" class="text-gray-600 hover:text-blue-600">Mission</a>
-      <a href="programmes.html" class="text-gray-600 hover:text-blue-600">Programs</a>
-      <a href="infos.html" class="text-gray-600 hover:text-blue-600">Info</a>
-      <a href="temoignages.html" class="text-gray-600 hover:text-blue-600">Testimonials</a>
+      <a href="programs.html" class="text-gray-600 hover:text-blue-600">Programs</a>
+      <a href="info.html" class="text-gray-600 hover:text-blue-600">Info</a>
+      <a href="testimonies.html" class="text-gray-600 hover:text-blue-600">Testimonies</a>
       <a href="contact.html" class="text-gray-600 hover:text-blue-600">Contact</a>
-      <a href="reservation.html" class="text-gray-600 hover:text-blue-600">Booking</a>
+      <a href="booking.html" class="text-gray-600 hover:text-blue-600">Booking</a>
     </nav>
   </div>
 </header>
 
-<!-- Carousel - English -->
+<!-- CAROUSEL -->
 <div class="relative w-full h-96 overflow-hidden" id="carousel">
   <!-- Slide 1 -->
   <div class="w-full h-full absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100" id="slide1">
@@ -54,7 +49,7 @@
   <div class="w-full h-full absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0" id="slide2">
     <img src="../images/banner2.jpg" alt="Banner 2" class="w-full h-full object-cover brightness-75">
     <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
-      <h1 class="text-4xl md:text-5xl font-semibold">"I am the way, the truth, and the life."</h1>
+      <h1 class="text-4xl md:text-5xl font-semibold">"I am the way, the truth and the life."</h1>
       <p class="mt-4 text-xl italic">John 14:6</p>
     </div>
   </div>
@@ -68,37 +63,52 @@
   </div>
 </div>
 
-<!-- INTRO -->
+<!-- INTRO SECTIONS -->
 <section class="py-16 px-6 md:px-12 bg-white">
   <div class="max-w-5xl mx-auto text-center space-y-12">
 
     <div>
       <h2 class="text-2xl font-bold text-blue-700 mb-2">Our Mission</h2>
-      <p class="mb-4">Bethesda is a sanctuary of silence and prayer. It offers a space of rest, faith and inner transformation.</p>
-      <a href="mission.html" class="text-blue-600 underline">Discover our mission</a>
+      <p class="mb-4">The Bethesda Center is a sanctuary of silence and prayer. It offers a space of rest, faith, and inner transformation.</p>
+      <a href="mission.html" class="text-blue-600 underline">Discover the mission</a>
     </div>
 
     <div>
       <h2 class="text-2xl font-bold text-blue-700 mb-2">Our Programs</h2>
-      <p class="mb-4">Retreats adapted to every stage of life: Lent, inner healing, vocational discernment...</p>
-      <a href="programmes.html" class="text-blue-600 underline">View all retreats</a>
+      <p class="mb-4">Retreats for every stage of life: Lent, inner healing, vocational discernment...</p>
+      <a href="programs.html" class="text-blue-600 underline">See the retreats</a>
     </div>
 
     <div>
-      <h2 class="text-2xl font-bold text-blue-700 mb-2">Practical Information</h2>
-      <p class="mb-4">Find out more about accommodation, rates, access and more.</p>
-      <a href="infos.html" class="text-blue-600 underline">More details</a>
+      <h2 class="text-2xl font-bold text-blue-700 mb-2">Practical Info</h2>
+      <p class="mb-4">Learn about our reception conditions, prices, access, and more.</p>
+      <a href="info.html" class="text-blue-600 underline">Learn more</a>
     </div>
 
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CALL TO ACTION -->
 <section class="bg-blue-100 py-16 px-6 md:px-12 text-center">
-  <h2 class="text-3xl font-bold text-blue-800 mb-4">Ready for a spiritual renewal?</h2>
-  <p class="mb-6 text-lg">Register now or contact us for more information.</p>
-  <a href="reservation.html" class="bg-blue-700 text-white px-6 py-3 rounded hover:bg-blue-800 mr-4">Book a retreat</a>
-  <a href="contact.html" class="bg-white text-blue-700 px-6 py-3 rounded border border-blue-700 hover:bg-blue-50">Contact us</a>
+  <h2 class="text-3xl font-bold text-blue-800 mb-4">Ready for a time of spiritual renewal?</h2>
+  <p class="mb-6 text-lg">Book your retreat now or contact us for more information.</p>
+  <a href="booking.html" class="bg-blue-700 text-white px-6 py-3 rounded hover:bg-blue-800 mr-4">Book a Retreat</a>
+  <a href="contact.html" class="bg-white text-blue-700 px-6 py-3 rounded border border-blue-700 hover:bg-blue-50">Contact Us</a>
+</section>
+
+<!-- PARTNERS -->
+<section class="bg-white py-16 px-6 md:px-12">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-bold text-blue-700 mb-8">Our Partners</h2>
+    <p class="mb-12 text-gray-600">We collaborate with institutions committed to spiritual, social and human development.</p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+      <img src="../images/logo1.png" alt="Partner 1" class="h-16 object-contain grayscale hover:grayscale-0 transition duration-300">
+      <img src="../images/logo2.png" alt="Partner 2" class="h-16 object-contain grayscale hover:grayscale-0 transition duration-300">
+      <img src="../images/logo3.png" alt="Partner 3" class="h-16 object-contain grayscale hover:grayscale-0 transition duration-300">
+      <img src="../images/logo4.png" alt="Partner 4" class="h-16 object-contain grayscale hover:grayscale-0 transition duration-300">
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -106,7 +116,7 @@
   <p>&copy; 2025 Bethesda Spiritual Retreat Center. All rights reserved.</p>
 </footer>
 
-<!-- Carousel script -->
+<!-- CAROUSEL SCRIPT -->
 <script>
   let currentSlide = 1;
   const totalSlides = 3;
@@ -120,3 +130,4 @@
 
 </body>
 </html>
+
