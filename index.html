@@ -251,14 +251,13 @@
     "📖 « Demeurez dans mon amour. » – Jean 15:9",
     "📖 « Soyez remplis de l’Esprit. » – Éphésiens 5:18"
 ];
-  ];
 
   // Fonction pour choisir un verset différent chaque jour
   function setDailyVerse() {
-    const today = new Date();
-    const index = today.getDate() % verses.length;
-    document.getElementById('verse').textContent = verses[index];
-  }
+  const today = new Date();
+  const index = (today.getDate() - 1) % verses.length; // décalage d'1 pour commencer à 0
+  document.getElementById('verse').textContent = verses[index];
+}
 
   // Exécution
   updateDateTime();
