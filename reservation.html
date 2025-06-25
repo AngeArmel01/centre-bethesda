@@ -90,9 +90,7 @@
   </div>
 
   <!-- Formulaire -->
-  <div class="bg-white p-6 rounded-lg shadow-md mb-12">
-    <h3 class="text-xl font-semibold text-blue-600 mb-4">📝 Formulaire de réservation</h3>
-   <form action="https://formspree.io/f/xvgrvajj" method="POST" class="space-y-4 text-left">
+ <form id="form-reservation" class="space-y-4 text-left">
   <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
   <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
   <select name="Type de retraite" required class="w-full p-3 border rounded">
@@ -104,8 +102,6 @@
   </select>
   <input type="date" name="Date souhaitée" required class="w-full p-3 border rounded">
   <textarea name="Message" placeholder="Votre message ou intention de prière" rows="4" class="w-full p-3 border rounded"></textarea>
-
-<input type="hidden" name="_redirect" value="https://angearmel01.github.io/centre-bethesda/merci.html">
 
   <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Envoyer ma réservation</button>
 </form>
@@ -154,6 +150,35 @@
     mobileMenu.classList.toggle("hidden");
   });
 </script>
+
+<script>
+document.getElementById('form-reservation').addEventListener('submit', function (e) {
+  e.preventDefault(); // Empêche le rechargement natif
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  fetch('https://formspree.io/f/xvgrvajj', {
+    method: 'POST',
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      window.location.href = "https://angearmel01.github.io/centre-bethesda/merci.html";
+    } else {
+      alert("Erreur lors de l'envoi du formulaire. Veuillez réessayer.");
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    alert("Erreur de connexion. Veuillez vérifier votre réseau.");
+  });
+});
+</script>
+
   
 </body>
 </html>
