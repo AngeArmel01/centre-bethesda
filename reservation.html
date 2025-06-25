@@ -92,27 +92,24 @@
   <!-- Formulaire -->
   <div class="bg-white p-6 rounded-lg shadow-md mb-12">
     <h3 class="text-xl font-semibold text-blue-600 mb-4">📝 Formulaire de réservation</h3>
-    <form action="https://formsubmit.co/coulibalyangearmel@gmail.com" method="POST" class="space-y-4 text-left">
-      <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
-      <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
-      <select name="Type de retraite" required class="w-full p-3 border rounded">
-        <option value="">-- Sélectionnez une retraite --</option>
-        <option>Retraite de Carême</option>
-        <option>Retraite de Guérison intérieure</option>
-        <option>Retraite de Discernement vocationnel</option>
-        <option>Autre retraite</option>
-      </select>
-      <input type="date" name="Date souhaitée" required class="w-full p-3 border rounded">
-      <textarea name="Message" placeholder="Votre message ou intention de prière" rows="4" class="w-full p-3 border rounded"></textarea>
+   <form action="https://formspree.io/f/xvgrvajj" method="POST" class="space-y-4 text-left">
+  <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
+  <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
+  <select name="Type de retraite" required class="w-full p-3 border rounded">
+    <option value="">-- Sélectionnez une retraite --</option>
+    <option>Retraite de Carême</option>
+    <option>Retraite de Guérison intérieure</option>
+    <option>Retraite de Discernement vocationnel</option>
+    <option>Autre retraite</option>
+  </select>
+  <input type="date" name="Date souhaitée" required class="w-full p-3 border rounded">
+  <textarea name="Message" placeholder="Votre message ou intention de prière" rows="4" class="w-full p-3 border rounded"></textarea>
 
-      <!-- CONFIG -->
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="box">
-      <input type="hidden" name="_next" value="https://angearmel01.github.io/centre-bethesda/merci.html">
+<input type="hidden" name="_redirect" value="https://angearmel01.github.io/centre-bethesda/merci.html">
 
-      <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Envoyer ma réservation</button>
-    </form>
-  </div>
+  <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Envoyer ma réservation</button>
+</form>
+
 
   <!-- Paiement / Don -->
   <div class="text-center">
