@@ -90,9 +90,30 @@
   </div>
 
   <!-- Formulaire -->
- <form id="form-reservation" class="space-y-4 text-left">
+<form id="form-reservation" class="space-y-4 text-left">
   <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
+  
   <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
+
+  <!-- Genre -->
+  <select name="Genre" required class="w-full p-3 border rounded">
+    <option value="">-- Sélectionnez votre genre --</option>
+    <option>Homme</option>
+    <option>Femme</option>
+  </select>
+
+  <!-- Statut -->
+  <select name="Statut" required class="w-full p-3 border rounded">
+    <option value="">-- Sélectionnez votre statut --</option>
+    <option>Modérateur / Modératrice</option>
+    <option>Berger / Bergère</option>
+    <option>Membre de la PPE</option>
+    <option>Aspirant / Aspirante à la PPE</option>
+    <option>Invité(e)</option>
+    <option>Autre</option>
+  </select>
+
+  <!-- Type de retraite -->
   <select name="Type de retraite" required class="w-full p-3 border rounded">
     <option value="">-- Sélectionnez une retraite --</option>
     <option>Retraite de Carême</option>
@@ -100,9 +121,31 @@
     <option>Retraite de Discernement vocationnel</option>
     <option>Autre retraite</option>
   </select>
+
+  <!-- Tarif -->
+  <select name="Tarif" required class="w-full p-3 border rounded">
+    <option value="">-- Choisissez un tarif --</option>
+    <option>20.000 FCFA</option>
+    <option>25.000 FCFA</option>
+    <option>35.000 FCFA</option>
+  </select>
+
+  <!-- Moyen de transport -->
+  <select name="Moyen de transport" required class="w-full p-3 border rounded">
+    <option value="">-- Moyen de transport --</option>
+    <option>Convoi PPE</option>
+    <option>Voiture personnelle</option>
+    <option>Transport en commun</option>
+    <option>Autre</option>
+  </select>
+
+  <!-- Date -->
   <input type="date" name="Date souhaitée" required class="w-full p-3 border rounded">
+
+  <!-- Message -->
   <textarea name="Message" placeholder="Votre message ou intention de prière" rows="4" class="w-full p-3 border rounded"></textarea>
 
+  <!-- Bouton -->
   <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Envoyer ma réservation</button>
 </form>
 
