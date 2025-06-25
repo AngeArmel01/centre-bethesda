@@ -239,33 +239,36 @@
   </div>
 </section>
 
-<!-- FORUM D'ÉCHANGES -->
-<div id="user-display">Non connecté</div>
+<!-- ======= Forum d'échanges ======= -->
+<section id="forum" class="py-10">
+  <div id="user-display" class="mb-4 font-semibold">Non connecté</div>
 
-<!-- Formulaire inscription -->
-<form id="register-form" class="mb-4">
-  <input type="email" name="email" placeholder="Email" required />
-  <input type="password" name="password" placeholder="Mot de passe" required />
-  <button type="submit">S'inscrire</button>
-</form>
+  <!-- Formulaire inscription -->
+  <form id="register-form" class="mb-4">
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="password" placeholder="Mot de passe" required />
+    <button type="submit">S'inscrire</button>
+  </form>
 
-<!-- Formulaire connexion -->
-<form id="login-form" class="mb-4">
-  <input type="email" name="email" placeholder="Email" required />
-  <input type="password" name="password" placeholder="Mot de passe" required />
-  <button type="submit">Se connecter</button>
-</form>
+  <!-- Formulaire connexion -->
+  <form id="login-form" class="mb-4">
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="password" placeholder="Mot de passe" required />
+    <button type="submit">Se connecter</button>
+  </form>
 
-<button id="logout-btn" style="display:none;">Se déconnecter</button>
+  <button id="logout-btn" class="mb-4" style="display:none;">Se déconnecter</button>
 
-<!-- Formulaire forum -->
-<form id="forum-form">
-  <input type="text" name="username" placeholder="Nom d'utilisateur" disabled />
-  <textarea name="message" placeholder="Écrivez votre message" required></textarea>
-  <button type="submit">Envoyer</button>
-</form>
+  <!-- Formulaire forum -->
+  <form id="forum-form" class="mb-4">
+    <input type="text" name="username" placeholder="Nom d'utilisateur" disabled />
+    <textarea name="message" placeholder="Écrivez votre message" required></textarea>
+    <button type="submit">Envoyer</button>
+  </form>
 
-<div id="forum-messages"></div>
+  <!-- Messages -->
+  <div id="forum-messages" class="space-y-3"></div>
+</section>
 
 
 <!-- PARTENAIRES -->
@@ -438,7 +441,7 @@
   });
 </script>
 
- <script type="module">
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
   import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
@@ -447,25 +450,22 @@
     apiKey: "AIzaSyBfvjITf4NQyGYUWThoZUZTzPDzzqXF4yo",
     authDomain: "centre-bethesda.firebaseapp.com",
     projectId: "centre-bethesda",
-    storageBucket: "centre-bethesda.firebasestorage.app",
+    storageBucket: "centre-bethesda.appspot.com",
     messagingSenderId: "46907722860",
-    appId: "1:46907722860:web:3e74127f80f361e4d81c49",
-    measurementId: "G-4CRFZ6NVDJ"
+    appId: "1:46907722860:web:3e74127f80f361e4d81c49"
   };
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  // Elements du DOM à créer dans ta page
-  const loginForm = document.getElementById('login-form');
   const registerForm = document.getElementById('register-form');
+  const loginForm = document.getElementById('login-form');
   const logoutBtn = document.getElementById('logout-btn');
   const forumForm = document.getElementById('forum-form');
-  const messagesDiv = document.getElementById('forum-messages');
   const userDisplay = document.getElementById('user-display');
+  const messagesDiv = document.getElementById('forum-messages');
 
-  // Inscription
   registerForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = registerForm.email.value;
@@ -479,7 +479,6 @@
     }
   });
 
-  // Connexion
   loginForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = loginForm.email.value;
@@ -493,15 +492,13 @@
     }
   });
 
-  // Déconnexion
   logoutBtn?.addEventListener('click', () => signOut(auth));
 
-  // Gestion affichage user
   onAuthStateChanged(auth, (user) => {
     if (user) {
       userDisplay.textContent = `Connecté en tant que : ${user.email}`;
       logoutBtn.style.display = 'inline-block';
-      forumForm.username.value = user.email; // ou user.displayName si tu veux
+      forumForm.username.value = user.email;
       forumForm.username.disabled = true;
     } else {
       userDisplay.textContent = 'Non connecté';
@@ -511,27 +508,27 @@
     }
   });
 
-  // Ajout message avec uid
   forumForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const message = forumForm.message.value.trim();
     const user = auth.currentUser;
-    if (!user) {
-      alert('Vous devez être connecté pour poster un message.');
-      return;
-    }
+    if (!user) return alert('Vous devez être connecté pour poster un message.');
     if (!message) return;
 
-    await addDoc(collection(db, "messages"), {
-      uid: user.uid,
-      username: user.email, // ou displayName
-      message,
-      timestamp: serverTimestamp()
-    });
-    forumForm.message.value = '';
+    try {
+      await addDoc(collection(db, "messages"), {
+        uid: user.uid,
+        username: user.email,
+        message,
+        timestamp: serverTimestamp()
+      });
+      forumForm.message.value = '';
+    } catch (error) {
+      console.error("Erreur Firestore :", error);
+      alert("Échec de l'envoi du message.");
+    }
   });
 
-  // Affichage messages temps réel
   const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
   onSnapshot(q, (snapshot) => {
     messagesDiv.innerHTML = '';
@@ -542,76 +539,70 @@
     });
   });
 
-  // Création élément message avec édition/suppression
   function createMessageElement(id, data) {
     const container = document.createElement('div');
-    container.className = "bg-white p-4 rounded shadow border-l-4 border-blue-700 mt-4";
+    container.style.border = "1px solid #ccc";
+    container.style.padding = "10px";
+    container.style.background = "#f9f9f9";
 
-    const meta = document.createElement('p');
-    meta.className = "text-sm text-gray-500";
-    meta.innerHTML = `<strong>${data.username}</strong> • ${formatDate(data.timestamp)}`;
+    const meta = document.createElement('small');
+    meta.innerHTML = `<strong>${data.username}</strong> — ${formatDate(data.timestamp)}`;
 
     const content = document.createElement('p');
-    content.className = "mt-2 text-gray-800";
     content.textContent = data.message;
 
-    const actions = document.createElement('div');
-    actions.className = "mt-3 space-x-3 text-sm";
+    container.appendChild(meta);
+    container.appendChild(content);
 
     const user = auth.currentUser;
     if (user && user.uid === data.uid) {
       const editBtn = document.createElement('button');
       editBtn.textContent = "Modifier";
-      editBtn.className = "text-yellow-600 underline hover:text-yellow-800";
       editBtn.onclick = () => editMessage(id, content);
 
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = "Supprimer";
-      deleteBtn.className = "text-red-600 underline hover:text-red-800";
-      deleteBtn.onclick = () => deleteDoc(doc(db, "messages", id));
+      const delBtn = document.createElement('button');
+      delBtn.textContent = "Supprimer";
+      delBtn.onclick = () => deleteDoc(doc(db, "messages", id));
 
-      actions.append(editBtn, deleteBtn);
+      container.appendChild(editBtn);
+      container.appendChild(delBtn);
     }
 
-    container.append(meta, content, actions);
     return container;
   }
 
-  // Edition d'un message
   function editMessage(id, contentEl) {
-    const oldText = contentEl.textContent;
+    const old = contentEl.textContent;
     const ta = document.createElement('textarea');
-    ta.className = "w-full border px-3 py-2 mt-2";
-    ta.value = oldText;
+    ta.value = old;
     contentEl.replaceWith(ta);
 
     const saveBtn = document.createElement('button');
     saveBtn.textContent = "Enregistrer";
-    saveBtn.className = "mt-2 bg-green-600 text-white px-4 py-1 rounded";
     ta.after(saveBtn);
 
     saveBtn.onclick = async () => {
-      if (ta.value.trim()) {
+      const newText = ta.value.trim();
+      if (newText) {
         await updateDoc(doc(db, "messages", id), {
-          message: ta.value.trim(),
+          message: newText,
           edited: serverTimestamp()
         });
         saveBtn.remove();
         ta.replaceWith(contentEl);
-        contentEl.textContent = ta.value.trim();
+        contentEl.textContent = newText;
       }
     };
   }
 
-  // Format date (français)
   function formatDate(ts) {
     if (!ts) return '';
     return new Date(ts.seconds * 1000).toLocaleString('fr-FR', {
-      weekday: 'short', day: '2-digit', month: 'short',
-      hour: '2-digit', minute: '2-digit'
+      day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
     });
   }
 </script>
+
 
 
   
