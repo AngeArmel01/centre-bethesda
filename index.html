@@ -135,19 +135,29 @@
 
   <!-- Texte descriptif -->
   <p class="text-gray-700">
-    Le Centre Bethesda est un sanctuaire pour rencontrer Dieu dans le silence et la prière.
+    Le Centre Bethesda est un sanctuaire pour rencontrer Dieu dans le silence et la prière
   </p>
 
-  <!-- Image avec bouton call-to-action -->
+  <!-- Image avec effet flouté + bouton call-to-action -->
   <div class="relative rounded-lg overflow-hidden shadow-md">
-    <img src="images/mission.jpg" alt="Notre mission" class="w-full h-64 object-cover sm:h-80">
-    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+    <img src="images/mission.jpg" alt="Notre mission" class="w-full h-64 object-cover filter blur-sm sm:h-80">
+
+    <!-- Overlay sombre avec bouton -->
+    <div class="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex items-center justify-center">
       <a href="mission.html" class="bg-white text-blue-700 font-semibold px-6 py-2 rounded shadow hover:bg-blue-100 transition">
         Découvrez notre mission
       </a>
     </div>
   </div>
+
+  <!-- Lien "En savoir plus" sous l'image -->
+  <div class="text-center">
+    <a href="mission.html" class="text-blue-600 underline hover:text-blue-800">
+      En savoir plus
+    </a>
+  </div>
 </div>
+
 
 
     <div>
