@@ -688,15 +688,19 @@
   });
 
   playPauseBtn.addEventListener("click", () => {
-    if (isPlaying) {
-      audio.pause();
-      playPauseBtn.textContent = "Écouter";
-    } else {
-      audio.play();
-      playPauseBtn.textContent = "Pause";
-    }
-    isPlaying = !isPlaying;
-  });
+  console.log("🎧 Bouton Écouter cliqué"); // ✅ ← ICI : feedback dans la console
+
+  if (isPlaying) {
+    audio.pause();
+    playPauseBtn.textContent = "Écouter";
+    console.log("⏸️ Audio mis en pause");
+  } else {
+    audio.play();
+    playPauseBtn.textContent = "Pause";
+    console.log("▶️ Audio en lecture");
+  }
+  isPlaying = !isPlaying;
+});
 
   audio.addEventListener("ended", () => {
     isPlaying = false;
