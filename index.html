@@ -126,34 +126,6 @@
   </div>
 </div>
 
-<!-- 🎵 Bloc audio dynamique -->
-<section id="audio-section" class="relative w-full max-w-3xl mx-auto rounded-lg overflow-hidden shadow-xl my-10">
-
-  <!-- 🖼️ Image de fond -->
-  <div id="audio-bg" class="bg-cover bg-center h-48 sm:h-64 transition-all duration-500"
-       style="background-image: url('assets/img/matin.jpg');"></div>
-
-  <!-- 🎧 Lecteur -->
-  <div class="bg-white p-4 space-y-4">
-    <h2 class="text-lg sm:text-xl font-semibold text-gray-800">🎶 Lecteur de prières et chants</h2>
-
-    <select id="trackSelect" class="w-full border rounded px-3 py-2 text-sm">
-      <option value="matin">Prière du matin</option>
-      <option value="gregorien">Chant grégorien</option>
-      <option value="soir">Prière du soir</option>
-    </select>
-
-    <div class="flex justify-between items-center">
-      <span id="trackLabel" class="text-gray-600 text-sm">Aucune piste en cours</span>
-      <button id="playPauseBtn" class="text-blue-700 text-sm font-semibold hover:underline">Écouter</button>
-    </div>
-
-    <audio id="audioPlayer" preload="auto"></audio>
-
-    <!-- 📖 Paroles -->
-    <div id="lyrics" class="mt-4 text-gray-700 text-sm leading-relaxed whitespace-pre-line border-t pt-3 hidden"></div>
-  </div>
-</section>
 
 <!-- SECTIONS PRINCIPALES -->
 <section class="py-16 px-6 md:px-12 bg-white">
@@ -304,6 +276,34 @@
   <div id="forum-messages" class="space-y-4"></div>
 </section>
 
+  <!-- 🎵 Bloc audio dynamique -->
+<section id="audio-section" class="relative w-full max-w-3xl mx-auto rounded-lg overflow-hidden shadow-xl my-10">
+
+  <!-- 🖼️ Image de fond -->
+  <div id="audio-bg" class="bg-cover bg-center h-48 sm:h-64 transition-all duration-500"
+       style="background-image: url('assets/img/matin.jpg');"></div>
+
+  <!-- 🎧 Lecteur -->
+  <div class="bg-white p-4 space-y-4">
+    <h2 class="text-lg sm:text-xl font-semibold text-gray-800">🎶 Lecteur de prières et chants</h2>
+
+    <select id="trackSelect" class="w-full border rounded px-3 py-2 text-sm">
+      <option value="matin">Prière du matin</option>
+      <option value="gregorien">Chant grégorien</option>
+      <option value="soir">Prière du soir</option>
+    </select>
+
+    <div class="flex justify-between items-center">
+      <span id="trackLabel" class="text-gray-600 text-sm">Aucune piste en cours</span>
+      <button id="playPauseBtn" class="text-blue-700 text-sm font-semibold hover:underline">Écouter</button>
+    </div>
+
+    <audio id="audioPlayer" preload="auto"></audio>
+
+    <!-- 📖 Paroles -->
+    <div id="lyrics" class="mt-4 text-gray-700 text-sm leading-relaxed whitespace-pre-line border-t pt-3 hidden"></div>
+  </div>
+</section>
 
 <!-- PARTENAIRES -->
 <section class="bg-gradient-to-b from-white via-blue-50 to-white py-20 px-6 md:px-12">
