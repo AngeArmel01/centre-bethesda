@@ -126,6 +126,35 @@
   </div>
 </div>
 
+<!-- 🎵 Bloc audio dynamique -->
+<section id="audio-section" class="relative w-full max-w-3xl mx-auto rounded-lg overflow-hidden shadow-xl my-10">
+
+  <!-- 🖼️ Image de fond -->
+  <div id="audio-bg" class="bg-cover bg-center h-48 sm:h-64 transition-all duration-500"
+       style="background-image: url('assets/img/matin.jpg');"></div>
+
+  <!-- 🎧 Lecteur -->
+  <div class="bg-white p-4 space-y-4">
+    <h2 class="text-lg sm:text-xl font-semibold text-gray-800">🎶 Lecteur de prières et chants</h2>
+
+    <select id="trackSelect" class="w-full border rounded px-3 py-2 text-sm">
+      <option value="matin">Prière du matin</option>
+      <option value="gregorien">Chant grégorien</option>
+      <option value="soir">Prière du soir</option>
+    </select>
+
+    <div class="flex justify-between items-center">
+      <span id="trackLabel" class="text-gray-600 text-sm">Aucune piste en cours</span>
+      <button id="playPauseBtn" class="text-blue-700 text-sm font-semibold hover:underline">Écouter</button>
+    </div>
+
+    <audio id="audioPlayer" preload="auto"></audio>
+
+    <!-- 📖 Paroles -->
+    <div id="lyrics" class="mt-4 text-gray-700 text-sm leading-relaxed whitespace-pre-line border-t pt-3 hidden"></div>
+  </div>
+</section>
+
 <!-- SECTIONS PRINCIPALES -->
 <section class="py-16 px-6 md:px-12 bg-white">
   <div class="max-w-5xl mx-auto text-center space-y-12">
@@ -608,7 +637,75 @@
   }
 </script>
 
+<script>
+  const audio = document.getElementById("audioPlayer");
+  const trackSelect = document.getElementById("trackSelect");
+  const playPauseBtn = document.getElementById("playPauseBtn");
+  const trackLabel = document.getElementById("trackLabel");
+  const audioBg = document.getElementById("audio-bg");
+  const lyrics = document.getElementById("lyrics");
 
+  const tracks = {
+    matin: {
+      label: "Prière du matin",
+      src: "assets/audio/priere-matin.mp3",
+      bg: "assets/img/matin.jpg",
+      text: `Seigneur, en ce matin nouveau,\nJe me tourne vers Toi avec confiance.\nRemplis mon cœur de Ta paix et guide mes pas.\nSois la lumière de ma journée. Amen.`
+    },
+    gregorien: {
+      label: "Chant grégorien",
+      src: "assets/audio/chant-gregorien.mp3",
+      bg: "assets/img/gregorien.jpg",
+      text: `Gloria in excelsis Deo\nEt in terra pax hominibus bonae voluntatis\nLaudamus te, benedicimus te, adoramus te`
+    },
+    soir: {
+      label: "Prière du soir",
+      src: "assets/audio/priere-soir.mp3",
+      bg: "assets/img/soir.jpg",
+      text: `Seigneur, merci pour cette journée écoulée.\nPardonne mes erreurs et accorde-moi le repos.\nVeille sur mes proches cette nuit. Amen.`
+    }
+  };
+
+  let isPlaying = false;
+
+  function updateTrack(name) {
+    const track = tracks[name];
+    if (!track) return;
+
+    audio.src = track.src;
+    audioBg.style.backgroundImage = `url('${track.bg}')`;
+    lyrics.textContent = track.text;
+    lyrics.classList.remove("hidden");
+
+    trackLabel.textContent = track.label;
+    playPauseBtn.textContent = "Écouter";
+    isPlaying = false;
+    audio.pause();
+  }
+
+  trackSelect.addEventListener("change", (e) => {
+    updateTrack(e.target.value);
+  });
+
+  playPauseBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      audio.pause();
+      playPauseBtn.textContent = "Écouter";
+    } else {
+      audio.play();
+      playPauseBtn.textContent = "Pause";
+    }
+    isPlaying = !isPlaying;
+  });
+
+  audio.addEventListener("ended", () => {
+    isPlaying = false;
+    playPauseBtn.textContent = "Écouter";
+  });
+
+  // Initialisation
+  updateTrack(trackSelect.value);
+</script>
 
   
 </body>
