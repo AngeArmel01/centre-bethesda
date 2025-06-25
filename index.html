@@ -240,22 +240,22 @@
 </section>
 
 <!-- FORUM D'ÉCHANGES -->
-<section class="bg-white py-20 px-6 md:px-12">
-  <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-3xl font-bold text-blue-800 mb-4">Forum d'échanges spirituels</h2>
-    <p class="mb-8 text-gray-600">Partagez une parole, une expérience ou posez une question.</p>
-
-    <!-- Formulaire -->
-    <form id="forum-form" class="bg-gray-50 p-6 rounded shadow space-y-4 text-left">
-      <input type="text" id="username" placeholder="Votre prénom" required class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300">
-      <textarea id="message" placeholder="Votre message..." rows="4" required class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
-      <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800">Envoyer</button>
-    </form>
-
-    <!-- Messages -->
-    <div id="forum-messages" class="mt-10 space-y-6 text-left"></div>
-  </div>
+<section id="forum" class="max-w-4xl mx-auto p-6 bg-gray-50 rounded shadow mt-12">
+  <h2 class="text-2xl font-bold mb-4 text-blue-700">Forum de discussion</h2>
+  
+  <form id="forum-form" class="mb-6 space-y-4">
+    <input type="text" name="username" placeholder="Votre nom" required
+      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    <textarea name="message" rows="3" placeholder="Votre message" required
+      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+    <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800">
+      Envoyer
+    </button>
+  </form>
+  
+  <div id="forum-messages" class="space-y-4"></div>
 </section>
+
 
 <!-- PARTENAIRES -->
 <section class="bg-gradient-to-b from-white via-blue-50 to-white py-20 px-6 md:px-12">
@@ -427,155 +427,124 @@
   });
 </script>
 
-  <script>
+ <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+  import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+  // Configuration Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyBfvjITf4NQyGYUWThoZUZTzPDzzqXF4yo",
+    authDomain: "centre-bethesda.firebaseapp.com",
+    projectId: "centre-bethesda",
+    storageBucket: "centre-bethesda.firebasestorage.app",
+    messagingSenderId: "46907722860",
+    appId: "1:46907722860:web:3e74127f80f361e4d81c49",
+    measurementId: "G-4CRFZ6NVDJ"
+  };
+
+  // Initialisation Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+
+  // Sélection des éléments du DOM
   const form = document.getElementById('forum-form');
   const messagesDiv = document.getElementById('forum-messages');
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const username = document.getElementById('username').value.trim();
-    const message = document.getElementById('message').value.trim();
-    if (username && message) {
-      const messageElement = createMessageElement(username, message);
-      messagesDiv.prepend(messageElement);
-      form.reset();
-    }
-  });
-
-  function formatDate() {
-    const now = new Date();
-    return now.toLocaleString('fr-FR', {
-      weekday: 'short', day: '2-digit', month: 'short', year: 'numeric',
+  // Formatage date en français
+  function formatDate(ts) {
+    if (!ts) return '';
+    return new Date(ts.seconds * 1000).toLocaleString('fr-FR', {
+      weekday: 'short', day: '2-digit', month: 'short',
       hour: '2-digit', minute: '2-digit'
     });
   }
 
-  function createMessageElement(username, messageText) {
+  // Ajout d'un message
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = form.username.value.trim();
+    const message = form.message.value.trim();
+    if (username && message) {
+      await addDoc(collection(db, "messages"), {
+        username,
+        message,
+        timestamp: serverTimestamp()
+      });
+      form.reset();
+    }
+  });
+
+  // Écoute en temps réel des messages, triés par date décroissante
+  const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
+  onSnapshot(q, (snapshot) => {
+    messagesDiv.innerHTML = '';
+    snapshot.forEach(docSnap => {
+      const data = docSnap.data();
+      const el = createMessageElement(docSnap.id, data);
+      messagesDiv.appendChild(el);
+    });
+  });
+
+  // Création élément message (avec boutons modifier/supprimer)
+  function createMessageElement(id, data) {
     const container = document.createElement('div');
-    container.className = "bg-white p-4 rounded shadow border-l-4 border-blue-700";
+    container.className = "bg-white p-4 rounded shadow border-l-4 border-blue-700 mt-4";
 
     const meta = document.createElement('p');
     meta.className = "text-sm text-gray-500";
-    meta.innerHTML = `Posté par <span class="font-semibold">${username}</span> • ${formatDate()}`;
+    meta.innerHTML = `<strong>${data.username}</strong> • ${formatDate(data.timestamp)}`;
 
     const content = document.createElement('p');
     content.className = "mt-2 text-gray-800";
-    content.textContent = messageText;
+    content.textContent = data.message;
 
     const actions = document.createElement('div');
-    actions.className = "mt-4 space-x-3 text-sm";
-
-    const replyBtn = document.createElement('button');
-    replyBtn.textContent = "Répondre";
-    replyBtn.className = "text-blue-700 underline hover:text-blue-900";
-    replyBtn.onclick = () => toggleReplyForm(container);
+    actions.className = "mt-3 space-x-3 text-sm";
 
     const editBtn = document.createElement('button');
     editBtn.textContent = "Modifier";
     editBtn.className = "text-yellow-600 underline hover:text-yellow-800";
-    editBtn.onclick = () => editMessage(content);
+    editBtn.onclick = () => editMessage(id, content);
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = "Supprimer";
     deleteBtn.className = "text-red-600 underline hover:text-red-800";
-    deleteBtn.onclick = () => container.remove();
+    deleteBtn.onclick = () => deleteDoc(doc(db, "messages", id));
 
-    actions.append(replyBtn, editBtn, deleteBtn);
-
-    const repliesDiv = document.createElement('div');
-    repliesDiv.className = "mt-4 ml-6 space-y-2";
-
-    container.append(meta, content, actions, repliesDiv);
+    actions.append(editBtn, deleteBtn);
+    container.append(meta, content, actions);
     return container;
   }
 
-  function toggleReplyForm(parent) {
-    if (parent.querySelector('.reply-form')) {
-      parent.querySelector('.reply-form').remove();
-      return;
-    }
-
-    const form = document.createElement('form');
-    form.className = "reply-form mt-4 bg-gray-50 p-4 rounded border border-gray-200 space-y-2";
-
-    const input = document.createElement('input');
-    input.placeholder = "Votre prénom";
-    input.required = true;
-    input.className = "w-full border border-gray-300 rounded px-3 py-1";
-
-    const textarea = document.createElement('textarea');
-    textarea.placeholder = "Votre réponse...";
-    textarea.rows = 2;
-    textarea.required = true;
-    textarea.className = "w-full border border-gray-300 rounded px-3 py-1";
-
-    const button = document.createElement('button');
-    button.textContent = "Publier la réponse";
-    button.type = "submit";
-    button.className = "bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700";
-
-    form.append(input, textarea, button);
-
-    form.onsubmit = function(e) {
-      e.preventDefault();
-      const name = input.value.trim();
-      const replyText = textarea.value.trim();
-      if (name && replyText) {
-        const reply = document.createElement('div');
-        reply.className = "bg-white p-3 rounded shadow border-l-4 border-gray-400 text-sm";
-
-        const replyMeta = document.createElement('p');
-        replyMeta.className = "text-gray-500 mb-1";
-        replyMeta.innerHTML = `Réponse de <strong>${name}</strong> • ${formatDate()}`;
-
-        const replyContent = document.createElement('p');
-        replyContent.className = "text-gray-800";
-        replyContent.textContent = replyText;
-
-        const replyActions = document.createElement('div');
-        replyActions.className = "mt-2 space-x-2 text-xs";
-
-        const editReply = document.createElement('button');
-        editReply.textContent = "Modifier";
-        editReply.className = "text-yellow-600 underline";
-        editReply.onclick = () => editMessage(replyContent);
-
-        const deleteReply = document.createElement('button');
-        deleteReply.textContent = "Supprimer";
-        deleteReply.className = "text-red-600 underline";
-        deleteReply.onclick = () => reply.remove();
-
-        replyActions.append(editReply, deleteReply);
-        reply.append(replyMeta, replyContent, replyActions);
-
-        parent.querySelector('div.ml-6').appendChild(reply);
-        form.remove();
-      }
-    };
-
-    parent.appendChild(form);
-  }
-
-  function editMessage(element) {
-    const originalText = element.textContent;
-    const textarea = document.createElement('textarea');
-    textarea.className = "w-full border border-blue-400 rounded px-3 py-2 mt-2";
-    textarea.value = originalText;
+  // Edition d'un message
+  function editMessage(id, contentEl) {
+    const oldText = contentEl.textContent;
+    const ta = document.createElement('textarea');
+    ta.className = "w-full border px-3 py-2 mt-2";
+    ta.value = oldText;
+    contentEl.replaceWith(ta);
 
     const saveBtn = document.createElement('button');
     saveBtn.textContent = "Enregistrer";
-    saveBtn.className = "mt-2 bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700";
+    saveBtn.className = "mt-2 bg-green-600 text-white px-4 py-1 rounded";
+    ta.after(saveBtn);
 
-    element.replaceWith(textarea);
-    textarea.after(saveBtn);
-
-    saveBtn.onclick = () => {
-      element.textContent = textarea.value;
-      saveBtn.remove();
-      textarea.replaceWith(element);
+    saveBtn.onclick = async () => {
+      if (ta.value.trim()) {
+        await updateDoc(doc(db, "messages", id), {
+          message: ta.value.trim(),
+          edited: serverTimestamp()
+        });
+        saveBtn.remove();
+        ta.replaceWith(contentEl);
+        contentEl.textContent = ta.value.trim();
+      }
     };
   }
 </script>
+
   
 </body>
 </html>
