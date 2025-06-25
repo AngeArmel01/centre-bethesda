@@ -240,21 +240,32 @@
 </section>
 
 <!-- FORUM D'ÉCHANGES -->
-<section id="forum" class="max-w-4xl mx-auto p-6 bg-gray-50 rounded shadow mt-12">
-  <h2 class="text-2xl font-bold mb-4 text-blue-700">Forum de discussion</h2>
-  
-  <form id="forum-form" class="mb-6 space-y-4">
-    <input type="text" name="username" placeholder="Votre nom" required
-      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" />
-    <textarea name="message" rows="3" placeholder="Votre message" required
-      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
-    <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800">
-      Envoyer
-    </button>
-  </form>
-  
-  <div id="forum-messages" class="space-y-4"></div>
-</section>
+<div id="user-display">Non connecté</div>
+
+<!-- Formulaire inscription -->
+<form id="register-form" class="mb-4">
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="password" name="password" placeholder="Mot de passe" required />
+  <button type="submit">S'inscrire</button>
+</form>
+
+<!-- Formulaire connexion -->
+<form id="login-form" class="mb-4">
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="password" name="password" placeholder="Mot de passe" required />
+  <button type="submit">Se connecter</button>
+</form>
+
+<button id="logout-btn" style="display:none;">Se déconnecter</button>
+
+<!-- Formulaire forum -->
+<form id="forum-form">
+  <input type="text" name="username" placeholder="Nom d'utilisateur" disabled />
+  <textarea name="message" placeholder="Écrivez votre message" required></textarea>
+  <button type="submit">Envoyer</button>
+</form>
+
+<div id="forum-messages"></div>
 
 
 <!-- PARTENAIRES -->
@@ -429,10 +440,9 @@
 
  <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
   import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
-  // Configuration Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyBfvjITf4NQyGYUWThoZUZTzPDzzqXF4yo",
     authDomain: "centre-bethesda.firebaseapp.com",
@@ -443,40 +453,85 @@
     measurementId: "G-4CRFZ6NVDJ"
   };
 
-  // Initialisation Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
   const db = getFirestore(app);
 
-  // Sélection des éléments du DOM
-  const form = document.getElementById('forum-form');
+  // Elements du DOM à créer dans ta page
+  const loginForm = document.getElementById('login-form');
+  const registerForm = document.getElementById('register-form');
+  const logoutBtn = document.getElementById('logout-btn');
+  const forumForm = document.getElementById('forum-form');
   const messagesDiv = document.getElementById('forum-messages');
+  const userDisplay = document.getElementById('user-display');
 
-  // Formatage date en français
-  function formatDate(ts) {
-    if (!ts) return '';
-    return new Date(ts.seconds * 1000).toLocaleString('fr-FR', {
-      weekday: 'short', day: '2-digit', month: 'short',
-      hour: '2-digit', minute: '2-digit'
-    });
-  }
-
-  // Ajout d'un message
-  form.addEventListener('submit', async (e) => {
+  // Inscription
+  registerForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const username = form.username.value.trim();
-    const message = form.message.value.trim();
-    if (username && message) {
-      await addDoc(collection(db, "messages"), {
-        username,
-        message,
-        timestamp: serverTimestamp()
-      });
-      form.reset();
+    const email = registerForm.email.value;
+    const password = registerForm.password.value;
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert('Inscription réussie !');
+      registerForm.reset();
+    } catch (error) {
+      alert('Erreur inscription : ' + error.message);
     }
   });
 
-  // Écoute en temps réel des messages, triés par date décroissante
+  // Connexion
+  loginForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = loginForm.email.value;
+    const password = loginForm.password.value;
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert('Connexion réussie !');
+      loginForm.reset();
+    } catch (error) {
+      alert('Erreur connexion : ' + error.message);
+    }
+  });
+
+  // Déconnexion
+  logoutBtn?.addEventListener('click', () => signOut(auth));
+
+  // Gestion affichage user
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      userDisplay.textContent = `Connecté en tant que : ${user.email}`;
+      logoutBtn.style.display = 'inline-block';
+      forumForm.username.value = user.email; // ou user.displayName si tu veux
+      forumForm.username.disabled = true;
+    } else {
+      userDisplay.textContent = 'Non connecté';
+      logoutBtn.style.display = 'none';
+      forumForm.username.value = '';
+      forumForm.username.disabled = false;
+    }
+  });
+
+  // Ajout message avec uid
+  forumForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const message = forumForm.message.value.trim();
+    const user = auth.currentUser;
+    if (!user) {
+      alert('Vous devez être connecté pour poster un message.');
+      return;
+    }
+    if (!message) return;
+
+    await addDoc(collection(db, "messages"), {
+      uid: user.uid,
+      username: user.email, // ou displayName
+      message,
+      timestamp: serverTimestamp()
+    });
+    forumForm.message.value = '';
+  });
+
+  // Affichage messages temps réel
   const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
   onSnapshot(q, (snapshot) => {
     messagesDiv.innerHTML = '';
@@ -487,7 +542,7 @@
     });
   });
 
-  // Création élément message (avec boutons modifier/supprimer)
+  // Création élément message avec édition/suppression
   function createMessageElement(id, data) {
     const container = document.createElement('div');
     container.className = "bg-white p-4 rounded shadow border-l-4 border-blue-700 mt-4";
@@ -503,17 +558,21 @@
     const actions = document.createElement('div');
     actions.className = "mt-3 space-x-3 text-sm";
 
-    const editBtn = document.createElement('button');
-    editBtn.textContent = "Modifier";
-    editBtn.className = "text-yellow-600 underline hover:text-yellow-800";
-    editBtn.onclick = () => editMessage(id, content);
+    const user = auth.currentUser;
+    if (user && user.uid === data.uid) {
+      const editBtn = document.createElement('button');
+      editBtn.textContent = "Modifier";
+      editBtn.className = "text-yellow-600 underline hover:text-yellow-800";
+      editBtn.onclick = () => editMessage(id, content);
 
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = "Supprimer";
-    deleteBtn.className = "text-red-600 underline hover:text-red-800";
-    deleteBtn.onclick = () => deleteDoc(doc(db, "messages", id));
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = "Supprimer";
+      deleteBtn.className = "text-red-600 underline hover:text-red-800";
+      deleteBtn.onclick = () => deleteDoc(doc(db, "messages", id));
 
-    actions.append(editBtn, deleteBtn);
+      actions.append(editBtn, deleteBtn);
+    }
+
     container.append(meta, content, actions);
     return container;
   }
@@ -543,7 +602,17 @@
       }
     };
   }
+
+  // Format date (français)
+  function formatDate(ts) {
+    if (!ts) return '';
+    return new Date(ts.seconds * 1000).toLocaleString('fr-FR', {
+      weekday: 'short', day: '2-digit', month: 'short',
+      hour: '2-digit', minute: '2-digit'
+    });
+  }
 </script>
+
 
   
 </body>
