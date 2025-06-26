@@ -372,42 +372,53 @@
     </div>
 
     <!-- Newsletter -->
-    <div class="pt-2">
-      <h3 class="text-white text-lg font-semibold mb-1">Abonnez-vous à notre newsletter</h3>
-      <p class="text-gray-400 text-sm mb-3">Recevez nos méditations, programmes et actualités spirituelles.</p>
+    <form id="newsletterForm">
+  <input type="email" name="email" placeholder="Email *" required
+         class="px-4 py-2 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+  <input type="text" name="fname" placeholder="Prénom"
+         class="px-4 py-2 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+  <input type="text" name="lname" placeholder="Nom"
+         class="px-4 py-2 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+  <button type="submit"
+          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition font-semibold mt-3">
+    S’abonner
+  </button>
+</form>
 
-     <form id="mc-embedded-subscribe-form"
-      action="https://github.us9.list-manage.com/subscribe/post?u=f54b169d2148a99a1ac7537ec&amp;id=fab3ce560f&amp;f_id=004757e1f0"
-      method="post" target="_blank" novalidate
-      class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
-        <input type="email" name="EMAIL" required
-               placeholder="Email *"
-               class="px-4 py-2 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-
-        <input type="text" name="FNAME"
-               placeholder="Prénom"
-               class="px-4 py-2 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-
-        <input type="text" name="LNAME"
-               placeholder="Nom"
-               class="px-4 py-2 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400 sm:col-span-2">
-
-        <button type="submit"
-                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition font-semibold sm:col-span-2">
-          S’abonner
-        </button>
-      </form>
-    </div>
+<div id="message" class="mt-2 text-sm text-green-500"></div>
 
 <script>
-  // Redirection douce vers newsletter.html après 2 secondes
-  document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function(e) {
-    setTimeout(function() {
-      window.location.href = 'newsletter.html';
-    }, 2000);
+  const form = document.getElementById('newsletterForm');
+  const message = document.getElementById('message');
+  const endpoint = 'https://script.google.com/macros/s/AKfycbwrjp8Pn-11rDqIxT0TFZx3p1Gs5PwKcKyZlACvTLldTUVMLwAYDpBumVWL2k5e4T4-8Q/exec';
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    fetch(endpoint, {
+      method: 'POST',
+      body: data
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.result === 'success') {
+        message.textContent = 'Merci pour votre inscription ! 🙏';
+        message.style.color = 'lightgreen';
+        form.reset();
+      } else {
+        message.textContent = 'Erreur : ' + (result.message || 'Veuillez réessayer.');
+        message.style.color = 'orange';
+      }
+    })
+    .catch(() => {
+      message.textContent = 'Erreur serveur, veuillez réessayer plus tard.';
+      message.style.color = 'red';
+    });
   });
 </script>
+
 
 
     <!-- Infos rapides -->
