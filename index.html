@@ -372,53 +372,64 @@
     </div>
 
     <!-- Newsletter -->
-    <form id="newsletterForm">
-  <input type="email" name="email" placeholder="Email *" required
-         class="px-4 py-2 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-  <input type="text" name="fname" placeholder="Prénom"
-         class="px-4 py-2 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-  <input type="text" name="lname" placeholder="Nom"
-         class="px-4 py-2 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-  <button type="submit"
-          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition font-semibold mt-3">
-    S’abonner
-  </button>
-</form>
+   <section class="bg-gray-100 py-10 px-6 rounded-lg shadow-md max-w-3xl mx-auto mt-12">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-2 text-center">📬 Abonnez-vous à notre Newsletter</h2>
+  <p class="text-gray-600 text-sm text-center mb-6">
+    Recevez nos méditations, programmes spirituels et informations importantes directement dans votre boîte mail.
+  </p>
 
-<div id="message" class="mt-2 text-sm text-green-500"></div>
+  <form action="https://script.google.com/macros/s/AKfycbzrxBuLNioD5evQe7XwY4Ygj2d8mkxhNBdPd04S6tITIW02jC0zoLpWONF7lmBXduCBhA/exec"
+        method="POST"
+        onsubmit="handleSubmit(event)"
+        class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+    <input type="email" name="email" required
+           placeholder="Email *"
+           class="px-4 py-2 rounded border border-gray-300 text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+    <input type="text" name="fname"
+           placeholder="Prénom"
+           class="px-4 py-2 rounded border border-gray-300 text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+    <input type="text" name="lname"
+           placeholder="Nom"
+           class="px-4 py-2 rounded border border-gray-300 text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-blue-400 sm:col-span-2">
+
+    <button type="submit"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition font-semibold sm:col-span-2">
+      S’abonner
+    </button>
+
+    <p id="formMessage" class="text-center text-green-600 text-sm mt-2 sm:col-span-2 hidden">
+      ✅ Merci pour votre inscription 🙏
+    </p>
+  </form>
+</section>
 
 <script>
-  const form = document.getElementById('newsletterForm');
-  const message = document.getElementById('message');
-  const endpoint = 'https://script.google.com/macros/s/AKfycbwrjp8Pn-11rDqIxT0TFZx3p1Gs5PwKcKyZlACvTLldTUVMLwAYDpBumVWL2k5e4T4-8Q/exec';
-
-  form.addEventListener('submit', (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-
+    const form = e.target;
     const data = new FormData(form);
 
-    fetch(endpoint, {
-      method: 'POST',
+    fetch(form.action, {
+      method: "POST",
       body: data
     })
     .then(response => response.json())
     .then(result => {
-      if (result.result === 'success') {
-        message.textContent = 'Merci pour votre inscription ! 🙏';
-        message.style.color = 'lightgreen';
+      if (result.result === "success") {
+        document.getElementById('formMessage').classList.remove('hidden');
         form.reset();
       } else {
-        message.textContent = 'Erreur : ' + (result.message || 'Veuillez réessayer.');
-        message.style.color = 'orange';
+        alert("Erreur : " + result.message);
       }
     })
     .catch(() => {
-      message.textContent = 'Erreur serveur, veuillez réessayer plus tard.';
-      message.style.color = 'red';
+      alert("Erreur serveur. Veuillez réessayer plus tard.");
     });
-  });
+  }
 </script>
-
 
 
     <!-- Infos rapides -->
