@@ -399,6 +399,16 @@
       </form>
     </div>
 
+<script>
+  // Redirection douce vers newsletter.html après 2 secondes
+  document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function(e) {
+    setTimeout(function() {
+      window.location.href = 'newsletter.html';
+    }, 2000);
+  });
+</script>
+
+
     <!-- Infos rapides -->
     <div class="pt-2 space-y-2 text-sm text-gray-300">
       <p>📍 <a href="https://maps.app.goo.gl/VhycG7pf7zQREPY36" target="_blank" class="hover:text-white underline">Route de Yamoussoukro, Côte d'Ivoire</a></p>
