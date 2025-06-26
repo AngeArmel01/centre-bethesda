@@ -33,3 +33,166 @@
   <!-- Messages -->
   <div id="forum-messages" class="space-y-4"></div>
 </section>
+
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+  import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBfvjITf4NQyGYUWThoZUZTzPDzzqXF4yo",
+    authDomain: "centre-bethesda.firebaseapp.com",
+    projectId: "centre-bethesda",
+    storageBucket: "centre-bethesda.appspot.com",
+    messagingSenderId: "46907722860",
+    appId: "1:46907722860:web:3e74127f80f361e4d81c49"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const registerForm = document.getElementById('register-form');
+  const loginForm = document.getElementById('login-form');
+  const logoutBtn = document.getElementById('logout-btn');
+  const forumForm = document.getElementById('forum-form');
+  const userDisplay = document.getElementById('user-display');
+  const messagesDiv = document.getElementById('forum-messages');
+
+  registerForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = registerForm.email.value;
+    const password = registerForm.password.value;
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert('Inscription réussie !');
+      registerForm.reset();
+    } catch (error) {
+      alert('Erreur inscription : ' + error.message);
+    }
+  });
+
+  loginForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = loginForm.email.value;
+    const password = loginForm.password.value;
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert('Connexion réussie !');
+      loginForm.reset();
+    } catch (error) {
+      alert('Erreur connexion : ' + error.message);
+    }
+  });
+
+  logoutBtn?.addEventListener('click', () => signOut(auth));
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      userDisplay.textContent = `Connecté en tant que : ${user.email}`;
+      logoutBtn.style.display = 'inline-block';
+      forumForm.username.value = user.email;
+      forumForm.username.disabled = true;
+    } else {
+      userDisplay.textContent = 'Non connecté';
+      logoutBtn.style.display = 'none';
+      forumForm.username.value = '';
+      forumForm.username.disabled = false;
+    }
+  });
+
+  forumForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const message = forumForm.message.value.trim();
+    const user = auth.currentUser;
+    if (!user) return alert('Vous devez être connecté pour poster un message.');
+    if (!message) return;
+
+    try {
+      await addDoc(collection(db, "messages"), {
+        uid: user.uid,
+        username: user.email,
+        message,
+        timestamp: serverTimestamp()
+      });
+      forumForm.message.value = '';
+    } catch (error) {
+      console.error("Erreur Firestore :", error);
+      alert("Échec de l'envoi du message.");
+    }
+  });
+
+  const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
+  onSnapshot(q, (snapshot) => {
+    messagesDiv.innerHTML = '';
+    snapshot.forEach(docSnap => {
+      const data = docSnap.data();
+      const el = createMessageElement(docSnap.id, data);
+      messagesDiv.appendChild(el);
+    });
+  });
+
+  function createMessageElement(id, data) {
+    const container = document.createElement('div');
+    container.style.border = "1px solid #ccc";
+    container.style.padding = "10px";
+    container.style.background = "#f9f9f9";
+
+    const meta = document.createElement('small');
+    meta.innerHTML = `<strong>${data.username}</strong> — ${formatDate(data.timestamp)}`;
+
+    const content = document.createElement('p');
+    content.textContent = data.message;
+
+    container.appendChild(meta);
+    container.appendChild(content);
+
+    const user = auth.currentUser;
+    if (user && user.uid === data.uid) {
+      const editBtn = document.createElement('button');
+      editBtn.textContent = "Modifier";
+      editBtn.onclick = () => editMessage(id, content);
+
+      const delBtn = document.createElement('button');
+      delBtn.textContent = "Supprimer";
+      delBtn.onclick = () => deleteDoc(doc(db, "messages", id));
+
+      container.appendChild(editBtn);
+      container.appendChild(delBtn);
+    }
+
+    return container;
+  }
+
+  function editMessage(id, contentEl) {
+    const old = contentEl.textContent;
+    const ta = document.createElement('textarea');
+    ta.value = old;
+    contentEl.replaceWith(ta);
+
+    const saveBtn = document.createElement('button');
+    saveBtn.textContent = "Enregistrer";
+    ta.after(saveBtn);
+
+    saveBtn.onclick = async () => {
+      const newText = ta.value.trim();
+      if (newText) {
+        await updateDoc(doc(db, "messages", id), {
+          message: newText,
+          edited: serverTimestamp()
+        });
+        saveBtn.remove();
+        ta.replaceWith(contentEl);
+        contentEl.textContent = newText;
+      }
+    };
+  }
+
+  function formatDate(ts) {
+    if (!ts) return '';
+    return new Date(ts.seconds * 1000).toLocaleString('fr-FR', {
+      day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
+    });
+  }
+</script>
