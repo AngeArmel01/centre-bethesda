@@ -69,25 +69,27 @@
 </header>
 
 <!-- SECTION MISSION avec fond, texte justifié et réseaux -->
+<!-- SECTION MISSION compacte avec logos réseaux et espacement réduit -->
 <section class="text-gray-800">
+
   <!-- Titre avec image de fond -->
-  <div class="bg-cover bg-center h-64 flex items-center justify-center" style="background-image: url('images/mission.jpg');">
-    <h2 class="text-4xl md:text-5xl font-bold text-white bg-black bg-opacity-50 px-6 py-4 rounded">
+  <div class="bg-cover bg-center h-52 flex items-center justify-center" style="background-image: url('images/mission-banner.jpg'); margin-bottom: -2rem;">
+    <h2 class="text-4xl md:text-5xl font-bold text-white bg-black bg-opacity-50 px-6 py-3 rounded">
       Notre Mission
     </h2>
   </div>
 
-  <!-- Contenu de la mission -->
-  <div class="py-16 px-6 md:px-12 bg-white bg-opacity-90 backdrop-blur-sm">
-    <div class="max-w-6xl mx-auto shadow-xl rounded-lg p-8">
+  <!-- Contenu principal avec espacement réduit -->
+  <div class="py-10 px-6 md:px-12 bg-white bg-opacity-95 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto shadow-lg rounded-lg p-6 md:p-10">
 
-      <!-- Introduction -->
-      <p class="text-lg text-center mb-10">
+      <!-- Intro -->
+      <p class="text-lg text-center mb-8">
         Un sanctuaire de silence et de prière, fondé sur l'Évangile et la compassion. Inspiré de la piscine de Bethesda (Jean 5), notre centre est un lieu de guérison, d'écoute et de transformation.
       </p>
 
-      <div class="grid md:grid-cols-2 gap-10 text-justify">
-        <!-- Histoire et spiritualité -->
+      <div class="grid md:grid-cols-2 gap-8 text-justify">
+        <!-- Histoire -->
         <div>
           <h3 class="text-xl font-semibold text-blue-600 mb-2">Histoire et spiritualité</h3>
           <p class="mb-3">
@@ -98,7 +100,7 @@
           </p>
         </div>
 
-        <!-- Équipe avec image -->
+        <!-- Équipe -->
         <div>
           <h3 class="text-xl font-semibold text-blue-600 mb-4">Notre équipe</h3>
           <img src="images/equipe.jpg" alt="Équipe du Centre" class="rounded-lg shadow mb-4 w-full h-64 object-cover">
@@ -109,69 +111,57 @@
       </div>
 
       <!-- Accompagnateurs -->
-      <div class="mt-12">
+      <div class="mt-10">
         <h4 class="text-xl font-semibold text-blue-600 mb-6 text-center">Rencontrez nos accompagnateurs</h4>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
 
-          <!-- Père Jean -->
-          <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
-            <img src="images/pere-jean.jpg" alt="Père Jean" class="w-24 h-24 mx-auto rounded-full mb-3 object-cover">
+          <!-- Accompagnateur générique (réutilisable) -->
+          <div class="bg-gray-100 p-4 rounded-lg shadow">
+            <img src="images/pere-jean.jpg" alt="Père Jean" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover">
             <h5 class="font-semibold text-blue-700">Père Jean</h5>
             <p class="text-sm text-gray-600 mb-3 text-justify">
               Prêtre depuis 15 ans, il est passionné par la direction spirituelle et accompagne ceux qui cherchent à renouer avec Dieu.
             </p>
             <div class="flex justify-center space-x-3">
-              <a href="https://www.facebook.com/100063655896518/" target="_blank" aria-label="Facebook" class="text-blue-600 hover:text-blue-800">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h3l-.5 3h-2.5v7A10 10 0 0 0 22 12z"/>
-                </svg>
+              <!-- Facebook -->
+              <a href="https://www.facebook.com/100063655896518/" target="_blank" aria-label="Facebook">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="w-5 h-5" alt="Facebook">
               </a>
-              <a href="https://wa.me/2250758701978" target="_blank" aria-label="WhatsApp" class="text-green-600 hover:text-green-800">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.52 3.48a11.91 11.91 0 0 0-16.9 0 11.91 11.91 0 0 0-2.48 13.1L.03 24l7.61-1.99a11.91 11.91 0 0 0 12.88-18.53zm-4.08 13.57c-.18.5-1.04.92-1.42.98-.36.06-.82.08-1.33-.1-.31-.1-.71-.23-1.24-.46a11.05 11.05 0 0 1-3.73-3.05c-.28-.39-.65-.92-.84-1.45-.18-.5-.02-.89.13-1.1.14-.2.32-.5.5-.75.16-.24.27-.4.4-.63.13-.22.07-.44.02-.63-.06-.19-.55-1.33-.76-1.82-.2-.47-.4-.41-.55-.42l-.47-.01c-.17 0-.44.07-.66.32s-.87.89-.87 2.18.9 2.52 1.04 2.7c.13.17 1.78 2.8 4.3 3.91.6.25 1.08.4 1.45.5.6.19 1.15.17 1.57.1.48-.07 1.47-.58 1.68-1.14.2-.56.2-1.04.14-1.13-.05-.09-.23-.15-.47-.26z"/>
-                </svg>
+              <!-- WhatsApp -->
+              <a href="https://wa.me/2250758701978" target="_blank" aria-label="WhatsApp">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" class="w-5 h-5" alt="WhatsApp">
               </a>
             </div>
           </div>
 
-          <!-- Sœur Marie -->
-          <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
-            <img src="images/sr-marie.jpg" alt="Sœur Marie" class="w-24 h-24 mx-auto rounded-full mb-3 object-cover">
+          <div class="bg-gray-100 p-4 rounded-lg shadow">
+            <img src="images/sr-marie.jpg" alt="Sœur Marie" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover">
             <h5 class="font-semibold text-blue-700">Sœur Marie</h5>
             <p class="text-sm text-gray-600 mb-3 text-justify">
               Religieuse contemplative, elle offre une présence douce et priante. Son charisme repose sur l’écoute du cœur.
             </p>
             <div class="flex justify-center space-x-3">
-              <a href="https://www.facebook.com/100063655896518/" target="_blank" aria-label="Facebook" class="text-blue-600 hover:text-blue-800">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h3l-.5 3h-2.5v7A10 10 0 0 0 22 12z"/>
-                </svg>
+              <a href="https://www.facebook.com/100063655896518/" target="_blank" aria-label="Facebook">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="w-5 h-5" alt="Facebook">
               </a>
-              <a href="https://wa.me/2250153098198" target="_blank" aria-label="WhatsApp" class="text-green-600 hover:text-green-800">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.52 3.48a11.91 11.91 0 0 0-16.9 0 11.91 11.91 0 0 0-2.48 13.1L.03 24l7.61-1.99a11.91 11.91 0 0 0 12.88-18.53zm-4.08 13.57c-.18.5-1.04.92-1.42.98-.36.06-.82.08-1.33-.1-.31-.1-.71-.23-1.24-.46a11.05 11.05 0 0 1-3.73-3.05c-.28-.39-.65-.92-.84-1.45-.18-.5-.02-.89.13-1.1.14-.2.32-.5.5-.75.16-.24.27-.4.4-.63.13-.22.07-.44.02-.63-.06-.19-.55-1.33-.76-1.82-.2-.47-.4-.41-.55-.42l-.47-.01c-.17 0-.44.07-.66.32s-.87.89-.87 2.18.9 2.52 1.04 2.7c.13.17 1.78 2.8 4.3 3.91.6.25 1.08.4 1.45.5.6.19 1.15.17 1.57.1.48-.07 1.47-.58 1.68-1.14.2-.56.2-1.04.14-1.13-.05-.09-.23-.15-.47-.26z"/>
-                </svg>
+              <a href="https://wa.me/2250758701978" target="_blank" aria-label="WhatsApp">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" class="w-5 h-5" alt="WhatsApp">
               </a>
             </div>
           </div>
 
-          <!-- Joseph -->
-          <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
-            <img src="images/laic-joseph.jpg" alt="Joseph" class="w-24 h-24 mx-auto rounded-full mb-3 object-cover">
+          <div class="bg-gray-100 p-4 rounded-lg shadow">
+            <img src="images/laic-joseph.jpg" alt="Joseph" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover">
             <h5 class="font-semibold text-blue-700">Joseph</h5>
             <p class="text-sm text-gray-600 mb-3 text-justify">
               Laïc engagé, Joseph est passionné par l’accompagnement des jeunes dans leur parcours de foi et de discernement.
             </p>
             <div class="flex justify-center space-x-3">
-              <a href="https://www.facebook.com/100063655896518/" target="_blank" aria-label="Facebook" class="text-blue-600 hover:text-blue-800">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h3l-.5 3h-2.5v7A10 10 0 0 0 22 12z"/>
-                </svg>
+              <a href="https://www.facebook.com/100063655896518/" target="_blank" aria-label="Facebook">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="w-5 h-5" alt="Facebook">
               </a>
-              <a href="https://wa.me/2250758701978" target="_blank" aria-label="WhatsApp" class="text-green-600 hover:text-green-800">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.52 3.48a11.91 11.91 0 0 0-16.9 0 11.91 11.91 0 0 0-2.48 13.1L.03 24l7.61-1.99a11.91 11.91 0 0 0 12.88-18.53zm-4.08 13.57c-.18.5-1.04.92-1.42.98-.36.06-.82.08-1.33-.1-.31-.1-.71-.23-1.24-.46a11.05 11.05 0 0 1-3.73-3.05c-.28-.39-.65-.92-.84-1.45-.18-.5-.02-.89.13-1.1.14-.2.32-.5.5-.75.16-.24.27-.4.4-.63.13-.22.07-.44.02-.63-.06-.19-.55-1.33-.76-1.82-.2-.47-.4-.41-.55-.42l-.47-.01c-.17 0-.44.07-.66.32s-.87.89-.87 2.18.9 2.52 1.04 2.7c.13.17 1.78 2.8 4.3 3.91.6.25 1.08.4 1.45.5.6.19 1.15.17 1.57.1.48-.07 1.47-.58 1.68-1.14.2-.56.2-1.04.14-1.13-.05-.09-.23-.15-.47-.26z"/>
-                </svg>
+              <a href="https://wa.me/2250758701978" target="_blank" aria-label="WhatsApp">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" class="w-5 h-5" alt="WhatsApp">
               </a>
             </div>
           </div>
