@@ -86,14 +86,13 @@
         <button class="filter-btn bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200" data-theme="discernement">Discernement</button>
       </div>
 
-      <!-- Champ de recherche -->
       <input id="search-input" type="text" placeholder="Rechercher un programme..." class="mt-4 md:mt-0 px-4 py-2 border rounded shadow w-full md:w-1/3">
     </div>
 
     <!-- Programmes -->
     <div id="programmes-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- Exemple de programme -->
+      <!-- Programme 1 -->
       <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="careme">
         <img src="images/careme.jpg" alt="Carême" class="h-40 w-full object-cover">
         <div class="p-5">
@@ -103,10 +102,11 @@
           <p class="text-sm mb-1"><strong>Public :</strong> Adultes</p>
           <p class="text-sm mb-1"><strong>Objectif :</strong> Renouveler sa foi, recevoir le pardon</p>
           <p class="text-sm mb-1"><strong>Activités :</strong> Messe, adoration, confessions</p>
-          <p class="text-sm mb-3 text-green-700"><strong>Places restantes :</strong> 12</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
         </div>
       </div>
 
+      <!-- Programme 2 -->
       <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="guerison">
         <img src="images/guerison.jpg" alt="Guérison intérieure" class="h-40 w-full object-cover">
         <div class="p-5">
@@ -116,10 +116,11 @@
           <p class="text-sm mb-1"><strong>Public :</strong> Tous</p>
           <p class="text-sm mb-1"><strong>Objectif :</strong> Se libérer des blessures du passé</p>
           <p class="text-sm mb-1"><strong>Activités :</strong> Louange, prière, silence</p>
-          <p class="text-sm mb-3 text-green-700"><strong>Places restantes :</strong> 5</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
         </div>
       </div>
 
+      <!-- Programme 3 -->
       <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="discernement">
         <img src="images/discernement.jpg" alt="Discernement" class="h-40 w-full object-cover">
         <div class="p-5">
@@ -129,11 +130,9 @@
           <p class="text-sm mb-1"><strong>Public :</strong> Jeunes adultes</p>
           <p class="text-sm mb-1"><strong>Objectif :</strong> Écouter l’appel de Dieu</p>
           <p class="text-sm mb-1"><strong>Activités :</strong> Silence, méditation, accompagnement</p>
-          <p class="text-sm mb-3 text-red-600"><strong>Places restantes :</strong> 0 (complet)</p>
+          <p class="text-sm mb-3 text-red-600"><strong>Statut :</strong> Complet</p>
         </div>
       </div>
-
-      <!-- Ajoute d'autres programmes ici -->
 
     </div>
 
@@ -251,34 +250,40 @@
 </script>
 
 <script>
+  // FILTRAGE PAR THÈME
   const filterButtons = document.querySelectorAll('.filter-btn');
   const programmeItems = document.querySelectorAll('.programme-item');
-  const searchInput = document.getElementById('search-input');
-
-  function filterAndSearch() {
-    const selectedTheme = document.querySelector('.filter-btn.active')?.dataset.theme || 'all';
-    const searchTerm = searchInput.value.toLowerCase();
-
-    programmeItems.forEach(item => {
-      const themeMatch = selectedTheme === 'all' || item.dataset.theme === selectedTheme;
-      const textContent = item.textContent.toLowerCase();
-      const searchMatch = textContent.includes(searchTerm);
-
-      item.style.display = (themeMatch && searchMatch) ? 'block' : 'none';
-    });
-  }
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      filterAndSearch();
+      const theme = btn.getAttribute('data-theme');
+
+      programmeItems.forEach(item => {
+        const itemTheme = item.getAttribute('data-theme');
+        if (theme === 'all' || itemTheme === theme) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
     });
   });
 
-  searchInput.addEventListener('input', filterAndSearch);
+  // RECHERCHE PAR MOT-CLÉ
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', () => {
+    const searchValue = searchInput.value.toLowerCase();
+
+    programmeItems.forEach(item => {
+      const content = item.textContent.toLowerCase();
+      if (content.includes(searchValue)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
 </script>
-  
+
 </body>
 </html>
-
