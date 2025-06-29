@@ -249,6 +249,35 @@
     mobileMenu.classList.toggle("hidden");
   });
 </script>
+
+<script>
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const programmeItems = document.querySelectorAll('.programme-item');
+  const searchInput = document.getElementById('search-input');
+
+  function filterAndSearch() {
+    const selectedTheme = document.querySelector('.filter-btn.active')?.dataset.theme || 'all';
+    const searchTerm = searchInput.value.toLowerCase();
+
+    programmeItems.forEach(item => {
+      const themeMatch = selectedTheme === 'all' || item.dataset.theme === selectedTheme;
+      const textContent = item.textContent.toLowerCase();
+      const searchMatch = textContent.includes(searchTerm);
+
+      item.style.display = (themeMatch && searchMatch) ? 'block' : 'none';
+    });
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterAndSearch();
+    });
+  });
+
+  searchInput.addEventListener('input', filterAndSearch);
+</script>
   
 </body>
 </html>
