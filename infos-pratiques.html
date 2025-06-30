@@ -101,40 +101,48 @@
         <!-- GALERIE PAR THÈME -->
 <section class="py-16 px-6 md:px-12 bg-gray-50">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-700 text-center mb-10">📸 Galerie photos</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-700 text-center mb-10">📸 Galerie par thème</h2>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-      <!-- Thème 1 -->
-      <a href="galerie-hebergement.html" class="group block">
-        <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105">
-          <img src="images/hebergement-thumb.jpg" alt="Hébergement" class="w-full h-40 object-cover">
+      
+      <!-- Thème 1 : Hébergement -->
+      <a href="galerie-hebergement.html" class="block group rounded overflow-hidden shadow-lg hover:shadow-xl transition">
+        <div class="relative">
+          <img src="images/hebergement-thumb.jpg" alt="Hébergement" class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+            <span class="text-white text-lg font-semibold">Hébergement</span>
+          </div>
         </div>
-        <p class="mt-2 text-center font-semibold text-gray-700 group-hover:text-blue-600">Hébergement</p>
       </a>
 
-      <!-- Thème 2 -->
-      <a href="galerie-refectoire.html" class="group block">
-        <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105">
-          <img src="images/repas-thumb.jpg" alt="Réfectoire" class="w-full h-40 object-cover">
+      <!-- Thème 2 : Réfectoire & Repas -->
+      <a href="galerie-repas.html" class="block group rounded overflow-hidden shadow-lg hover:shadow-xl transition">
+        <div class="relative">
+          <img src="images/repas-thumb.jpg" alt="Réfectoire" class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+            <span class="text-white text-lg font-semibold">Réfectoire & Repas</span>
+          </div>
         </div>
-        <p class="mt-2 text-center font-semibold text-gray-700 group-hover:text-blue-600">Réfectoire</p>
       </a>
 
-      <!-- Thème 3 -->
-      <a href="galerie-chapelle.html" class="group block">
-        <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105">
-          <img src="images/chapelle-thumb.jpg" alt="Chapelle" class="w-full h-40 object-cover">
+      <!-- Thème 3 : Chapelle & Prière -->
+      <a href="galerie-chapelle.html" class="block group rounded overflow-hidden shadow-lg hover:shadow-xl transition">
+        <div class="relative">
+          <img src="images/chapelle-thumb.jpg" alt="Chapelle" class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+            <span class="text-white text-lg font-semibold">Chapelle & Prière</span>
+          </div>
         </div>
-        <p class="mt-2 text-center font-semibold text-gray-700 group-hover:text-blue-600">Chapelle & Prière</p>
       </a>
 
-      <!-- Thème 4 -->
-      <a href="galerie-retraites.html" class="group block">
-        <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105">
-          <img src="images/retraites-thumb.jpg" alt="Retraites" class="w-full h-40 object-cover">
+      <!-- Thème 4 : Retraites précédentes -->
+      <a href="galerie-retraites.html" class="block group rounded overflow-hidden shadow-lg hover:shadow-xl transition">
+        <div class="relative">
+          <img src="images/retraites-thumb.jpg" alt="Retraites précédentes" class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+            <span class="text-white text-lg font-semibold">Retraites précédentes</span>
+          </div>
         </div>
-        <p class="mt-2 text-center font-semibold text-gray-700 group-hover:text-blue-600">Retraites précédentes</p>
       </a>
 
     </div>
