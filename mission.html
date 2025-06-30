@@ -269,6 +269,23 @@
   });
 </script>
   
+ <script>
+  // ✅ Ajoute le nouveau script ici
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === path) {
+      link.classList.remove('text-gray-600');
+      link.classList.add('text-blue-700', 'font-semibold');
+    } else {
+      link.classList.remove('text-blue-700');
+      link.classList.add('text-gray-600');
+    }
+  });
+</script>
+  
+  
 </body>
 </html>
 
