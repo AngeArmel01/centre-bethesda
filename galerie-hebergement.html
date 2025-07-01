@@ -81,52 +81,61 @@
   <!-- Onglets -->
   <div class="flex justify-center mb-8 border-b border-gray-300">
     <button class="tab-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-tab="chambre">Chambre individuelle</button>
-    <button class="tab-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="dortoir">Chambre mixte</button>
-    <button class="tab-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="jardin">Dortoir</button>
+    <button class="tab-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="mixte">Chambre mixte</button>
+    <button class="tab-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="dortoir">Dortoir</button>
   </div>
 
   <!-- Contenus des galeries -->
   <div id="galerie-tabs">
 
-    <!-- Chambres -->
+    <!-- Chambres individuelles -->
     <div class="tab-content" id="chambre">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <a href="images/individuelle1.jpg" data-lightbox="chambre" data-title="Chambre 1">
-          <img src="images/individuelle1.jpg" class="rounded shadow w-full h-60 object-cover">
+          <img src="images/individuelle1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre 1">
         </a>
-        <a href="images/individuelle1.jpg" data-lightbox="chambre" data-title="Chambre 2">
-          <img src="images/individuelle1.jpg" class="rounded shadow w-full h-60 object-cover">
+        <a href="images/individuelle2.jpg" data-lightbox="chambre" data-title="Chambre 2">
+          <img src="images/individuelle2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre 2">
+        </a>
+        <a href="images/individuelle3.jpg" data-lightbox="chambre" data-title="Chambre 3">
+          <img src="images/individuelle3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre 3">
         </a>
       </div>
     </div>
 
-    <!-- Mixtes -->
+    <!-- Chambres mixtes -->
     <div class="tab-content hidden" id="mixte">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="images/mixte1.jpg" data-lightbox="mixte" data-title="mixte 1">
-          <img src="images/mixte1.jpg" class="rounded shadow w-full h-60 object-cover">
+        <a href="images/mixte1.jpg" data-lightbox="mixte" data-title="Chambre mixte 1">
+          <img src="images/mixte1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre mixte 1">
         </a>
-        <a href="images/mixte1.jpg" data-lightbox="mixte" data-title="mixte 2">
-          <img src="images/mixte1.jpg" class="rounded shadow w-full h-60 object-cover">
+        <a href="images/mixte2.jpg" data-lightbox="mixte" data-title="Chambre mixte 2">
+          <img src="images/mixte2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre mixte 2">
+        </a>
+        <a href="images/mixte3.jpg" data-lightbox="mixte" data-title="Chambre mixte 3">
+          <img src="images/mixte3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre mixte 3">
         </a>
       </div>
     </div>
 
-    <!-- dortoirs -->
+    <!-- Dortoirs -->
     <div class="tab-content hidden" id="dortoir">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="images/dortoir1.jpg" data-lightbox="dortoir" data-title="dortoir 1">
-          <img src="images/dortoir1.jpg" class="rounded shadow w-full h-60 object-cover">
+        <a href="images/dortoir1.jpg" data-lightbox="dortoir" data-title="Dortoir 1">
+          <img src="images/dortoir1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dortoir 1">
         </a>
-        <a href="images/dortoir1.jpg" data-lightbox="dortoir" data-title="dortoir 1">
-          <img src="images/dortoir1.jpg" class="rounded shadow w-full h-60 object-cover">
+        <a href="images/dortoir2.jpg" data-lightbox="dortoir" data-title="Dortoir 2">
+          <img src="images/dortoir2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dortoir 2">
+        </a>
+        <a href="images/dortoir3.jpg" data-lightbox="dortoir" data-title="Dortoir 3">
+          <img src="images/dortoir3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dortoir 3">
         </a>
       </div>
     </div>
 
   </div>
 </section>
-  
+
 <!-- Lightbox2 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
@@ -138,8 +147,12 @@
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold'));
+      tabBtns.forEach(b => {
+        b.classList.remove('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+        b.classList.add('text-gray-600');
+      });
       btn.classList.add('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+      btn.classList.remove('text-gray-600');
 
       const tab = btn.dataset.tab;
       contents.forEach(content => {
@@ -148,7 +161,6 @@
     });
   });
 </script>
-
 
   <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
