@@ -126,6 +126,29 @@
 
   </div>
 </section>
+  
+<!-- Lightbox2 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+<!-- Script onglets -->
+<script>
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold'));
+      btn.classList.add('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+
+      const tab = btn.dataset.tab;
+      contents.forEach(content => {
+        content.classList.toggle('hidden', content.id !== tab);
+      });
+    });
+  });
+</script>
+
 
   <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
@@ -242,8 +265,7 @@
       link.classList.add('text-gray-600');
     }
   });
-</script>
-  
+</script> 
   
 </body>
 </html>
