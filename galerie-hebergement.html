@@ -68,78 +68,71 @@
   </div>
 </header>
 
- <!-- Titre avec image de fond -->
+<!-- Titre avec image de fond -->
 <div class="bg-cover bg-center h-52 flex items-center justify-center" style="background-image: url('images/hebergement-thumb.jpg'); margin-bottom: -2rem;">
   <h2 class="text-4xl md:text-5xl font-bold text-white bg-black bg-opacity-50 px-6 py-3 rounded">
     Galerie Hébergement
   </h2>
 </div>
 
-<!-- Section galerie avec onglets animés -->
-<section class="py-12 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Section galerie avec onglets -->
+<section class="py-12 px-6 md:px-12 max-w-6xl mx-auto">
 
-  <!-- Titre -->
-  <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-800 mb-10">Galerie Hébergement</h2>
-
-  <!-- Onglets avec animation -->
-  <div class="flex flex-wrap justify-center gap-4 mb-10">
-    <button class="tab-btn px-4 py-2 rounded-full text-blue-700 bg-blue-100 font-semibold transition-all duration-300 ring-2 ring-blue-300" data-tab="chambre">
-      Chambre individuelle
-    </button>
-    <button class="tab-btn px-4 py-2 rounded-full text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300" data-tab="mixte">
-      Chambre mixte
-    </button>
-    <button class="tab-btn px-4 py-2 rounded-full text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300" data-tab="dortoir">
-      Dortoir
-    </button>
+  <!-- Onglets -->
+  <div class="flex justify-center mb-8 border-b border-gray-300">
+    <button class="tab-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-tab="chambre">Chambre individuelle</button>
+    <button class="tab-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="mixte">Chambre mixte</button>
+    <button class="tab-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="dortoir">Dortoir</button>
   </div>
 
-  <!-- Galeries -->
+  <!-- Contenus des galeries -->
   <div id="galerie-tabs">
-    <!-- Onglet : Chambre individuelle -->
-    <div class="tab-content transition-opacity duration-500" id="chambre">
+
+    <!-- Chambres individuelles -->
+    <div class="tab-content" id="chambre">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <a href="images/individuelle1.jpg" data-lightbox="chambre" data-title="Chambre 1">
-          <img src="images/individuelle1.jpg" class="rounded shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+          <img src="images/individuelle1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre 1">
         </a>
         <a href="images/individuelle2.jpg" data-lightbox="chambre" data-title="Chambre 2">
-          <img src="images/individuelle2.jpg" class="rounded shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+          <img src="images/individuelle2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre 2">
         </a>
         <a href="images/individuelle3.jpg" data-lightbox="chambre" data-title="Chambre 3">
-          <img src="images/individuelle3.jpg" class="rounded shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+          <img src="images/individuelle3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre 3">
         </a>
       </div>
     </div>
 
-    <!-- Onglet : Chambre mixte -->
-    <div class="tab-content hidden transition-opacity duration-500" id="mixte">
+    <!-- Chambres mixtes -->
+    <div class="tab-content hidden" id="mixte">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="images/mixte1.jpg" data-lightbox="mixte" data-title="Mixte 1">
-          <img src="images/mixte1.jpg" class="rounded shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+        <a href="images/mixte1.jpg" data-lightbox="mixte" data-title="Chambre mixte 1">
+          <img src="images/mixte1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre mixte 1">
         </a>
-        <a href="images/mixte2.jpg" data-lightbox="mixte" data-title="Mixte 2">
-          <img src="images/mixte2.jpg" class="rounded shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+        <a href="images/mixte2.jpg" data-lightbox="mixte" data-title="Chambre mixte 2">
+          <img src="images/mixte2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre mixte 2">
         </a>
-        <a href="images/mixte3.jpg" data-lightbox="mixte" data-title="Mixte 3">
-          <img src="images/mixte3.jpg" class="rounded shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+        <a href="images/mixte3.jpg" data-lightbox="mixte" data-title="Chambre mixte 3">
+          <img src="images/mixte3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre mixte 3">
         </a>
       </div>
     </div>
 
-    <!-- Onglet : Dortoir -->
-    <div class="tab-content hidden transition-opacity duration-500" id="dortoir">
+    <!-- Dortoirs -->
+    <div class="tab-content hidden" id="dortoir">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <a href="images/dortoir1.jpg" data-lightbox="dortoir" data-title="Dortoir 1">
-          <img src="images/dortoir1.jpg" class="rounded shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+          <img src="images/dortoir1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dortoir 1">
         </a>
         <a href="images/dortoir2.jpg" data-lightbox="dortoir" data-title="Dortoir 2">
-          <img src="images/dortoir2.jpg" class="rounded shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+          <img src="images/dortoir2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dortoir 2">
         </a>
         <a href="images/dortoir3.jpg" data-lightbox="dortoir" data-title="Dortoir 3">
-          <img src="images/dortoir3.jpg" class="rounded shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+          <img src="images/dortoir3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dortoir 3">
         </a>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -151,38 +144,55 @@
 <script>
   const tabBtns = document.querySelectorAll('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
+  let activeContent = document.querySelector('.tab-content:not(.hidden)');
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const targetId = btn.dataset.tab;
+      const tab = btn.dataset.tab;
+      const newContent = document.getElementById(tab);
 
-      // Mise à jour du style des boutons
-      tabBtns.forEach(b => b.classList.remove('bg-blue-100', 'text-blue-700', 'ring-2', 'ring-blue-300'));
-      btn.classList.add('bg-blue-100', 'text-blue-700', 'ring-2', 'ring-blue-300');
-
-      contents.forEach(content => {
-        if (content.id === targetId) {
-          content.classList.remove('hidden');
-          content.style.opacity = 0;
-          setTimeout(() => {
-            content.style.transition = "opacity 0.5s ease-in-out";
-            content.style.opacity = 1;
-          }, 10);
-        } else {
-          content.style.opacity = 0;
-          setTimeout(() => content.classList.add('hidden'), 500);
-        }
+      // Boutons actifs
+      tabBtns.forEach(b => {
+        b.classList.remove('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+        b.classList.add('text-gray-600');
       });
+      btn.classList.add('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+      btn.classList.remove('text-gray-600');
+
+      if (newContent !== activeContent) {
+        // Lancer le fade-out de l'ancien contenu
+        activeContent.classList.add('fade-out');
+
+        setTimeout(() => {
+          activeContent.classList.add('hidden');
+          activeContent.classList.remove('fade-out');
+
+          // Afficher le nouveau contenu avec fade-in
+          newContent.classList.remove('hidden');
+          newContent.classList.add('fade-out'); // commence invisible
+          setTimeout(() => {
+            newContent.classList.remove('fade-out'); // transition vers visible
+          }, 10);
+
+          activeContent = newContent;
+        }, 300);
+      }
     });
   });
 </script>
+
   
- <style>
+<style>
   .tab-content {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
   }
+
+  .tab-content.fade-out {
+    opacity: 0;
+  }
 </style>
+
 
   <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
