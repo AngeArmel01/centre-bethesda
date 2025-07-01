@@ -160,6 +160,36 @@
   </div>
 </footer>
 
+<!-- Script pour soumission du formulaire newsletter -->
+<script>
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+    const messageEl = document.getElementById('formMessage');
+    try {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbyd67y3ejduEIO4hDzOL1bm0mq5DrB-92fu7QoSFgIKuLLp5-UHabtVeFdD2DhzythQOw/exec", {
+        method: "POST",
+        body: data
+      });
+      const json = await res.json();
+      messageEl.classList.remove("hidden");
+      if (json.result === "success") {
+        messageEl.textContent = "✅ Abonnement réussi. Merci !";
+        messageEl.classList.add("text-green-500");
+        form.reset();
+      } else {
+        messageEl.textContent = "❌ Erreur : " + json.message;
+        messageEl.classList.add("text-red-500");
+      }
+    } catch (err) {
+      messageEl.classList.remove("hidden");
+      messageEl.textContent = "❌ Erreur serveur. Veuillez réessayer plus tard.";
+      messageEl.classList.add("text-red-500");
+    }
+  }
+</script>
+
 <!-- SCRIPT POUR LE MENU MOBILE -->
 <script>
   const menuToggle = document.getElementById("menu-toggle");
@@ -170,8 +200,25 @@
   });
 </script>
   
+ <script>
+  // ✅ Ajoute le nouveau script ici
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === path) {
+      link.classList.remove('text-gray-600');
+      link.classList.add('text-blue-700', 'font-semibold');
+    } else {
+      link.classList.remove('text-blue-700');
+      link.classList.add('text-gray-600');
+    }
+  });
+</script>
+  
   <!-- Scripts Lightbox -->
   <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+  
 </body>
 </html>
   
