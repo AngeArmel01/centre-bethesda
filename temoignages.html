@@ -70,13 +70,86 @@
 
 
 <!-- TÉMOIGNAGES SECTION -->
-<section class="py-16 px-6 md:px-12">
+<section class="py-16 px-6 md:px-12 bg-gray-50">
   <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl font-bold text-blue-700 mb-6">Témoignages</h2>
-    <blockquote class="italic text-gray-600 mb-6">"Cette retraite a transformé ma vie intérieure. J'ai retrouvé la paix."</blockquote>
-    <blockquote class="italic text-gray-600">"Le silence et la prière m'ont reconnecté à Dieu. Merci au Centre Bethesda."</blockquote>
+    <h2 class="text-3xl font-bold text-blue-700 mb-8">Témoignages</h2>
+
+    <!-- Témoignages textes existants -->
+    <blockquote class="italic text-gray-600 mb-6">
+      "Cette retraite a transformé ma vie intérieure. J'ai retrouvé la paix."
+    </blockquote>
+    <blockquote class="italic text-gray-600 mb-6">
+      "Le silence et la prière m'ont reconnecté à Dieu. Merci au Centre Bethesda."
+    </blockquote>
+
+    <!-- Témoignages vidéos -->
+    <div class="mb-10">
+      <h3 class="text-xl font-semibold text-blue-700 mb-4">Témoignages vidéo</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Exemple d'intégration vidéo (YouTube iframe) -->
+        <iframe class="w-full h-48 rounded shadow" src="https://www.youtube.com/embed/VIDEO_ID1" title="Témoignage vidéo 1" frameborder="0" allowfullscreen></iframe>
+        <iframe class="w-full h-48 rounded shadow" src="https://www.youtube.com/embed/VIDEO_ID2" title="Témoignage vidéo 2" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Parcours de conversion, guérison ou discernement -->
+    <div class="mb-10 text-left">
+      <h3 class="text-xl font-semibold text-blue-700 mb-4">Parcours de conversion et guérison</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Marie : "Cette retraite a renouvelé ma relation avec le Christ."</li>
+        <li>Jean : "J'ai retrouvé la paix intérieure grâce à l'accompagnement spirituel."</li>
+        <li>Fatou : "Un temps de discernement décisif pour mon avenir."</li>
+      </ul>
+    </div>
+
+    <!-- Formulaire de soumission de témoignage sécurisé -->
+    <div class="bg-white p-6 rounded shadow max-w-lg mx-auto">
+      <h3 class="text-xl font-semibold text-blue-700 mb-4">Soumettez votre témoignage</h3>
+      <form id="testimonialForm" class="space-y-4">
+        <div>
+          <label for="name" class="block font-medium text-gray-700 mb-1">Nom complet *</label>
+          <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded px-3 py-2">
+        </div>
+        <div>
+          <label for="email" class="block font-medium text-gray-700 mb-1">Email *</label>
+          <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2">
+        </div>
+        <div>
+          <label for="message" class="block font-medium text-gray-700 mb-1">Votre témoignage *</label>
+          <textarea id="message" name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+        </div>
+        <div class="flex items-center space-x-2">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent" class="text-gray-700 text-sm">
+            J'accepte que mon témoignage soit utilisé avec mon consentement écrit.
+          </label>
+        </div>
+        <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800 transition">
+          Envoyer
+        </button>
+      </form>
+      <p id="formMessage" class="mt-4 text-green-600 hidden">Merci pour votre témoignage !</p>
+    </div>
   </div>
 </section>
+
+<!-- Script simple pour gérer la soumission -->
+<script>
+  document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Ici tu peux intégrer la sauvegarde via Firebase, une API, ou autre
+    // Pour l'exemple, on simule un envoi réussi
+
+    this.reset();
+    document.getElementById('formMessage').classList.remove('hidden');
+    
+    setTimeout(() => {
+      document.getElementById('formMessage').classList.add('hidden');
+    }, 5000);
+  });
+</script>
+
 
 <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
