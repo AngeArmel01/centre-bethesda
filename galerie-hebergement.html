@@ -80,6 +80,7 @@
 
   <!-- Onglets -->
   <div class="flex justify-center mb-8 border-b border-gray-300">
+    <button class="tab-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="tous">Tous les hébergements</button>
     <button class="tab-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-tab="chambre">Chambre individuelle</button>
     <button class="tab-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="mixte">Chambre mixte</button>
     <button class="tab-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="dortoir">Dortoir</button>
@@ -87,6 +88,57 @@
 
   <!-- Contenus des galeries -->
   <div id="galerie-tabs">
+    
+<!-- Tous les hébergements -->
+<div class="tab-content hidden" id="tous">
+  <!-- Chambres individuelles -->
+  <div class="mb-8">
+    <h3 class="text-xl font-bold text-blue-700 mb-4">Chambres individuelles</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="images/individuelle1.jpg" data-lightbox="tous" data-title="Chambre 1">
+        <img src="images/individuelle1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre 1">
+      </a>
+      <a href="images/individuelle2.jpg" data-lightbox="tous" data-title="Chambre 2">
+        <img src="images/individuelle2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre 2">
+      </a>
+      <a href="images/individuelle3.jpg" data-lightbox="tous" data-title="Chambre 3">
+        <img src="images/individuelle3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chambre 3">
+      </a>
+    </div>
+  </div>
+
+  <!-- Chambres mixtes -->
+  <div class="mb-8">
+    <h3 class="text-xl font-bold text-blue-700 mb-4">Chambres mixtes</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="images/mixte1.jpg" data-lightbox="tous" data-title="Mixte 1">
+        <img src="images/mixte1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Mixte 1">
+      </a>
+      <a href="images/mixte2.jpg" data-lightbox="tous" data-title="Mixte 2">
+        <img src="images/mixte2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Mixte 2">
+      </a>
+      <a href="images/mixte3.jpg" data-lightbox="tous" data-title="Mixte 3">
+        <img src="images/mixte3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Mixte 3">
+      </a>
+    </div>
+  </div>
+
+  <!-- Dortoirs -->
+  <div>
+    <h3 class="text-xl font-bold text-blue-700 mb-4">Dortoirs</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="images/dortoir1.jpg" data-lightbox="tous" data-title="Dortoir 1">
+        <img src="images/dortoir1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dortoir 1">
+      </a>
+      <a href="images/dortoir2.jpg" data-lightbox="tous" data-title="Dortoir 2">
+        <img src="images/dortoir2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dortoir 2">
+      </a>
+      <a href="images/dortoir3.jpg" data-lightbox="tous" data-title="Dortoir 3">
+        <img src="images/dortoir3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dortoir 3">
+      </a>
+    </div>
+  </div>
+</div>
 
     <!-- Chambres individuelles -->
     <div class="tab-content" id="chambre">
