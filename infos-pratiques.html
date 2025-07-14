@@ -8,6 +8,7 @@
 </head>
 <body class="bg-white text-gray-800">
 
+
 <!-- HEADER NAVIGATION -->
 <header class="bg-white shadow-md sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -69,20 +70,15 @@
 </header>
 
 
-<!-- INFOS PRATIQUES SECTION -->
-<section class="bg-gray-50">
-  <!-- Titre avec image de fond -->
+section class="bg-gray-50">
   <div class="bg-cover bg-center h-52 flex items-center justify-center" style="background-image: url('images/infos-pratiques.jpg');">
     <h2 class="text-4xl md:text-5xl font-bold text-white bg-black bg-opacity-60 px-6 py-3 rounded">
       Infos Pratiques
     </h2>
   </div>
 
-  <!-- Contenu -->
   <div class="max-w-6xl mx-auto py-12 px-6 md:px-12">
     <div class="grid md:grid-cols-3 gap-8 md:gap-12">
-
-      <!-- Tarifs -->
       <div>
         <h3 class="text-xl font-semibold text-blue-600 mb-4">💰 Tarifs et modalités</h3>
         <ul class="list-disc list-inside text-gray-700 space-y-2">
@@ -92,22 +88,26 @@
         </ul>
       </div>
 
-      <!-- Hébergement -->
       <div>
-        <h3 class="text-xl font-semibold text-blue-600 mb-4">🛏️ Hébergement</h3>
+        <h3 class="text-xl font-semibold text-blue-600 mb-4">🛌 Hébergement</h3>
         <ul class="list-disc list-inside text-gray-700 space-y-2">
           <li>Chambres simples et accueillantes, réfectoire convivial, chapelle paisible.</li>
           <li>Galerie photo ci-dessous 👇</li>
           <li>Règles de vie : <em>silence à partir de 21h</em>, tenue vestimentaire modeste.</li>
         </ul>
-        </div>
+      </div>
 
-     <!-- GALERIE PHOTOS -->
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE PHOTOS -->
 <section class="py-16 px-6 md:px-12 bg-gray-50">
   <div class="max-w-6xl mx-auto">
     <h2 class="text-3xl md:text-4xl font-bold text-blue-700 text-center mb-12">📸 Galerie photos</h2>
-
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
       <!-- Carte 1 -->
       <a href="galerie-hebergement.html" class="group relative block rounded-xl overflow-hidden shadow hover:shadow-xl transition">
         <img src="images/hebergement-thumb.jpg" alt="Hébergement" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300">
@@ -156,17 +156,16 @@
     </div>
 
     <!-- Carte Google -->
-    <div class="rounded-xl overflow-hidden shadow-lg border border-gray-300">
-      <iframe 
+  <div class="aspect-w-16 aspect-h-9 w-full rounded-xl overflow-hidden shadow-lg border border-gray-300">
+     <iframe 
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.4830545420928!2d-4.093181425860072!3d5.3429817946356515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1c1a117119cc9%3A0x6b46d92d03065a55!2sPastorale%20pour%20la%20Propagation%20de%20l&#39;Evangile!5e0!3m2!1sfr!2sci!4v1751299175865!5m2!1sfr!2sci" 
-        width="100%" 
-        height="350" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
+        class="w-full h-full"
+    style="border:0;" 
+    allowfullscreen 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+  </div>
   </div>
 </section>
 
@@ -288,6 +287,22 @@
   });
 </script>
   
+
+  <style>
+  .aspect-w-16 {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+  }
+  .aspect-w-16 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+</style>
+
   
 </body>
 </html>
