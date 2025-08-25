@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Centre Bethesda</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- HEADER NAVIGATION -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Logo + Titre -->
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow-lg">
+        <img src="images/logo.png" alt="Logo Centre Bethesda" class="w-full h-full object-cover">
+      </div>
+      <h1 class="text-xl sm:text-2xl font-extrabold text-blue-700 tracking-wide">
+        Centre Bethesda
+      </h1>
+    </div>
+
+   <!-- Bouton menu mobile -->
+    <button id="menu-toggle" class="sm:hidden text-blue-700 focus:outline-none text-2xl">
+      ☰
+    </button>  
+
+     <!-- Navigation (desktop) -->
+    <nav class="hidden sm:flex items-center space-x-6">
+      <div class="flex space-x-2">
+        <a href="/centre-bethesda/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+          <img src="https://flagcdn.com/fr.svg" alt="Français" class="w-5 h-4 mr-1"> FR
+        </a>
+        <a href="/centre-bethesda/en/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+          <img src="https://flagcdn.com/gb.svg" alt="Anglais" class="w-5 h-4 mr-1"> EN
+        </a>
+      </div>
+      <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Accueil</a>
+      <a href="mission.html" class="nav-link text-gray-600 hover:text-blue-600">Mission</a>
+      <a href="programmes.html" class="nav-link text-gray-600 hover:text-blue-600">Programmes</a>
+      <a href="infos-pratiques.html" class="nav-link text-gray-600 hover:text-blue-600">Infos</a>
+      <a href="temoignages.html" class="nav-link text-gray-600 hover:text-blue-600">Témoignages</a>
+      <a href="contact.html" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+      <a href="reservation.html" class="nav-link text-gray-600 hover:text-blue-600">Réservation</a>
+    </nav>
+  </div>
+
+  <!-- Menu mobile -->
+  <div id="mobile-menu" class="sm:hidden hidden px-4 pb-4 bg-white border-t border-gray-200">
+    <div class="flex space-x-4 mb-2">
+      <a href="/centre-bethesda/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+        <img src="https://flagcdn.com/fr.svg" alt="Français" class="w-5 h-4 mr-1"> FR
+      </a>
+      <a href="/centre-bethesda/en/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+        <img src="https://flagcdn.com/gb.svg" alt="Anglais" class="w-5 h-4 mr-1"> EN
+      </a>
+    </div>
+    <div class="flex flex-col space-y-2 text-sm">
+      <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Accueil</a>
+      <a href="mission.html" class="nav-link text-gray-600 hover:text-blue-600">Mission</a>
+      <a href="programmes.html" class="nav-link text-gray-600 hover:text-blue-600">Programmes</a>
+      <a href="infos-pratiques.html" class="nav-link text-gray-600 hover:text-blue-600">Infos</a>
+      <a href="temoignages.html" class="nav-link text-gray-600 hover:text-blue-600">Témoignages</a>
+      <a href="contact.html" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+      <a href="reservation.html" class="nav-link text-gray-600 hover:text-blue-600">Réservation</a>
+    </div>
+  </div>
+</header>
+
+<!-- Titre avec image de fond -->
+<div class="bg-cover bg-center h-52 flex items-center justify-center" style="background-image: url('images/hebergement-thumb.jpg'); margin-bottom: -2rem;">
+  <h2 class="text-4xl md:text-5xl font-bold text-white bg-black bg-opacity-50 px-6 py-3 rounded">
+    Galerie Réfectoire & Repas
+  </h2>
+</div>
+
+  <!-- Onglets -->
+  <div class="flex justify-center mb-8 border-b border-gray-300">
+    <button class="meal-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-tab="breakfast">Petit Déjeuner</button>
+    <button class="meal-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="lunch">Déjeuner</button>
+    <button class="meal-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="dinner">Dîner</button>
+  </div>
+
+  <!-- Contenus des repas -->
+  <div id="meals-tabs">
+    
+    <!-- Petit Déjeuner -->
+    <div class="meal-content" id="breakfast">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="images/petitdej1.jpg" data-lightbox="breakfast" data-title="Petit Déjeuner 1">
+          <img src="images/petitdej1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Petit Déjeuner 1">
+        </a>
+        <a href="images/petitdej2.jpg" data-lightbox="breakfast" data-title="Petit Déjeuner 2">
+          <img src="images/petitdej2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Petit Déjeuner 2">
+        </a>
+        <a href="images/petitdej3.jpg" data-lightbox="breakfast" data-title="Petit Déjeuner 3">
+          <img src="images/petitdej3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Petit Déjeuner 3">
+        </a>
+      </div>
+    </div>
+
+    <!-- Déjeuner -->
+    <div class="meal-content hidden" id="lunch">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="images/dejeuner1.jpg" data-lightbox="lunch" data-title="Déjeuner 1">
+          <img src="images/dejeuner1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Déjeuner 1">
+        </a>
+        <a href="images/dejeuner2.jpg" data-lightbox="lunch" data-title="Déjeuner 2">
+          <img src="images/dejeuner2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Déjeuner 2">
+        </a>
+        <a href="images/dejeuner3.jpg" data-lightbox="lunch" data-title="Déjeuner 3">
+          <img src="images/dejeuner3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Déjeuner 3">
+        </a>
+      </div>
+    </div>
+
+    <!-- Dîner -->
+    <div class="meal-content hidden" id="dinner">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="images/diner1.jpg" data-lightbox="dinner" data-title="Dîner 1">
+          <img src="images/diner1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dîner 1">
+        </a>
+        <a href="images/diner2.jpg" data-lightbox="dinner" data-title="Dîner 2">
+          <img src="images/diner2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dîner 2">
+        </a>
+        <a href="images/diner3.jpg" data-lightbox="dinner" data-title="Dîner 3">
+          <img src="images/diner3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Dîner 3">
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Script pour onglets Repas -->
+<script>
+  const mealBtns = document.querySelectorAll('.meal-btn');
+  const mealContents = document.querySelectorAll('.meal-content');
+  let activeMeal = document.querySelector('.meal-content:not(.hidden)');
+
+  mealBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      const newContent = document.getElementById(tab);
+
+      // Gestion des boutons
+      mealBtns.forEach(b => {
+        b.classList.remove('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+        b.classList.add('text-gray-600');
+      });
+      btn.classList.add('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+      btn.classList.remove('text-gray-600');
+
+      if (newContent !== activeMeal) {
+        activeMeal.classList.add('hidden');
+        newContent.classList.remove('hidden');
+        activeMeal = newContent;
+      }
+    });
+  });
+</script>
 
