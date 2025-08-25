@@ -133,59 +133,51 @@
   </div>
 </section>
 
-<!-- Lightbox2 -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-
-<!-- Script onglets -->
+<!-- Script pour onglets Repas (avec fade-in/fade-out comme Hébergement) -->
 <script>
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const contents = document.querySelectorAll('.tab-content');
-  let activeContent = document.querySelector('.tab-content:not(.hidden)');
+  const mealBtns = document.querySelectorAll('.meal-btn');
+  const mealContents = document.querySelectorAll('.meal-content');
+  let activeMeal = document.querySelector('.meal-content:not(.hidden)');
 
-  tabBtns.forEach(btn => {
+  mealBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const tab = btn.dataset.tab;
       const newContent = document.getElementById(tab);
 
       // Boutons actifs
-      tabBtns.forEach(b => {
+      mealBtns.forEach(b => {
         b.classList.remove('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
         b.classList.add('text-gray-600');
       });
       btn.classList.add('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
       btn.classList.remove('text-gray-600');
 
-      if (newContent !== activeContent) {
-        // Lancer le fade-out de l'ancien contenu
-        activeContent.classList.add('fade-out');
+      if (newContent !== activeMeal) {
+        activeMeal.classList.add('fade-out');
 
         setTimeout(() => {
-          activeContent.classList.add('hidden');
-          activeContent.classList.remove('fade-out');
+          activeMeal.classList.add('hidden');
+          activeMeal.classList.remove('fade-out');
 
-          // Afficher le nouveau contenu avec fade-in
           newContent.classList.remove('hidden');
-          newContent.classList.add('fade-out'); // commence invisible
+          newContent.classList.add('fade-out');
           setTimeout(() => {
-            newContent.classList.remove('fade-out'); // transition vers visible
+            newContent.classList.remove('fade-out');
           }, 10);
 
-          activeContent = newContent;
+          activeMeal = newContent;
         }, 300);
       }
     });
   });
 </script>
 
-  
 <style>
-  .tab-content {
+  .meal-content {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
   }
-
-  .tab-content.fade-out {
+  .meal-content.fade-out {
     opacity: 0;
   }
 </style>
