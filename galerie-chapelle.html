@@ -68,4 +68,103 @@
   </div>
 </header>
 
+<!-- Titre avec image de fond -->
+<div class="bg-cover bg-center h-52 flex items-center justify-center mb-12" 
+     style="background-image: url('images/chapelle-thumb.jpg');">
+  <h2 class="text-4xl md:text-5xl font-bold text-white bg-black bg-opacity-50 px-6 py-3 rounded">
+    Galerie Chapelle & Lieux de prière
+  </h2>
+</div>
 
+<!-- Section galerie avec onglets -->
+<section class="py-12 px-6 md:px-12 max-w-6xl mx-auto">
+
+  <!-- Onglets -->
+  <div class="flex justify-center mb-8 border-b border-gray-300">
+    <button class="chapel-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-tab="chapel">Chapelle</button>
+    <button class="chapel-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="prayer">Prière</button>
+  </div>
+
+  <!-- Contenus -->
+  <div id="chapel-tabs">
+
+    <!-- Chapelle -->
+    <div class="chapel-content" id="chapel">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="images/chapelle1.jpg" data-lightbox="chapel" data-title="Chapelle 1">
+          <img src="images/chapelle1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chapelle 1">
+        </a>
+        <a href="images/chapelle2.jpg" data-lightbox="chapel" data-title="Chapelle 2">
+          <img src="images/chapelle2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chapelle 2">
+        </a>
+        <a href="images/chapelle3.jpg" data-lightbox="chapel" data-title="Chapelle 3">
+          <img src="images/chapelle3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chapelle 3">
+        </a>
+      </div>
+    </div>
+
+    <!-- Prière -->
+    <div class="chapel-content hidden" id="prayer">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="images/priere1.jpg" data-lightbox="prayer" data-title="Prière 1">
+          <img src="images/priere1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Prière 1">
+        </a>
+        <a href="images/priere2.jpg" data-lightbox="prayer" data-title="Prière 2">
+          <img src="images/priere2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Prière 2">
+        </a>
+        <a href="images/priere3.jpg" data-lightbox="prayer" data-title="Prière 3">
+          <img src="images/priere3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Prière 3">
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Script pour gérer les onglets -->
+<script>
+  const chapelBtns = document.querySelectorAll('.chapel-btn');
+  const chapelContents = document.querySelectorAll('.chapel-content');
+  let activeChapel = document.querySelector('.chapel-content:not(.hidden)');
+
+  chapelBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      const newContent = document.getElementById(tab);
+
+      // Styles onglets actifs
+      chapelBtns.forEach(b => {
+        b.classList.remove('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+        b.classList.add('text-gray-600');
+      });
+      btn.classList.add('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+      btn.classList.remove('text-gray-600');
+
+      if (newContent !== activeChapel) {
+        activeChapel.classList.add('fade-out');
+        setTimeout(() => {
+          activeChapel.classList.add('hidden');
+          activeChapel.classList.remove('fade-out');
+
+          newContent.classList.remove('hidden');
+          newContent.classList.add('fade-out');
+          setTimeout(() => {
+            newContent.classList.remove('fade-out');
+          }, 10);
+
+          activeChapel = newContent;
+        }, 300);
+      }
+    });
+  });
+</script>
+
+<style>
+  .chapel-content {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .chapel-content.fade-out {
+    opacity: 0;
+  }
+</style>
