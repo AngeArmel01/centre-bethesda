@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Centre Bethesda</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- HEADER NAVIGATION -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Logo + Titre -->
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow-lg">
+        <img src="images/logo.png" alt="Logo Centre Bethesda" class="w-full h-full object-cover">
+      </div>
+      <h1 class="text-xl sm:text-2xl font-extrabold text-blue-700 tracking-wide">
+        Centre Bethesda
+      </h1>
+    </div>
+
+   <!-- Bouton menu mobile -->
+    <button id="menu-toggle" class="sm:hidden text-blue-700 focus:outline-none text-2xl">
+      ☰
+    </button>  
+
+     <!-- Navigation (desktop) -->
+    <nav class="hidden sm:flex items-center space-x-6">
+      <div class="flex space-x-2">
+        <a href="/centre-bethesda/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+          <img src="https://flagcdn.com/fr.svg" alt="Français" class="w-5 h-4 mr-1"> FR
+        </a>
+        <a href="/centre-bethesda/en/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+          <img src="https://flagcdn.com/gb.svg" alt="Anglais" class="w-5 h-4 mr-1"> EN
+        </a>
+      </div>
+      <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Accueil</a>
+      <a href="mission.html" class="nav-link text-gray-600 hover:text-blue-600">Mission</a>
+      <a href="programmes.html" class="nav-link text-gray-600 hover:text-blue-600">Programmes</a>
+      <a href="infos-pratiques.html" class="nav-link text-gray-600 hover:text-blue-600">Infos</a>
+      <a href="temoignages.html" class="nav-link text-gray-600 hover:text-blue-600">Témoignages</a>
+      <a href="contact.html" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+      <a href="reservation.html" class="nav-link text-gray-600 hover:text-blue-600">Réservation</a>
+    </nav>
+  </div>
+
+  <!-- Menu mobile -->
+  <div id="mobile-menu" class="sm:hidden hidden px-4 pb-4 bg-white border-t border-gray-200">
+    <div class="flex space-x-4 mb-2">
+      <a href="/centre-bethesda/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+        <img src="https://flagcdn.com/fr.svg" alt="Français" class="w-5 h-4 mr-1"> FR
+      </a>
+      <a href="/centre-bethesda/en/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+        <img src="https://flagcdn.com/gb.svg" alt="Anglais" class="w-5 h-4 mr-1"> EN
+      </a>
+    </div>
+    <div class="flex flex-col space-y-2 text-sm">
+      <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Accueil</a>
+      <a href="mission.html" class="nav-link text-gray-600 hover:text-blue-600">Mission</a>
+      <a href="programmes.html" class="nav-link text-gray-600 hover:text-blue-600">Programmes</a>
+      <a href="infos-pratiques.html" class="nav-link text-gray-600 hover:text-blue-600">Infos</a>
+      <a href="temoignages.html" class="nav-link text-gray-600 hover:text-blue-600">Témoignages</a>
+      <a href="contact.html" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+      <a href="reservation.html" class="nav-link text-gray-600 hover:text-blue-600">Réservation</a>
+    </div>
+  </div>
+</header>
+
+<!-- Titre avec image de fond -->
+<div class="bg-cover bg-center h-52 flex items-center justify-center mb-12" 
+     style="background-image: url('images/retraites-thumb.jpg');">
+  <h2 class="text-4xl md:text-5xl font-bold text-white bg-black bg-opacity-50 px-6 py-3 rounded">
+    Galerie Retraites Précédentes
+  </h2>
+</div>
+
+<!-- Section retraites précédentes -->
+<section class="py-12 px-6 md:px-12 max-w-6xl mx-auto">
+
+  <!-- Onglets -->
+  <div class="flex justify-center mb-8 border-b border-gray-300">
+    <button class="retreat-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-tab="year2022">Année 2022</button>
+    <button class="retreat-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="year2023">Année 2023</button>
+    <button class="retreat-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="year2024">Année 2024</button>
+  </div>
+
+  <!-- Contenus -->
+  <div id="retreat-tabs">
+
+    <!-- Carrousel 2022 -->
+    <div class="retreat-content" id="year2022">
+      <div class="relative overflow-hidden">
+        <div class="flex transition-transform duration-700" id="carousel-2022">
+          <!-- Jusqu’à 15 photos -->
+          <img src="images/2022-1.jpg" class="w-full h-80 object-cover flex-shrink-0" alt="Retraite 2022 - 1">
+          <img src="images/2022-2.jpg" class="w-full h-80 object-cover flex-shrink-0" alt="Retraite 2022 - 2">
+          <img src="images/2022-3.jpg" class="w-full h-80 object-cover flex-shrink-0" alt="Retraite 2022 - 3">
+        </div>
+        <!-- Boutons -->
+        <button onclick="prevSlide('carousel-2022')" class="absolute top-1/2 left-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded">‹</button>
+        <button onclick="nextSlide('carousel-2022')" class="absolute top-1/2 right-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded">›</button>
+      </div>
+    </div>
+
+    <!-- Carrousel 2023 -->
+    <div class="retreat-content hidden" id="year2023">
+      <div class="relative overflow-hidden">
+        <div class="flex transition-transform duration-700" id="carousel-2023">
+          <img src="images/2023-1.jpg" class="w-full h-80 object-cover flex-shrink-0" alt="Retraite 2023 - 1">
+          <img src="images/2023-2.jpg" class="w-full h-80 object-cover flex-shrink-0" alt="Retraite 2023 - 2">
+          <img src="images/2023-3.jpg" class="w-full h-80 object-cover flex-shrink-0" alt="Retraite 2023 - 3">
+        </div>
+        <button onclick="prevSlide('carousel-2023')" class="absolute top-1/2 left-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded">‹</button>
+        <button onclick="nextSlide('carousel-2023')" class="absolute top-1/2 right-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded">›</button>
+      </div>
+    </div>
+
+    <!-- Carrousel 2024 -->
+    <div class="retreat-content hidden" id="year2024">
+      <div class="relative overflow-hidden">
+        <div class="flex transition-transform duration-700" id="carousel-2024">
+          <img src="images/2024-1.jpg" class="w-full h-80 object-cover flex-shrink-0" alt="Retraite 2024 - 1">
+          <img src="images/2024-2.jpg" class="w-full h-80 object-cover flex-shrink-0" alt="Retraite 2024 - 2">
+          <img src="images/2024-3.jpg" class="w-full h-80 object-cover flex-shrink-0" alt="Retraite 2024 - 3">
+        </div>
+        <button onclick="prevSlide('carousel-2024')" class="absolute top-1/2 left-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded">‹</button>
+        <button onclick="nextSlide('carousel-2024')" class="absolute top-1/2 right-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded">›</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Script onglets & carrousel -->
+<script>
+  // Onglets retraites
+  const retreatBtns = document.querySelectorAll('.retreat-btn');
+  const retreatContents = document.querySelectorAll('.retreat-content');
+
+  retreatBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      const newContent = document.getElementById(tab);
+
+      // Mettre à jour boutons
+      retreatBtns.forEach(b => b.classList.remove('text-blue-700','border-b-2','border-blue-600','font-semibold'));
+      retreatBtns.forEach(b => b.classList.add('text-gray-600'));
+      btn.classList.add('text-blue-700','border-b-2','border-blue-600','font-semibold');
+      btn.classList.remove('text-gray-600');
+
+      // Afficher contenu
+      retreatContents.forEach(c => c.classList.add('hidden'));
+      newContent.classList.remove('hidden');
+    });
+  });
+
+  // Carrousel
+  const positions = { "carousel-2022": 0, "carousel-2023": 0, "carousel-2024": 0 };
+
+  function nextSlide(id) {
+    const carousel = document.getElementById(id);
+    const totalSlides = carousel.children.length;
+    positions[id] = (positions[id] + 1) % totalSlides;
+    carousel.style.transform = `translateX(-${positions[id] * 100}%)`;
+  }
+
+  function prevSlide(id) {
+    const carousel = document.getElementById(id);
+    const totalSlides = carousel.children.length;
+    positions[id] = (positions[id] - 1 + totalSlides) % totalSlides;
+    carousel.style.transform = `translateX(-${positions[id] * 100}%)`;
+  }
+
+  // Défilement automatique toutes les 5s
+  setInterval(() => {
+    nextSlide("carousel-2022");
+    nextSlide("carousel-2023");
+    nextSlide("carousel-2024");
+  }, 5000);
+</script>
 
