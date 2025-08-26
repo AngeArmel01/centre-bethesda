@@ -216,6 +216,40 @@ document.querySelectorAll(".retreat-btn").forEach(btn => {
   });
 });
 </script>
+<style>
+  /* ✅ Taille adaptative */
+  .retreat-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* au lieu de cover, garde l'image entière */
+    background-color: #000; /* fond noir autour si besoin */
+  }
+
+  /* ✅ Carrousel plus grand sur desktop */
+  @media (min-width: 768px) {
+    .retreat-content .relative {
+      height: 500px; /* augmente la hauteur sur écran large */
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .retreat-content .relative {
+      height: 650px; /* encore plus grand sur très grands écrans */
+    }
+  }
+
+  /* ✅ Boutons de navigation améliorés */
+  .retreat-content .prev,
+  .retreat-content .next {
+    opacity: 0.7;
+    transition: opacity 0.3s, transform 0.2s;
+  }
+  .retreat-content .prev:hover,
+  .retreat-content .next:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+</style>
 
  <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
