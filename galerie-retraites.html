@@ -251,6 +251,41 @@ document.querySelectorAll(".retreat-btn").forEach(btn => {
   }
 </style>
 
+<style>
+  /* ✅ Rendu élégant plein écran */
+  .retreat-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* couvre toute la zone, sans bandes noires */
+  }
+
+  /* ✅ Taille adaptative pour desktop */
+  @media (min-width: 768px) {
+    .retreat-content .relative {
+      height: 500px; /* hauteur adaptée pour PC */
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .retreat-content .relative {
+      height: 650px; /* grande hauteur sur écrans larges */
+    }
+  }
+
+  /* ✅ Flèches raffinées */
+  .retreat-content .prev,
+  .retreat-content .next {
+    opacity: 0.6;
+    transition: opacity 0.3s, transform 0.2s;
+  }
+  .retreat-content .prev:hover,
+  .retreat-content .next:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+</style>
+
+
  <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
   <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
