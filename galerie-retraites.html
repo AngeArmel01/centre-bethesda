@@ -76,146 +76,157 @@
   </h2>
 </div>
 
-  <!-- Onglets -->
+  <!-- ONGLET ANNÉES -->
   <div class="flex justify-center mb-8 border-b border-gray-300">
-    <button class="retreat-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-tab="year2022">Année 2022</button>
-    <button class="retreat-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="year2023">Année 2023</button>
-    <button class="retreat-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="year2024">Année 2024</button>
+    <button class="year-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-target="year-2022">Année 2022</button>
+    <button class="year-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-target="year-2023">Année 2023</button>
+    <button class="year-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-target="year-2024">Année 2024</button>
   </div>
 
-  <!-- Contenus -->
-  <div id="retreat-tabs">
+  <!-- PANES -->
+  <div id="year-2022" class="year-pane">
+    <h3 class="text-2xl font-bold text-blue-700 mb-4">Année 2022</h3>
 
-    <!-- Carrousel 2022 -->
-    <div class="retreat-content" id="year2022">
-      <div class="relative w-full h-80 overflow-hidden">
-        <div class="absolute inset-0" id="carousel-2022">
-          <a href="images/2022-1.jpg" data-lightbox="2022" 
-             class="absolute inset-0 opacity-100 transition-opacity duration-1000 pointer-events-auto">
-            <img src="images/2022-1.jpg" class="w-full h-80 object-cover" alt="">
+    <!-- Ratio 16:9 -->
+    <div class="ratio-16-9 rounded-lg shadow-lg overflow-hidden bg-black">
+      <div class="ratio-content relative">
+        <div class="carousel h-full w-full" id="carousel-2022">
+          <!-- Slide 1 -->
+          <a href="images/2022-1.jpg" data-lightbox="2022" class="slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out pointer-events-auto">
+            <img src="images/2022-1.jpg" class="w-full h-full object-cover md:object-contain" alt="2022 Image 1">
           </a>
-          <a href="images/2022-2.jpg" data-lightbox="2022" 
-             class="absolute inset-0 opacity-0 transition-opacity duration-1000 pointer-events-none">
-            <img src="images/2022-2.jpg" class="w-full h-80 object-cover" alt="">
+          <!-- Slide 2 -->
+          <a href="images/2022-2.jpg" data-lightbox="2022" class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+            <img src="images/2022-2.jpg" class="w-full h-full object-cover md:object-contain" alt="2022 Image 2">
           </a>
-          <a href="images/2022-3.jpg" data-lightbox="2022" 
-             class="absolute inset-0 opacity-0 transition-opacity duration-1000 pointer-events-none">
-            <img src="images/2022-3.jpg" class="w-full h-80 object-cover" alt="">
+          <!-- Slide 3 -->
+          <a href="images/2022-3.jpg" data-lightbox="2022" class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+            <img src="images/2022-3.jpg" class="w-full h-full object-cover md:object-contain" alt="2022 Image 3">
           </a>
+          <!-- Ajoute jusqu’à 15 images -->
         </div>
+
         <!-- Flèches -->
         <button class="prev absolute top-1/2 left-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">‹</button>
         <button class="next absolute top-1/2 right-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">›</button>
       </div>
     </div>
-
-    <!-- Carrousel 2023 -->
-    <div class="retreat-content hidden" id="year2023">
-      <div class="relative w-full h-80 overflow-hidden">
-        <div class="absolute inset-0" id="carousel-2023">
-          <a href="images/2023-1.jpg" data-lightbox="2023" 
-             class="absolute inset-0 opacity-100 transition-opacity duration-1000 pointer-events-auto">
-            <img src="images/2023-1.jpg" class="w-full h-80 object-cover" alt="">
-          </a>
-          <a href="images/2023-2.jpg" data-lightbox="2023" 
-             class="absolute inset-0 opacity-0 transition-opacity duration-1000 pointer-events-none">
-            <img src="images/2023-2.jpg" class="w-full h-80 object-cover" alt="">
-          </a>
-          <a href="images/2023-3.jpg" data-lightbox="2023" 
-             class="absolute inset-0 opacity-0 transition-opacity duration-1000 pointer-events-none">
-            <img src="images/2023-3.jpg" class="w-full h-80 object-cover" alt="">
-          </a>
-        </div>
-        <!-- Flèches -->
-        <button class="prev absolute top-1/2 left-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">‹</button>
-        <button class="next absolute top-1/2 right-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">›</button>
-      </div>
-    </div>
-
-    <!-- Carrousel 2024 -->
-    <div class="retreat-content hidden" id="year2024">
-      <div class="relative w-full h-80 overflow-hidden">
-        <div class="absolute inset-0" id="carousel-2024">
-          <a href="images/2024-1.jpg" data-lightbox="2024" 
-             class="absolute inset-0 opacity-100 transition-opacity duration-1000 pointer-events-auto">
-            <img src="images/2024-1.jpg" class="w-full h-80 object-cover" alt="">
-          </a>
-          <a href="images/2024-2.jpg" data-lightbox="2024" 
-             class="absolute inset-0 opacity-0 transition-opacity duration-1000 pointer-events-none">
-            <img src="images/2024-2.jpg" class="w-full h-80 object-cover" alt="">
-          </a>
-          <a href="images/2024-3.jpg" data-lightbox="2024" 
-             class="absolute inset-0 opacity-0 transition-opacity duration-1000 pointer-events-none">
-            <img src="images/2024-3.jpg" class="w-full h-80 object-cover" alt="">
-          </a>
-          <a href="images/2024-4.jpg" data-lightbox="2024" 
-             class="absolute inset-0 opacity-0 transition-opacity duration-1000 pointer-events-none">
-            <img src="images/2024-4.jpg" class="w-full h-80 object-cover" alt="">
-          </a>
-        </div>
-        <!-- Flèches -->
-        <button class="prev absolute top-1/2 left-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">‹</button>
-        <button class="next absolute top-1/2 right-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">›</button>
-      </div>
-    </div>
-
   </div>
+
+  <div id="year-2023" class="year-pane hidden">
+    <h3 class="text-2xl font-bold text-blue-700 mb-4">Année 2023</h3>
+
+    <div class="ratio-16-9 rounded-lg shadow-lg overflow-hidden bg-black">
+      <div class="ratio-content relative">
+        <div class="carousel h-full w-full" id="carousel-2023">
+          <a href="images/2023-1.jpg" data-lightbox="2023" class="slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out pointer-events-auto">
+            <img src="images/2023-1.jpg" class="w-full h-full object-cover md:object-contain" alt="2023 Image 1">
+          </a>
+          <a href="images/2023-2.jpg" data-lightbox="2023" class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+            <img src="images/2023-2.jpg" class="w-full h-full object-cover md:object-contain" alt="2023 Image 2">
+          </a>
+          <a href="images/2023-3.jpg" data-lightbox="2023" class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+            <img src="images/2023-3.jpg" class="w-full h-full object-cover md:object-contain" alt="2023 Image 3">
+          </a>
+        </div>
+
+        <button class="prev absolute top-1/2 left-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">‹</button>
+        <button class="next absolute top-1/2 right-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">›</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="year-2024" class="year-pane hidden">
+    <h3 class="text-2xl font-bold text-blue-700 mb-4">Année 2024</h3>
+
+    <div class="ratio-16-9 rounded-lg shadow-lg overflow-hidden bg-black">
+      <div class="ratio-content relative">
+        <div class="carousel h-full w-full" id="carousel-2024">
+          <a href="images/2024-1.jpg" data-lightbox="2024" class="slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out pointer-events-auto">
+            <img src="images/2024-1.jpg" class="w-full h-full object-cover md:object-contain" alt="2024 Image 1">
+          </a>
+          <a href="images/2024-2.jpg" data-lightbox="2024" class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+            <img src="images/2024-2.jpg" class="w-full h-full object-cover md:object-contain" alt="2024 Image 2">
+          </a>
+          <a href="images/2024-3.jpg" data-lightbox="2024" class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+            <img src="images/2024-3.jpg" class="w-full h-full object-cover md:object-contain" alt="2024 Image 3">
+          </a>
+        </div>
+
+        <button class="prev absolute top-1/2 left-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">‹</button>
+        <button class="next absolute top-1/2 right-4 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-40 px-3 py-1 rounded">›</button>
+      </div>
+    </div>
+  </div>
+
 </section>
 
-<!-- Script carrousels -->
+<!-- Lightbox2 (garde un seul import dans la page) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
 <script>
-function initCarousel(carouselId) {
-  const container = document.getElementById(carouselId);
-  const slides = container.querySelectorAll("a");
-  const prev = container.parentElement.querySelector(".prev");
-  const next = container.parentElement.querySelector(".next");
+  // --- Onglets ---
+  const yearBtns = document.querySelectorAll('.year-btn');
+  const yearPanes = document.querySelectorAll('.year-pane');
 
-  let index = 0;
-  function showSlide(i) {
-    slides.forEach((s, idx) => {
-      if (idx === i) {
-        s.classList.add("opacity-100", "pointer-events-auto");
-        s.classList.remove("opacity-0", "pointer-events-none");
-      } else {
-        s.classList.add("opacity-0", "pointer-events-none");
-        s.classList.remove("opacity-100", "pointer-events-auto");
-      }
+  yearBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      // style boutons
+      yearBtns.forEach(b => {
+        b.classList.remove('text-blue-700','border-b-2','border-blue-600','font-semibold');
+        b.classList.add('text-gray-600');
+      });
+      btn.classList.add('text-blue-700','border-b-2','border-blue-600','font-semibold');
+      btn.classList.remove('text-gray-600');
+
+      // afficher le bon pane
+      yearPanes.forEach(p => p.classList.add('hidden'));
+      document.getElementById(targetId).classList.remove('hidden');
     });
-  }
-
-  function nextSlide() {
-    index = (index + 1) % slides.length;
-    showSlide(index);
-  }
-  function prevSlide() {
-    index = (index - 1 + slides.length) % slides.length;
-    showSlide(index);
-  }
-
-  next.addEventListener("click", nextSlide);
-  prev.addEventListener("click", prevSlide);
-
-  setInterval(nextSlide, 5000); // défilement auto
-}
-
-["carousel-2022","carousel-2023","carousel-2024"].forEach(initCarousel);
-
-// Gestion des onglets
-document.querySelectorAll(".retreat-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const tab = btn.dataset.tab;
-    document.querySelectorAll(".retreat-content").forEach(c => c.classList.add("hidden"));
-    document.getElementById(tab).classList.remove("hidden");
-
-    document.querySelectorAll(".retreat-btn").forEach(b => {
-      b.classList.remove("text-blue-700","border-b-2","border-blue-600","font-semibold");
-      b.classList.add("text-gray-600");
-    });
-    btn.classList.add("text-blue-700","border-b-2","border-blue-600","font-semibold");
-    btn.classList.remove("text-gray-600");
   });
-});
+
+  // --- Carrousel générique ---
+  function initCarousel(carouselId) {
+    const container = document.getElementById(carouselId);
+    const slides = container.querySelectorAll('.slide');
+    const section = container.closest('.ratio-content'); // 🔥 on remonte seulement dans la section
+    const prevBtn = section.querySelector('.prev');
+    const nextBtn = section.querySelector('.next');
+    let index = 0;
+    let timer;
+
+    function show(i) {
+      slides.forEach((s, k) => {
+        if (k === i) {
+          s.style.opacity = '1';
+          s.style.pointerEvents = 'auto';
+        } else {
+          s.style.opacity = '0';
+          s.style.pointerEvents = 'none';
+        }
+      });
+      index = i;
+    }
+    function next() { show((index + 1) % slides.length); }
+    function prev() { show((index - 1 + slides.length) % slides.length); }
+    function start() { timer = setInterval(next, 5000); }
+    function reset() { clearInterval(timer); start(); }
+
+    nextBtn.addEventListener('click', () => { next(); reset(); });
+    prevBtn.addEventListener('click', () => { prev(); reset(); });
+
+    show(0);
+    start();
+  }
+
+  // Init 3 carrousels indépendants
+  initCarousel('carousel-2022');
+  initCarousel('carousel-2023');
+  initCarousel('carousel-2024');
 </script>
+
 
  <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
