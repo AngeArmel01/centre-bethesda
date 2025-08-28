@@ -218,22 +218,24 @@
     container.appendChild(meta);
     container.appendChild(content);
 
-    const user = auth.currentUser;
-    if (user && user.uid === data.uid) {
-      const editBtn = document.createElement('button');
-      editBtn.textContent = "Modifier";
-      editBtn.onclick = () => editMessage(id, content);
+    function createMessageElement(id, data) {
+  const container = document.createElement('div');
+  container.style.border = "1px solid #ccc";
+  container.style.padding = "10px";
+  container.style.background = "#f9f9f9";
 
-      const delBtn = document.createElement('button');
-      delBtn.textContent = "Supprimer";
-      delBtn.onclick = () => deleteDoc(doc(db, "messages", id));
+  const meta = document.createElement('small');
+  meta.innerHTML = `<strong>${data.username}</strong> — ${formatDate(data.timestamp)}`;
 
-      container.appendChild(editBtn);
-      container.appendChild(delBtn);
-    }
+  const content = document.createElement('p');
+  content.textContent = data.message;
 
-    return container;
-  }
+  container.appendChild(meta);
+  container.appendChild(content);
+
+  // 🚫 Aucune option de modification ou suppression
+  return container;
+}
 
   function editMessage(id, contentEl) {
     const old = contentEl.textContent;
