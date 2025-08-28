@@ -69,15 +69,15 @@
 </header>
 
 <!-- CONTACT SECTION -->
- <!-- Titre avec image de fond amélioré -->
-<div class="bg-cover bg-center h-64 flex items-center justify-center mb-12 rounded-lg overflow-hidden relative" style="background-image: url('images/contact.jpg');">
-  <h2 class="text-5xl md:text-6xl font-bold text-white bg-black bg-opacity-80 px-8 py-4 rounded shadow-lg drop-shadow-xl text-center">
-    Contacts
-  </h2>
-</div>
+  <!-- Titre avec image de fond amélioré -->
+  <div class="bg-cover bg-center h-64 flex items-center justify-center mb-12 rounded-lg overflow-hidden relative" style="background-image: url('images/contact.jpg');">
+    <h2 class="text-5xl md:text-6xl font-bold text-white bg-black bg-opacity-80 px-8 py-4 rounded shadow-lg drop-shadow-xl text-center">
+      Contacts
+    </h2>
+  </div>
 
   <!-- Formulaire -->
-  <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-lg">
+  <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-lg mb-16">
     <form id="contactForm" class="space-y-6">
       
       <!-- Nom -->
@@ -128,19 +128,34 @@
           Envoyer
         </button>
       </div>
-    </form>
 
-    <!-- Message retour -->
-    <p id="contactMessage" class="mt-6 text-center text-green-600 hidden"></p>
+      <!-- Message retour -->
+      <p id="contactMessage" class="mt-6 text-center text-green-600 hidden"></p>
+    </form>
   </div>
+
+  <!-- Nos coordonnées -->
+  <div class="max-w-3xl mx-auto space-y-6">
+    <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center md:text-left">📍 Nos coordonnées</h2>
+    <div class="bg-white p-6 rounded-lg shadow space-y-3 text-gray-700">
+      <p>🏠 <span class="font-semibold">Adresse :</span> 
+        <a href="https://maps.app.goo.gl/VhycG7pf7zQREPY36" target="_blank" class="hover:text-blue-600 underline">
+          Route de Yamoussoukro, Côte d'Ivoire
+        </a>
+      </p>
+      <p>📞 <span class="font-semibold">Téléphone :</span> 
+        <a href="tel:+2250103881311" class="hover:text-blue-600 underline">(+225) 01 03 88 13 11</a>
+      </p>
+      <p>✉️ <span class="font-semibold">Email :</span> 
+        <a href="mailto:infos@ppe-ci.org" class="hover:text-blue-600 underline">infos@ppe-ci.org</a>
+      </p>
+      <p>⏰ <span class="font-semibold">Horaires :</span> Lundi – Dimanche : 8h à 18h</p>
+    </div>
+  </div>
+
 </section>
 
-<!-- Script Contact (Google Apps Script ou autre API) -->
-<form id="contactForm" class="space-y-4">
-  <!-- Tes champs : nom, email, demande, message, consent -->
-  <p id="contactMessage" class="mt-4 text-center hidden"></p>
-</form>
-
+<!-- Script Contact -->
 <script>
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -174,27 +189,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
 });
 </script>
 
-
-  <!-- Nos coordonnées -->
-  <div class="max-w-3xl mx-auto space-y-6">
-    <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center md:text-left">📍 Nos coordonnées</h2>
-    <div class="bg-white p-6 rounded-lg shadow space-y-3 text-gray-700">
-      <p>🏠 <span class="font-semibold">Adresse :</span> 
-        <a href="https://maps.app.goo.gl/VhycG7pf7zQREPY36" target="_blank" class="hover:text-blue-600 underline">
-          Route de Yamoussoukro, Côte d'Ivoire
-        </a>
-      </p>
-      <p>📞 <span class="font-semibold">Téléphone :</span> 
-        <a href="tel:+2250103881311" class="hover:text-blue-600 underline">(+225) 01 03 88 13 11</a>
-      </p>
-      <p>✉️ <span class="font-semibold">Email :</span> 
-        <a href="mailto:infos@ppe-ci.org" class="hover:text-blue-600 underline">infos@ppe-ci.org</a>
-      </p>
-      <p>⏰ <span class="font-semibold">Horaires :</span> Lundi – Dimanche : 8h à 18h</p>
-    </div>
-  </div>
-
-</section>
 
 <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
