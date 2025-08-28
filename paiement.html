@@ -21,88 +21,103 @@
 </head>
 <body class="bg-gray-50">
 
-  <!-- Montant choisi -->
-  <div class="mb-6 text-center pt-6">
-    <p class="text-lg">Montant choisi : <span id="montantChoisi" class="font-semibold">...</span></p>
+<!-- Montant choisi -->
+<div class="mb-6 text-center pt-6">
+  <p class="text-lg">Montant choisi : <span id="montantChoisi" class="font-semibold">...</span></p>
+</div>
+
+<!-- Moyens de paiement -->
+<section class="py-12 px-6 md:px-12">
+  <h3 class="text-2xl font-bold text-blue-700 mb-6 text-center">💳 Moyens de paiement</h3>
+  <div class="flex justify-center gap-6 flex-wrap">
+
+    <!-- Mobile Money -->
+    <a href="tel:*150*50*1#" class="group relative w-40 h-40 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-4 hover:scale-105 hover:shadow-2xl transition">
+      <img src="images/mobilemoney.png" alt="Mobile Money" class="w-20 h-20 object-contain mb-3">
+      <span class="text-gray-700 font-semibold group-hover:text-green-600 transition">Mobile Money</span>
+      <span class="absolute top-2 right-2 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">XOF</span>
+    </a>
+
+    <!-- Wave -->
+    <a href="https://wave.com/c/123456789" target="_blank" class="group relative w-40 h-40 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-4 hover:scale-105 hover:shadow-2xl transition">
+      <img src="images/wave.png" alt="Wave" class="w-20 h-20 object-contain mb-3">
+      <span class="text-gray-700 font-semibold group-hover:text-blue-500 transition">Wave</span>
+      <span class="absolute top-2 right-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">XOF</span>
+    </a>
+
+    <!-- PayPal -->
+    <a href="https://www.paypal.com/paypalme/toncompte" target="_blank" class="group relative w-40 h-40 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-4 hover:scale-105 hover:shadow-2xl transition">
+      <img src="images/paypal.png" alt="PayPal" class="w-20 h-20 object-contain mb-3">
+      <span class="text-gray-700 font-semibold group-hover:text-blue-700 transition">PayPal</span>
+      <span class="absolute top-2 right-2 bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">XOF</span>
+    </a>
+
   </div>
+</section>
 
-  <!-- Moyens de paiement -->
-  <section class="py-12 px-6 md:px-12">
-    <h3 class="text-2xl font-bold text-blue-700 mb-6 text-center">💳 Moyens de paiement</h3>
-    <div class="flex justify-center gap-6 flex-wrap">
+<!-- Formulaire paiement -->
+<section class="max-w-2xl mx-auto px-6 pb-12">
+  <h3 class="text-2xl font-bold text-blue-700 mb-6 text-center">Confirmez votre paiement</h3>
 
-      <!-- Mobile Money -->
-      <a href="tel:*150*50*1#" class="group relative w-40 h-40 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-4 hover:scale-105 hover:shadow-2xl transition">
-        <img src="images/mobilemoney.png" alt="Mobile Money" class="w-20 h-20 object-contain mb-3">
-        <span class="text-gray-700 font-semibold group-hover:text-green-600 transition">Mobile Money</span>
-        <span class="absolute top-2 right-2 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">XOF</span>
-      </a>
+  <form id="formPaiement" enctype="multipart/form-data" class="bg-white p-6 rounded shadow space-y-4">
 
-      <!-- Wave -->
-      <a href="https://wave.com/c/123456789" target="_blank" class="group relative w-40 h-40 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-4 hover:scale-105 hover:shadow-2xl transition">
-        <img src="images/wave.png" alt="Wave" class="w-20 h-20 object-contain mb-3">
-        <span class="text-gray-700 font-semibold group-hover:text-blue-500 transition">Wave</span>
-        <span class="absolute top-2 right-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">XOF</span>
-      </a>
+    <input type="hidden" id="montantInput" name="Montant">
 
-      <!-- PayPal -->
-      <a href="https://www.paypal.com/paypalme/toncompte" target="_blank" class="group relative w-40 h-40 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-4 hover:scale-105 hover:shadow-2xl transition">
-        <img src="images/paypal.png" alt="PayPal" class="w-20 h-20 object-contain mb-3">
-        <span class="text-gray-700 font-semibold group-hover:text-blue-700 transition">PayPal</span>
-        <span class="absolute top-2 right-2 bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">XOF</span>
-      </a>
+    <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
+    <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
 
-    </div>
-  </section>
+    <label class="block font-semibold">Joindre votre capture de paiement :</label>
+    <input type="file" name="Capture" accept="image/*" required class="w-full p-2 border rounded">
 
-  <!-- Formulaire paiement -->
-  <section class="max-w-2xl mx-auto px-6 pb-12">
-    <h3 class="text-2xl font-bold text-blue-700 mb-6 text-center">Confirmez votre paiement</h3>
+    <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 w-full">
+      Envoyer le paiement
+    </button>
+  </form>
 
-    <form id="formPaiement" enctype="multipart/form-data" class="bg-white p-6 rounded shadow space-y-4">
+  <div id="confirmation" class="hidden mt-4 p-4 bg-green-100 text-green-800 rounded text-center">
+    ✅ Paiement envoyé avec succès !
+  </div>
+</section>
 
-      <input type="hidden" id="montantInput" name="Montant">
+<script>
+  // Récupérer le montant depuis l'URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const tarif = urlParams.get('tarif') || 'Non défini';
+  document.getElementById('montantChoisi').textContent = tarif;
+  document.getElementById('montantInput').value = tarif;
 
-      <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
-      <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
+  // Gestion du formulaire
+  const form = document.getElementById('formPaiement');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
 
-      <label class="block font-semibold">Joindre votre capture de paiement :</label>
-      <input type="file" name="Capture" accept="image/*" required class="w-full p-2 border rounded">
+    const formData = new FormData(form);
+    const file = formData.get("Capture");
 
-      <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 w-full">
-        Envoyer le paiement
-      </button>
-    </form>
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const base64File = reader.result.split(",")[1]; // enlever data:
 
-    <div id="confirmation" class="hidden mt-4 p-4 bg-green-100 text-green-800 rounded text-center">
-      ✅ Paiement envoyé avec succès !
-    </div>
-  </section>
+      const payload = new FormData();
+      payload.append("Nom", formData.get("Nom"));
+      payload.append("Email", formData.get("Email"));
+      payload.append("Montant", formData.get("Montant"));
+      payload.append("Capture", base64File);
 
-  <script>
-    // Récupérer le montant depuis l'URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const tarif = urlParams.get('tarif') || 'Non défini';
-    document.getElementById('montantChoisi').textContent = tarif;
-    document.getElementById('montantInput').value = tarif;
-
-    // Gestion du formulaire
-    const form = document.getElementById('formPaiement');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const data = new FormData(form);
-      fetch('https://script.google.com/macros/s/AKfycbwJ4WiXF2sRUwPWHgKvHuGD-qCxeaMStYEqrFkHpcW5ns71JvApzecjZkhngWTJurzvKw/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbxQq9toQARMTCyi1oe1pq0oxt0_tOmXMOoOBjviYhFLo-12NbEjK8jeRRmOrtdmgkDsEQ/exec', {
         method: 'POST',
-        body: data
+        body: payload
       })
       .then(res => res.text())
       .then(res => {
         document.getElementById('confirmation').classList.remove('hidden');
         form.reset();
       })
-      .catch(err => alert('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.'));
-    });
-  </script>
-
+      .catch(err => alert("Erreur : " + err.message));
+    };
+    reader.readAsDataURL(file);
+  });
+</script>
+ 
 </body>
 </html>
