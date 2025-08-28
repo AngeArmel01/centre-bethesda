@@ -129,35 +129,44 @@
 </section>
 
 <!-- Script Contact (Google Apps Script ou autre API) -->
-<script>
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    const msg = document.getElementById('contactMessage');
+<form id="contactForm" class="space-y-4">
+  <!-- Tes champs : nom, email, demande, message, consent -->
+  <p id="contactMessage" class="mt-4 text-center hidden"></p>
+</form>
 
-    try {
-      const res = await fetch("TON_URL_SCRIPT_GOOGLE_APPS_SCRIPT_ICI", {
-        method: "POST",
-        body: data
-      });
-      const json = await res.json();
-      msg.classList.remove("hidden");
-      if (json.result === "success") {
-        msg.textContent = "✅ Merci ! Votre message a été envoyé avec succès.";
-        msg.className = "mt-4 text-green-600 text-center";
-        form.reset();
-      } else {
-        msg.textContent = "❌ Erreur : " + json.message;
-        msg.className = "mt-4 text-red-600 text-center";
-      }
-    } catch (err) {
-      msg.textContent = "❌ Erreur serveur. Veuillez réessayer plus tard.";
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  const msg = document.getElementById('contactMessage');
+
+  msg.classList.add("hidden");
+
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbx36q9YrE1cBseIriNA0-_qi6FWja5rTEQYVH6DlMSkZ8OuKDgBbJOyiLj7thI0MXScPA/exec", {
+      method: "POST",
+      body: data
+    });
+    const json = await res.json();
+
+    msg.classList.remove("hidden");
+    if (json.result === "success") {
+      msg.textContent = "✅ Merci ! Votre message a été envoyé avec succès.";
+      msg.className = "mt-4 text-green-600 text-center";
+      form.reset();
+    } else {
+      msg.textContent = "❌ Erreur : " + (json.message || "Erreur inconnue.");
       msg.className = "mt-4 text-red-600 text-center";
-      msg.classList.remove("hidden");
     }
-  });
+  } catch (err) {
+    msg.textContent = "❌ Erreur serveur. Veuillez réessayer plus tard.";
+    msg.className = "mt-4 text-red-600 text-center";
+    msg.classList.remove("hidden");
+  }
+});
 </script>
+
 
     <!-- Coordonnées -->
     <div class="space-y-6">
