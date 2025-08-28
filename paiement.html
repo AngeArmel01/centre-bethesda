@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement Retraite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <section class="max-w-3xl mx-auto py-16 px-6">
+    <h1 class="text-3xl font-bold text-blue-700 mb-6 text-center">💳 Payer sa retraite ou soutenir l'œuvre</h1>
+    
+    <!-- Affichage du montant choisi -->
+    <p class="text-center text-gray-700 mb-8" id="montantChoisi">
+      Montant sélectionné : <span class="font-semibold text-blue-600"></span>
+    </p>
+
+    <!-- Moyens de paiement -->
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold text-blue-600 mb-4 text-center">Moyens de paiement acceptés</h2>
+      <div class="flex justify-center gap-8">
+        
+        <!-- Mobile Money -->
+        <a href="tel:*123*1234#" target="_blank" class="flex flex-col items-center hover:scale-105 transition">
+          <img src="images/momo.png" alt="Mobile Money" class="h-12 mb-2">
+          <span class="text-gray-700 font-semibold text-sm">Mobile Money</span>
+        </a>
+
+        <!-- Wave -->
+        <a href="https://wave.com/transfer?recipient=TON_NUMERO" target="_blank" class="flex flex-col items-center hover:scale-105 transition">
+          <img src="images/wave.png" alt="Wave" class="h-12 mb-2">
+          <span class="text-gray-700 font-semibold text-sm">Wave</span>
+        </a>
+
+        <!-- PayPal -->
+        <a href="https://www.paypal.com/donate?business=TON_EMAIL_PAYPAL&currency_code=USD" target="_blank" class="flex flex-col items-center hover:scale-105 transition">
+          <img src="images/paypal.png" alt="PayPal" class="h-12 mb-2">
+          <span class="text-gray-700 font-semibold text-sm">PayPal</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Formulaire de confirmation de paiement -->
+    <form id="formPaiement" class="space-y-4 bg-white p-6 rounded shadow-md"
+          enctype="multipart/form-data">
+      <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
+      <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
+      <input type="text" name="Montant" id="montantInput" readonly class="w-full p-3 border rounded bg-gray-100">
+      
+      <label class="block font-semibold text-gray-700">Joindre la capture du paiement</label>
+      <input type="file" name="Capture" accept="image/*" required class="w-full p-3 border rounded">
+      
+      <textarea name="Message" placeholder="Votre message ou intention de prière" rows="4" class="w-full p-3 border rounded"></textarea>
+      
+      <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 w-full font-semibold">
+        Envoyer ma confirmation
+      </button>
+    </form>
+
+    <p id="confirmation" class="text-green-600 font-semibold mt-4 text-center hidden">
+      Merci ! Votre confirmation de paiement a été envoyée.
+    </p>
+  </section>
+
+  <script>
+    // Récupérer le montant depuis l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const tarif = urlParams.get('tarif') || 'Non défini';
+    document.querySelector('#montantChoisi span').textContent = tarif;
+    document.querySelector('#montantInput').value = tarif;
+
+    // Gestion du formulaire avec Apps Script
+    const form = document.getElementById('formPaiement');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      fetch('https://script.google.com/macros/s/VOTRE_ID_APPS_SCRIPT/exec', {
+        method: 'POST',
+        body: data
+      })
+      .then(res => res.text())
+      .then(res => {
+        document.getElementById('confirmation').classList.remove('hidden');
+        form.reset();
+      })
+      .catch(err => alert('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.'));
+    });
+  </script>
+
+</body>
+</html>
