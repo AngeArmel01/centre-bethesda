@@ -158,25 +158,6 @@
   💳 Payer sa retraite ou soutenir l'œuvre
 </button>
 
-<script>
-// Sauvegarde le montant choisi et le type de retraite dans localStorage
-document.getElementById('btnPaiement').addEventListener('click', () => {
-  const typeRetraite = document.querySelector('select[name="Type de retraite"]').value;
-  const tarif = document.querySelector('select[name="Tarif"]').value;
-
-  if(!typeRetraite || !tarif){
-    alert("Veuillez sélectionner le type de retraite et le tarif avant de continuer.");
-    return;
-  }
-
-  localStorage.setItem('typeRetraite', typeRetraite);
-  localStorage.setItem('tarifRetraite', tarif);
-
-  // Redirige vers la page paiement
-  window.location.href = "paiement.html"; // nom de la nouvelle page
-});
-</script>
-
 <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
   <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
@@ -323,6 +304,24 @@ document.getElementById('form-reservation').addEventListener('submit', function 
 });
 </script>
 
+<script>
+// Sauvegarde le montant choisi et le type de retraite dans localStorage
+document.getElementById('btnPaiement').addEventListener('click', () => {
+  const typeRetraite = document.querySelector('select[name="Type de retraite"]').value;
+  const tarif = document.querySelector('select[name="Tarif"]').value;
+
+  if(!typeRetraite || !tarif){
+    alert("Veuillez sélectionner le type de retraite et le tarif avant de continuer.");
+    return;
+  }
+
+  localStorage.setItem('typeRetraite', typeRetraite);
+  localStorage.setItem('tarifRetraite', tarif);
+
+  // Redirige vers la page paiement
+  window.location.href = "paiement.html"; // nom de la nouvelle page
+});
+</script>
   
 </body>
 </html>
