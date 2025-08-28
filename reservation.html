@@ -151,14 +151,28 @@
   <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Envoyer ma réservation</button>
 </form>
 
-
-  <!<!-- Bouton pour accéder à la page de paiement -->
+  <!-- Bouton pour accéder à la page de paiement -->
 <section class="max-w-3xl mx-auto text-center mt-8 mb-12">
   <button id="btnPaiement" type="button" 
           class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition font-semibold">
     💳 Payer sa retraite ou soutenir l'œuvre
   </button>
 </section>
+
+<script>
+document.getElementById('btnPaiement').addEventListener('click', () => {
+  const tarif = document.getElementById('tarif').value;
+  
+  if (!tarif) {
+    alert("Veuillez choisir un tarif avant de passer au paiement !");
+    return;
+  }
+
+  // Redirection vers paiement.html avec le tarif dans l'URL
+  window.location.href = `paiement.html?tarif=${tarif}`;
+});
+</script>
+
 
 <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
@@ -306,24 +320,6 @@ document.getElementById('form-reservation').addEventListener('submit', function 
 });
 </script>
 
-<script>
-// Sauvegarde le montant choisi et le type de retraite dans localStorage
-document.getElementById('btnPaiement').addEventListener('click', () => {
-  const typeRetraite = document.querySelector('select[name="Type de retraite"]').value;
-  const tarif = document.querySelector('select[name="Tarif"]').value;
-
-  if(!typeRetraite || !tarif){
-    alert("Veuillez sélectionner le type de retraite et le tarif avant de continuer.");
-    return;
-  }
-
-  localStorage.setItem('typeRetraite', typeRetraite);
-  localStorage.setItem('tarifRetraite', tarif);
-
-  // Redirige vers la page paiement
-  window.location.href = "paiement.html"; // nom de la nouvelle page
-});
-</script>
   
 </body>
 </html>
