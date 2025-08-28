@@ -3,81 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paiement Retraite</title>
+  <title>Paiement de retraite - Centre Bethesda</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50">
 
   <section class="max-w-3xl mx-auto py-16 px-6">
-    <h1 class="text-3xl font-bold text-blue-700 mb-6 text-center">💳 Payer sa retraite ou soutenir l'œuvre</h1>
-    
-    <!-- Affichage du montant choisi -->
-    <p class="text-center text-gray-700 mb-8" id="montantChoisi">
-      Montant sélectionné : <span class="font-semibold text-blue-600"></span>
-    </p>
+    <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">💳 Paiement de votre retraite</h2>
 
-    <!-- Moyens de paiement -->
-    <section class="mb-12">
-      <h2 class="text-xl font-semibold text-blue-600 mb-4 text-center">Moyens de paiement acceptés</h2>
-      <div class="flex justify-center gap-8">
-        
-        <!-- Mobile Money -->
-        <a href="tel:*123*1234#" target="_blank" class="flex flex-col items-center hover:scale-105 transition">
-          <img src="images/momo.png" alt="Mobile Money" class="h-12 mb-2">
-          <span class="text-gray-700 font-semibold text-sm">Mobile Money</span>
-        </a>
+    <!-- Montant choisi -->
+    <div class="mb-6 text-center">
+      <p class="text-lg">Montant choisi : <span id="montantChoisi" class="font-semibold">...</span></p>
+    </div>
+<!-- Moyens de paiement -->
+<section class="py-12 px-6 md:px-12">
+  <h3 class="text-2xl font-bold text-blue-700 mb-6 text-center">💳 Moyens de paiement</h3>
+  <div class="flex justify-center gap-6 flex-wrap">
 
-        <!-- Wave -->
-        <a href="https://wave.com/transfer?recipient=TON_NUMERO" target="_blank" class="flex flex-col items-center hover:scale-105 transition">
-          <img src="images/wave.png" alt="Wave" class="h-12 mb-2">
-          <span class="text-gray-700 font-semibold text-sm">Wave</span>
-        </a>
+    <!-- Mobile Money -->
+    <a href="tel:*150*50*1#" class="group relative w-40 h-40 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-4 hover:scale-105 hover:shadow-2xl transition">
+      <img src="images/mobilemoney.png" alt="Mobile Money" class="w-20 h-20 object-contain mb-3">
+      <span class="text-gray-700 font-semibold group-hover:text-green-600 transition">Mobile Money</span>
+      <span class="absolute top-2 right-2 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">USD</span>
+    </a>
 
-        <!-- PayPal -->
-        <a href="https://www.paypal.com/donate?business=TON_EMAIL_PAYPAL&currency_code=USD" target="_blank" class="flex flex-col items-center hover:scale-105 transition">
-          <img src="images/paypal.png" alt="PayPal" class="h-12 mb-2">
-          <span class="text-gray-700 font-semibold text-sm">PayPal</span>
-        </a>
+    <!-- Wave -->
+    <a href="https://wave.com/c/123456789" target="_blank" class="group relative w-40 h-40 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-4 hover:scale-105 hover:shadow-2xl transition">
+      <img src="images/wave.png" alt="Wave" class="w-20 h-20 object-contain mb-3">
+      <span class="text-gray-700 font-semibold group-hover:text-blue-500 transition">Wave</span>
+      <span class="absolute top-2 right-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">USD</span>
+    </a>
 
-      </div>
-    </section>
+    <!-- PayPal -->
+    <a href="https://www.paypal.com/paypalme/toncompte" target="_blank" class="group relative w-40 h-40 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-4 hover:scale-105 hover:shadow-2xl transition">
+      <img src="images/paypal.png" alt="PayPal" class="w-20 h-20 object-contain mb-3">
+      <span class="text-gray-700 font-semibold group-hover:text-blue-700 transition">PayPal</span>
+      <span class="absolute top-2 right-2 bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">USD</span>
+    </a>
 
-    <!-- Formulaire de confirmation de paiement -->
-    <form id="formPaiement" class="space-y-4 bg-white p-6 rounded shadow-md"
-          enctype="multipart/form-data">
+  </div>
+</section>
+
+    <!-- Formulaire paiement -->
+    <form id="formPaiement" enctype="multipart/form-data" class="bg-white p-6 rounded shadow space-y-4">
+
+      <input type="hidden" id="montantInput" name="Montant">
+
       <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
       <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
-      <input type="text" name="Montant" id="montantInput" readonly class="w-full p-3 border rounded bg-gray-100">
-      
-      <label class="block font-semibold text-gray-700">Joindre la capture du paiement</label>
-      <input type="file" name="Capture" accept="image/*" required class="w-full p-3 border rounded">
-      
-      <textarea name="Message" placeholder="Votre message ou intention de prière" rows="4" class="w-full p-3 border rounded"></textarea>
-      
-      <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 w-full font-semibold">
-        Envoyer ma confirmation
+
+      <label class="block font-semibold">Joindre votre capture de paiement :</label>
+      <input type="file" name="Capture" accept="image/*" required class="w-full p-2 border rounded">
+
+      <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 w-full">
+        Envoyer le paiement
       </button>
     </form>
 
-    <p id="confirmation" class="text-green-600 font-semibold mt-4 text-center hidden">
-      Merci ! Votre confirmation de paiement a été envoyée.
-    </p>
+    <div id="confirmation" class="hidden mt-4 p-4 bg-green-100 text-green-800 rounded text-center">
+      ✅ Paiement envoyé avec succès !
+    </div>
+    </div>
   </section>
 
   <script>
     // Récupérer le montant depuis l'URL
     const urlParams = new URLSearchParams(window.location.search);
     const tarif = urlParams.get('tarif') || 'Non défini';
-    document.querySelector('#montantChoisi span').textContent = tarif;
+    document.querySelector('#montantChoisi').textContent = tarif;
     document.querySelector('#montantInput').value = tarif;
 
-    // Gestion du formulaire avec Apps Script
+    // Gestion du formulaire
     const form = document.getElementById('formPaiement');
     form.addEventListener('submit', e => {
       e.preventDefault();
-
       const data = new FormData(form);
-      fetch('https://script.google.com/macros/s/AKfycbxxTsy4K9cUnHd6e0lOz5XBDP8utsl_rVtSap6yraLlJMR0kFpEaFdrRqpa2a1ht8m9zA/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbz_wnlODUVNKkwBWGvQl5Npt02GJlhZzLTOyyBvHYqUN_ZMaeI-GYRwoEdhSQUbVOgx9Q/exec', {
         method: 'POST',
         body: data
       })
@@ -89,6 +90,7 @@
       .catch(err => alert('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.'));
     });
   </script>
+
 
 </body>
 </html>
