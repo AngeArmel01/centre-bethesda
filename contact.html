@@ -248,20 +248,14 @@
     event.preventDefault();
     const form = event.target;
     const data = new FormData(form);
-
-    // On récupère l'élément message qui est DANS le formulaire
-    const messageEl = form.querySelector(".formMessage");
-
+    const messageEl = document.getElementById('formMessage');
     try {
       const res = await fetch("https://script.google.com/macros/s/AKfycbyd67y3ejduEIO4hDzOL1bm0mq5DrB-92fu7QoSFgIKuLLp5-UHabtVeFdD2DhzythQOw/exec", {
         method: "POST",
         body: data
       });
       const json = await res.json();
-
       messageEl.classList.remove("hidden");
-      messageEl.classList.remove("text-green-500", "text-red-500");
-
       if (json.result === "success") {
         messageEl.textContent = "✅ Abonnement réussi. Merci !";
         messageEl.classList.add("text-green-500");
