@@ -153,18 +153,29 @@
 
 
   <!-- Paiement / Don -->
-<div class="text-center mt-12 pt-6 border-t border-gray-300">
-    <h3 class="text-xl font-semibold text-blue-600 mb-4">💳 Soutenir ou régler sa retraite</h3>
-    <p class="mb-4 text-gray-700">Vous pouvez payer votre retraite ou faire un don librement pour soutenir notre mission.</p>
-    <form action="https://www.paypal.com/donate" method="post" target="_blank" class="inline-block">
-      <input type="hidden" name="business" value="votre-email-paypal@example.com" />
-      <input type="hidden" name="no_recurring" value="0" />
-      <input type="hidden" name="currency_code" value="EUR" />
-      <input type="submit" value="Faire un don ou payer en ligne"
-        class="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 cursor-pointer" />
-    </form>
-  </div>
-</section>
+<!-- Bouton "Payer sa retraite ou soutenir l'œuvre" -->
+<button id="btnPaiement" type="button" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 mt-6">
+  💳 Payer sa retraite ou soutenir l'œuvre
+</button>
+
+<script>
+// Sauvegarde le montant choisi et le type de retraite dans localStorage
+document.getElementById('btnPaiement').addEventListener('click', () => {
+  const typeRetraite = document.querySelector('select[name="Type de retraite"]').value;
+  const tarif = document.querySelector('select[name="Tarif"]').value;
+
+  if(!typeRetraite || !tarif){
+    alert("Veuillez sélectionner le type de retraite et le tarif avant de continuer.");
+    return;
+  }
+
+  localStorage.setItem('typeRetraite', typeRetraite);
+  localStorage.setItem('tarifRetraite', tarif);
+
+  // Redirige vers la page paiement
+  window.location.href = "paiement.html"; // nom de la nouvelle page
+});
+</script>
 
 <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
