@@ -3,23 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paiement de retraite - Centre Bethesda</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50">
-
-  <section class="max-w-3xl mx-auto py-16 px-6">
-    <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">💳 Paiement de votre retraite</h2>
-
-   <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paiement Retraite</title>
+  <title>Réservation - Centre Bethesda</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50">
+<body class="bg-blue-50 text-gray-800">
+
+<!-- HEADER NAVIGATION -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Logo + Titre -->
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow-lg">
+        <img src="images/logo.png" alt="Logo Centre Bethesda" class="w-full h-full object-cover">
+      </div>
+      <h1 class="text-xl sm:text-2xl font-extrabold text-blue-700 tracking-wide">
+        Centre Bethesda
+      </h1>
+    </div>
+
+ <!-- Bouton menu mobile -->
+    <button id="menu-toggle" class="sm:hidden text-blue-700 focus:outline-none text-2xl">
+      ☰
+    </button>
+    
+   <!-- Navigation (desktop) -->
+    <nav class="hidden sm:flex items-center space-x-6">
+      <div class="flex space-x-2">
+        <a href="/centre-bethesda/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+          <img src="https://flagcdn.com/fr.svg" alt="Français" class="w-5 h-4 mr-1"> FR
+        </a>
+        <a href="/centre-bethesda/en/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+          <img src="https://flagcdn.com/gb.svg" alt="Anglais" class="w-5 h-4 mr-1"> EN
+        </a>
+      </div>
+      <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Accueil</a>
+      <a href="mission.html" class="nav-link text-gray-600 hover:text-blue-600">Mission</a>
+      <a href="programmes.html" class="nav-link text-gray-600 hover:text-blue-600">Programmes</a>
+      <a href="infos-pratiques.html" class="nav-link text-gray-600 hover:text-blue-600">Infos</a>
+      <a href="temoignages.html" class="nav-link text-gray-600 hover:text-blue-600">Témoignages</a>
+      <a href="contact.html" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+      <a href="reservation.html" class="nav-link text-gray-600 hover:text-blue-600">Réservation</a>
+    </nav>
+  </div>
+
+  <!-- Menu mobile -->
+  <div id="mobile-menu" class="sm:hidden hidden px-4 pb-4 bg-white border-t border-gray-200">
+    <div class="flex space-x-4 mb-2">
+      <a href="/centre-bethesda/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+        <img src="https://flagcdn.com/fr.svg" alt="Français" class="w-5 h-4 mr-1"> FR
+      </a>
+      <a href="/centre-bethesda/en/index.html" class="flex items-center nav-lang text-gray-600 hover:text-blue-600 font-semibold">
+        <img src="https://flagcdn.com/gb.svg" alt="Anglais" class="w-5 h-4 mr-1"> EN
+      </a>
+    </div>
+    <div class="flex flex-col space-y-2 text-sm">
+      <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Accueil</a>
+      <a href="mission.html" class="nav-link text-gray-600 hover:text-blue-600">Mission</a>
+      <a href="programmes.html" class="nav-link text-gray-600 hover:text-blue-600">Programmes</a>
+      <a href="infos-pratiques.html" class="nav-link text-gray-600 hover:text-blue-600">Infos</a>
+      <a href="temoignages.html" class="nav-link text-gray-600 hover:text-blue-600">Témoignages</a>
+      <a href="contact.html" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+      <a href="reservation.html" class="nav-link text-gray-600 hover:text-blue-600">Réservation</a>
+    </div>
+  </div>
+</header>
 
 <!-- Montant choisi -->
 <div class="mb-6 text-center pt-6">
