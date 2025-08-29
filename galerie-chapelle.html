@@ -76,96 +76,193 @@
   </h2>
 </div>
 
-  <!-- Onglets -->
-  <div class="flex justify-center mb-8 border-b border-gray-300">
-    <button class="chapel-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-tab="chapel">Chapelle</button>
-    <button class="chapel-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="prayer">Lieux de Prière</button>
+ <!-- Onglets -->
+<div class="flex justify-center mb-8 border-b border-gray-300">
+  <button class="chapel-btn px-6 py-2 text-blue-700 border-b-2 border-blue-600 font-semibold" data-tab="chapel">Chapelle</button>
+  <button class="chapel-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="prayer">Lieux de Prière</button>
+  <button class="chapel-btn px-6 py-2 text-gray-600 hover:text-blue-600" data-tab="representants">Nos Représentants</button>
+</div>
+
+<!-- Contenus -->
+<div id="chapel-tabs">
+
+  <!-- Chapelle -->
+  <div class="chapel-content" id="chapel">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="images/chapelle1.jpg" data-lightbox="chapel" data-title="Chapelle 1">
+        <img src="images/chapelle1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chapelle 1">
+      </a>
+      <a href="images/chapelle2.jpg" data-lightbox="chapel" data-title="Chapelle 2">
+        <img src="images/chapelle2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chapelle 2">
+      </a>
+      <a href="images/chapelle3.jpg" data-lightbox="chapel" data-title="Chapelle 3">
+        <img src="images/chapelle3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chapelle 3">
+      </a>
+    </div>
   </div>
 
-  <!-- Contenus -->
-  <div id="chapel-tabs">
-
-    <!-- Chapelle -->
-    <div class="chapel-content" id="chapel">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="images/chapelle1.jpg" data-lightbox="chapel" data-title="Chapelle 1">
-          <img src="images/chapelle1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chapelle 1">
-        </a>
-        <a href="images/chapelle2.jpg" data-lightbox="chapel" data-title="Chapelle 2">
-          <img src="images/chapelle2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chapelle 2">
-        </a>
-        <a href="images/chapelle3.jpg" data-lightbox="chapel" data-title="Chapelle 3">
-          <img src="images/chapelle3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Chapelle 3">
-        </a>
-      </div>
+  <!-- Lieux de Prière -->
+  <div class="chapel-content hidden" id="prayer">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="images/priere1.jpg" data-lightbox="prayer" data-title="Lieu de prière 1">
+        <img src="images/priere1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Lieu de prière 1">
+      </a>
+      <a href="images/priere2.jpg" data-lightbox="prayer" data-title="Lieu de prière 2">
+        <img src="images/priere2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Lieu de prière 2">
+      </a>
+      <a href="images/priere3.jpg" data-lightbox="prayer" data-title="Lieu de prière 3">
+        <img src="images/priere3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Lieu de prière 3">
+      </a>
     </div>
-
-    <!-- Lieux de Prière -->
-    <div class="chapel-content hidden" id="prayer">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="images/priere1.jpg" data-lightbox="prayer" data-title="Lieu de prière 1">
-          <img src="images/priere1.jpg" class="rounded shadow w-full h-60 object-cover" alt="Lieu de prière 1">
-        </a>
-        <a href="images/priere2.jpg" data-lightbox="prayer" data-title="Lieu de prière 2">
-          <img src="images/priere2.jpg" class="rounded shadow w-full h-60 object-cover" alt="Lieu de prière 2">
-        </a>
-        <a href="images/priere3.jpg" data-lightbox="prayer" data-title="Lieu de prière 3">
-          <img src="images/priere3.jpg" class="rounded shadow w-full h-60 object-cover" alt="Lieu de prière 3">
-        </a>
-      </div>
-    </div>
-
   </div>
-</section>
+
+  <!-- Nos Représentants -->
+  <div class="chapel-content hidden" id="representants">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Province de Yamoussoukro -->
+      <div class="text-center">
+        <a href="images/yamoussoukro.jpg" data-lightbox="representants" data-title="Province de Yamoussoukro">
+          <img src="images/yamoussoukro.jpg" class="rounded shadow w-full h-60 object-cover" alt="Province de Yamoussoukro">
+        </a>
+        <p class="mt-2 font-semibold text-gray-700">Province de Yamoussoukro</p>
+      </div>
+
+      <!-- Province de Gagnoa -->
+      <div class="text-center">
+        <a href="images/gagnoa.jpg" data-lightbox="representants" data-title="Province de Gagnoa">
+          <img src="images/gagnoa.jpg" class="rounded shadow w-full h-60 object-cover" alt="Province de Gagnoa">
+        </a>
+        <p class="mt-2 font-semibold text-gray-700">Province de Gagnoa</p>
+      </div>
+
+      <!-- Province de Agboville -->
+      <div class="text-center">
+        <a href="images/agboville.jpg" data-lightbox="representants" data-title="Province de Agboville">
+          <img src="images/agboville.jpg" class="rounded shadow w-full h-60 object-cover" alt="Province de Agboville">
+        </a>
+        <p class="mt-2 font-semibold text-gray-700">Province de Agboville</p>
+      </div>
+
+      <!-- Province de San Pedro -->
+      <div class="text-center">
+        <a href="images/sanpedro.jpg" data-lightbox="representants" data-title="Province de San Pedro">
+          <img src="images/sanpedro.jpg" class="rounded shadow w-full h-60 object-cover" alt="Province de San Pedro">
+        </a>
+        <p class="mt-2 font-semibold text-gray-700">Province de San Pedro</p>
+      </div>
+
+      <!-- Province de Kocoumbo -->
+      <div class="text-center">
+        <a href="images/kocoumbo.jpg" data-lightbox="representants" data-title="Province de Kocoumbo">
+          <img src="images/kocoumbo.jpg" class="rounded shadow w-full h-60 object-cover" alt="Province de Kocoumbo">
+        </a>
+        <p class="mt-2 font-semibold text-gray-700">Province de Kocoumbo</p>
+      </div>
+
+      <!-- Province de Yopougon -->
+      <div class="text-center">
+        <a href="images/yopougon.jpg" data-lightbox="representants" data-title="Province de Yopougon">
+          <img src="images/yopougon.jpg" class="rounded shadow w-full h-60 object-cover" alt="Province de Yopougon">
+        </a>
+        <p class="mt-2 font-semibold text-gray-700">Province de Yopougon</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-<!-- Script pour gérer les onglets -->
 <script>
+  // sélection des boutons et contenus
   const chapelBtns = document.querySelectorAll('.chapel-btn');
   const chapelContents = document.querySelectorAll('.chapel-content');
-  let activeChapel = document.querySelector('.chapel-content:not(.hidden)');
 
+  // trouve le contenu actif au chargement (celui qui n'a pas .hidden), ou le premier
+  let activeChapel = document.querySelector('.chapel-content:not(.hidden)') || chapelContents[0];
+
+  // helper pour mettre à jour classes bouton actif/inactif
+  function setActiveButton(btn) {
+    chapelBtns.forEach(b => {
+      b.classList.remove('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+      b.classList.add('text-gray-600');
+      b.setAttribute('aria-selected', 'false');
+    });
+    if (btn) {
+      btn.classList.add('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
+      btn.classList.remove('text-gray-600');
+      btn.setAttribute('aria-selected', 'true');
+    }
+  }
+
+  // activation d'un onglet par son nom (id)
+  function activateTab(tabId) {
+    const newContent = document.getElementById(tabId);
+    if (!newContent || newContent === activeChapel) return;
+
+    // trouver et activer le bouton correspondant
+    const newBtn = Array.from(chapelBtns).find(b => b.dataset.tab === tabId);
+    setActiveButton(newBtn);
+
+    // animation : fade out actif -> hide -> show nouveau
+    if (activeChapel) {
+      activeChapel.classList.add('fade-out');
+      setTimeout(() => {
+        activeChapel.classList.add('hidden');
+        activeChapel.classList.remove('fade-out');
+
+        // afficher le nouveau
+        newContent.classList.remove('hidden');
+        // petit timeout pour forcer transition si besoin
+        newContent.classList.add('fade-out');
+        setTimeout(() => newContent.classList.remove('fade-out'), 10);
+
+        activeChapel = newContent;
+      }, 300); // correspond à la durée CSS de transition
+    } else {
+      newContent.classList.remove('hidden');
+      activeChapel = newContent;
+    }
+  }
+
+  // initialisation visuelle au chargement
+  (function initTabs() {
+    // attribuer aria-controls/role (optionnel mais utile)
+    chapelBtns.forEach(b => {
+      b.setAttribute('role', 'tab');
+      const tab = b.dataset.tab;
+      if (tab) b.setAttribute('aria-controls', tab);
+    });
+    chapelContents.forEach(c => c.setAttribute('role', 'tabpanel'));
+
+    // définir bouton actif en fonction du contenu visible
+    const initialId = activeChapel ? activeChapel.id : (chapelBtns[0]?.dataset.tab || null);
+    const initialBtn = Array.from(chapelBtns).find(b => b.dataset.tab === initialId) || chapelBtns[0];
+    setActiveButton(initialBtn);
+
+    // si aucun contenu visible, afficher le premier
+    if (!activeChapel && chapelContents[0]) {
+      chapelContents[0].classList.remove('hidden');
+      activeChapel = chapelContents[0];
+    }
+  })();
+
+  // écouteurs sur les boutons
   chapelBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const tab = btn.dataset.tab;
-      const newContent = document.getElementById(tab);
+      activateTab(tab);
+    });
 
-      // Styles onglets actifs
-      chapelBtns.forEach(b => {
-        b.classList.remove('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
-        b.classList.add('text-gray-600');
-      });
-      btn.classList.add('text-blue-700', 'border-b-2', 'border-blue-600', 'font-semibold');
-      btn.classList.remove('text-gray-600');
-
-      if (newContent !== activeChapel) {
-        activeChapel.classList.add('fade-out');
-        setTimeout(() => {
-          activeChapel.classList.add('hidden');
-          activeChapel.classList.remove('fade-out');
-
-          newContent.classList.remove('hidden');
-          newContent.classList.add('fade-out');
-          setTimeout(() => {
-            newContent.classList.remove('fade-out');
-          }, 10);
-
-          activeChapel = newContent;
-        }, 300);
+    // support clavier (Enter/Space)
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const tab = btn.dataset.tab;
+        activateTab(tab);
       }
     });
   });
 </script>
 
-<style>
-  .chapel-content {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-  }
-  .chapel-content.fade-out {
-    opacity: 0;
-  }
-</style>
 
 <!-- FOOTER COMPLET CENTRE BETHESDA -->
 <footer class="bg-gray-900 text-white px-6 pt-8 pb-3 mt-12">
