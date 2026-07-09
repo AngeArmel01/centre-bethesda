@@ -88,7 +88,7 @@
     </iframe>
   </div>
 
-  <!-- Formulaire -->
+<!-- Formulaire -->
   <form id="form-reservation" class="space-y-4 text-left">
     <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
     <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
@@ -109,20 +109,42 @@
       <option>Autre</option>
     </select>
 
+    <!-- TYPE DE RETRAITE (liste complète) -->
     <select name="Type de retraite" id="type-retraite" required class="w-full p-3 border rounded">
       <option value="">-- Sélectionnez une retraite --</option>
       <option>Retraite de Carême</option>
       <option>Retraite de Guérison intérieure</option>
       <option>Retraite de Discernement vocationnel</option>
+      <option>Retraite de mariage</option>
+      <option>Retraite de Pentecôte</option>
+      <option>Retraite d'Ascension</option>
+      <option>Retraite de libération et de délivrance</option>
+      <option>Retraite ouverte</option>
+      <option>Pèlerinage Jeunes</option>
       <option>Autre retraite</option>
     </select>
 
-    <select name="Tarif" id="tarif" required class="w-full p-3 border rounded">
-      <option value="">-- Choisissez un tarif --</option>
-      <option value="20000">20.000 FCFA</option>
-      <option value="25000">25.000 FCFA</option>
-      <option value="35000">35.000 FCFA</option>
+    <!-- NOMBRE DE NUITÉES (nouveau champ) -->
+    <select name="Nombre de nuitées" id="nuitees" required class="w-full p-3 border rounded">
+      <option value="">-- Nombre de nuitées --</option>
+      <option value="0">Sans hébergement (journée seule)</option>
+      <option value="1">1 nuitée</option>
+      <option value="2">2 nuitées</option>
+      <option value="3">3 nuitées</option>
+      <option value="4">4 nuitées</option>
+      <option value="5">5 nuitées</option>
+      <option value="7">7 nuitées</option>
     </select>
+
+    <!-- TARIF : calculé automatiquement, affiché en lecture seule -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Tarif correspondant</label>
+      <div id="tarif-affichage" class="w-full p-3 border rounded bg-gray-100 text-gray-700 font-semibold">
+        Sélectionnez le type de retraite et le nombre de nuitées
+      </div>
+      <!-- Champ réellement envoyé à Formspree -->
+      <input type="hidden" name="Tarif" id="tarif-hidden" value="">
+    </div>
 
     <select name="Moyen de transport" id="transport" required class="w-full p-3 border rounded">
       <option value="">-- Moyen de transport --</option>
@@ -151,13 +173,98 @@
   </div>
 </section>
 
-<!-- SCRIPT -->
+<!-- SCRIPT : MATRICE DE PRIX (type de retraite × nuitées) -->
+<script>
+/*
+  ⚠️ À REMPLACER PAR LE VRAI CATALOGUE DE PRIX DÈS QUE DISPONIBLE ⚠️
+  Structure : PRICES["Nom exact de la retraite"][nombre_de_nuitées] = prix en FCFA
+  Si une combinaison n'existe pas dans la matrice, le formulaire affichera
+  "Prix sur demande" au lieu de planter.
+*/
+const PRICES = {
+  "Retraite de Carême": {
+    0: 10000, 1: 20000, 2: 30000, 3: 40000
+  },
+  "Retraite de Guérison intérieure": {
+    0: 10000, 1: 20000, 2: 30000, 3: 40000
+  },
+  "Retraite de Discernement vocationnel": {
+    0: 10000, 1: 20000, 2: 30000, 3: 40000
+  },
+  "Retraite de mariage": {
+    1: 25000, 2: 40000
+  },
+  "Retraite de Pentecôte": {
+    1: 25000, 2: 35000, 3: 45000
+  },
+  "Retraite d'Ascension": {
+    1: 25000, 2: 35000
+  },
+  "Retraite de libération et de délivrance": {
+    0: 15000, 1: 25000, 2: 35000
+  },
+  "Retraite ouverte": {
+    0: 10000, 1: 20000, 2: 30000
+  },
+  "Pèlerinage Jeunes": {
+    0: 10000, 1: 20000, 2: 30000
+  },
+  "Autre retraite": {
+    // volontairement vide : toujours "Prix sur demande"
+  }
+};
+
+function formatFCFA(n) {
+  return n.toLocaleString('fr-FR') + " FCFA";
+}
+
+function updateTarif() {
+  const type = document.getElementById('type-retraite').value;
+  const nuiteesStr = document.getElementById('nuitees').value;
+  const affichage = document.getElementById('tarif-affichage');
+  const hidden = document.getElementById('tarif-hidden');
+
+  if (!type || nuiteesStr === "") {
+    affichage.textContent = "Sélectionnez le type de retraite et le nombre de nuitées";
+    affichage.classList.remove('text-blue-700');
+    affichage.classList.add('text-gray-700');
+    hidden.value = "";
+    return;
+  }
+
+  const nuitees = parseInt(nuiteesStr, 10);
+  const table = PRICES[type];
+  const prix = table ? table[nuitees] : undefined;
+
+  if (prix === undefined) {
+    affichage.textContent = "Prix sur demande — contactez-nous pour cette combinaison retraite / durée";
+    affichage.classList.remove('text-blue-700');
+    affichage.classList.add('text-gray-700');
+    hidden.value = "Sur demande";
+  } else {
+    affichage.textContent = formatFCFA(prix);
+    affichage.classList.remove('text-gray-700');
+    affichage.classList.add('text-blue-700');
+    hidden.value = prix;
+  }
+}
+
+document.getElementById('type-retraite').addEventListener('change', updateTarif);
+document.getElementById('nuitees').addEventListener('change', updateTarif);
+</script>
+
+<!-- SCRIPT PAIEMENT (mis à jour pour lire le tarif calculé) -->
 <script>
 document.getElementById('btnPaiement').addEventListener('click', () => {
-  const tarif = document.getElementById('tarif').value;
-  
+  const tarif = document.getElementById('tarif-hidden').value;
+
   if (!tarif) {
-    alert("Veuillez choisir un tarif avant de passer au paiement !");
+    alert("Veuillez d'abord choisir le type de retraite et le nombre de nuitées !");
+    return;
+  }
+
+  if (tarif === "Sur demande") {
+    alert("Le tarif de cette retraite est sur demande. Merci de nous contacter directement avant de payer.");
     return;
   }
 
