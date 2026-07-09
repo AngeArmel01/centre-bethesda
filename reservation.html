@@ -127,13 +127,13 @@
     <!-- NOMBRE DE NUITÉES (nouveau champ) -->
     <select name="Nombre de nuitées" id="nuitees" required class="w-full p-3 border rounded">
       <option value="">-- Nombre de nuitées --</option>
-      <option value="0">Sans hébergement (journée seule)</option>
+      <option value="0">Sans hébergement</option>
       <option value="1">1 nuitée</option>
       <option value="2">2 nuitées</option>
       <option value="3">3 nuitées</option>
       <option value="4">4 nuitées</option>
       <option value="5">5 nuitées</option>
-      <option value="7">7 nuitées</option>
+      <option value="6">6 nuitées</option>
     </select>
 
     <!-- TARIF : calculé automatiquement, affiché en lecture seule -->
@@ -183,31 +183,31 @@
 */
 const PRICES = {
   "Retraite de Carême": {
-    0: 10000, 1: 20000, 2: 30000, 3: 40000
+    0: 5000, 1: 10000, 2: 20000, 3: 25000
   },
   "Retraite de Guérison intérieure": {
-    0: 10000, 1: 20000, 2: 30000, 3: 40000
+    0: 5000, 1: 10000, 2: 20000, 3: 25000
   },
   "Retraite de Discernement vocationnel": {
     0: 10000, 1: 20000, 2: 30000, 3: 40000
   },
   "Retraite de mariage": {
-    1: 25000, 2: 40000
+    0: 5000, 1: 10000, 2: 20000, 3: 25000
   },
   "Retraite de Pentecôte": {
-    1: 25000, 2: 35000, 3: 45000
+    0: 5000, 1: 10000, 2: 20000, 3: 25000
   },
   "Retraite d'Ascension": {
-    1: 25000, 2: 35000
+    0: 5000, 1: 10000, 2: 20000, 3: 25000
   },
   "Retraite de libération et de délivrance": {
-    0: 15000, 1: 25000, 2: 35000
+    0: 5000, 1: 10000, 2: 20000, 3: 25000
   },
   "Retraite ouverte": {
-    0: 10000, 1: 20000, 2: 30000
+    0: 5000, 1: 10000, 2: 20000, 3: 25000
   },
   "Pèlerinage Jeunes": {
-    0: 10000, 1: 20000, 2: 30000
+    0: 1000
   },
   "Autre retraite": {
     // volontairement vide : toujours "Prix sur demande"
@@ -237,7 +237,7 @@ function updateTarif() {
   const prix = table ? table[nuitees] : undefined;
 
   if (prix === undefined) {
-    affichage.textContent = "Prix sur demande — contactez-nous pour cette combinaison retraite / durée";
+    affichage.textContent = "Prix sur demande (contactez-nous pour cette combinaison retraite / durée)";
     affichage.classList.remove('text-blue-700');
     affichage.classList.add('text-gray-700');
     hidden.value = "Sur demande";
