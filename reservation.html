@@ -90,139 +90,138 @@
 
 <!-- Formulaire -->
 <form id="form-reservation" class="max-w-4xl mx-auto space-y-4 text-left">
-<input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
-<input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
+  <input type="text" name="Nom" placeholder="Votre nom complet" required class="w-full p-3 border rounded">
+  <input type="email" name="Email" placeholder="Votre adresse email" required class="w-full p-3 border rounded">
 
-<select name="Genre" id="genre" required class="w-full p-3 border rounded">
-<option value="">-- Sélectionnez votre genre --</option>
-<option>Homme</option>
-<option>Femme</option>
-</select>
+  <select name="Genre" id="genre" required class="w-full p-3 border rounded">
+    <option value="">-- Sélectionnez votre genre --</option>
+    <option>Homme</option>
+    <option>Femme</option>
+  </select>
 
-<select name="Statut" id="statut" required class="w-full p-3 border rounded">
-<option value="">-- Sélectionnez votre statut --</option>
-<option>Modérateur / Modératrice</option>
-<option>Serviteur / Servante</option>
-<option>Berger / Bergère</option>
-<option>Membre de la PPE</option>
-<option>Aspirant / Aspirante à la PPE</option>
-<option>Invité(e)</option>
-<option>Autre</option>
-</select>
+  <select name="Statut" id="statut" required class="w-full p-3 border rounded">
+    <option value="">-- Sélectionnez votre statut --</option>
+    <option>Modérateur / Modératrice</option>
+    <option>Serviteur / Servante</option>
+    <option>Berger / Bergère</option>
+    <option>Membre de la PPE</option>
+    <option>Aspirant / Aspirante à la PPE</option>
+    <option>Invité(e)</option>
+    <option>Autre</option>
+  </select>
 
-<!-- TYPE DE RETRAITE -->
-<select name="Type de retraite" id="type-retraite" required class="w-full p-3 border rounded">
-<option value="">-- Sélectionnez une retraite --</option>
-<option>Retraite de discernement au mariage</option>
-<option>Retraite de couple</option>
-<option>Retraite de Pentecôte</option>
-<option>Retraite de la percée surnaturelle</option>
-<option>Retraite de repositionnement</option>
-<option>Retraite de la transfiguration</option>
-<option>Retraite de l’accomplissement</option>
-<option>Retraite de l'Assomption</option>
-<option>Retraite de libération et de délivrance</option>
-<option>Pèlerinage Jeunes</option>
-<option>Retraite d'exercices spirituels</option>
-<option>Autre retraite</option>
-</select>
-<p id="retraite-info" class="text-xs text-gray-500 -mt-2 ml-1"></p>
+  <!-- TYPE DE RETRAITE -->
+  <select name="Type de retraite" id="type-retraite" required class="w-full p-3 border rounded">
+    <option value="">-- Sélectionnez une retraite --</option>
+    <option>Retraite de discernement au mariage</option>
+    <option>Retraite de couple</option>
+    <option>Retraite de Pentecôte</option>
+    <option>Retraite de la percée surnaturelle</option>
+    <option>Retraite de repositionnement</option>
+    <option>Retraite de la transfiguration</option>
+    <option>Retraite de l’accomplissement</option>
+    <option>Retraite de l'Assomption</option>
+    <option>Retraite de libération et de délivrance</option>
+    <option>Pèlerinage Jeunes</option>
+    <option>Retraite d'exercices spirituels</option>
+    <option>Autre retraite</option>
+  </select>
+  <p id="retraite-info" class="text-xs text-gray-500 -mt-2 ml-1"></p>
 
-<!-- TYPE D'HÉBERGEMENT / ESPACE -->
-<select name="Type d'hébergement" id="hebergement" required class="w-full p-3 border rounded">
-<option value="">-- Choisissez votre formule --</option>
-<option value="Chambre individuelle">Chambre individuelle</option>
-<option value="Chambre partagée">Chambre partagée</option>
-<option value="Location d'espace">Location d'espace (sans hébergement)</option>
-<option value="Location de salle">Location de salle</option>
-</select>
+  <!-- TYPE D'HÉBERGEMENT / ESPACE -->
+  <select name="Type d'hébergement" id="hebergement" required class="w-full p-3 border rounded">
+    <option value="">-- Choisissez votre formule --</option>
+    <option value="Chambre individuelle">Chambre individuelle</option>
+    <option value="Chambre partagée">Chambre partagée</option>
+    <option value="Location d'espace">Location d'espace (sans hébergement)</option>
+    <option value="Location de salle">Location de salle</option>
+  </select>
 
-<!-- AVEC NOURRITURE (masqué automatiquement pour Location de salle) -->
-<div id="nourriture-wrapper">
-<select name="Avec nourriture" id="nourriture" required class="w-full p-3 border rounded">
-<option value="">-- Avec ou sans nourriture ? --</option>
-<option value="Non">Sans nourriture</option>
-<option value="Oui">Avec nourriture</option>
-</select>
-</div>
+  <!-- AVEC NOURRITURE (masqué automatiquement pour Location de salle) -->
+  <div id="nourriture-wrapper">
+    <select name="Avec nourriture" id="nourriture" required class="w-full p-3 border rounded">
+      <option value="">-- Avec ou sans nourriture ? --</option>
+      <option value="Non">Sans nourriture</option>
+      <option value="Oui">Avec nourriture</option>
+    </select>
+  </div>
 
-<!-- NOMBRE DE JOURS -->
-<div>
-<label for="jours" class="block text-sm font-medium text-gray-700 mb-1">Nombre de jours</label>
-<input type="number" name="Nombre de jours" id="jours" min="1" value="1" required class="w-full p-3 border rounded">
-</div>
+  <!-- NOMBRE DE JOURS -->
+  <div>
+    <label for="jours" class="block text-sm font-medium text-gray-700 mb-1">Nombre de jours</label>
+    <input type="number" name="Nombre de jours" id="jours" min="1" value="1" required class="w-full p-3 border rounded">
+  </div>
 
-<!-- TARIF : calculé automatiquement -->
-<div>
-<label class="block text-sm font-medium text-gray-700 mb-1">Tarif total correspondant</label>
-<div id="tarif-affichage" class="w-full p-3 border rounded bg-gray-100 text-gray-700 font-semibold">
-Complétez les champs ci-dessus pour voir le tarif
-</div>
-<input type="hidden" name="Tarif" id="tarif-hidden" value="">
-</div>
+  <!-- TARIF : calculé automatiquement -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">Tarif total correspondant</label>
+    <div id="tarif-affichage" class="w-full p-3 border rounded bg-gray-100 text-gray-700 font-semibold">
+      Complétez les champs ci-dessus pour voir le tarif
+    </div>
+    <input type="hidden" name="Tarif" id="tarif-hidden" value="">
+  </div>
 
-<select name="Moyen de transport" id="transport" required class="w-full p-3 border rounded">
-<option value="">-- Moyen de transport --</option>
-<option>Convoi PPE</option>
-<option>Voiture personnelle</option>
-<option>Transport en commun</option>
-<option>Autre</option>
-</select>
+  <select name="Moyen de transport" id="transport" required class="w-full p-3 border rounded">
+    <option value="">-- Moyen de transport --</option>
+    <option>Convoi PPE</option>
+    <option>Voiture personnelle</option>
+    <option>Transport en commun</option>
+    <option>Autre</option>
+  </select>
 
-<label for="datePaiement" class="block text-sm font-medium text-gray-700 mb-1">
-Date de paiement souhaitée
-</label>
-<input type="date" id="datePaiement" name="Date de paiement" required class="w-full p-3 border rounded">
+  <label for="datePaiement" class="block text-sm font-medium text-gray-700 mb-1">
+    Date de paiement souhaitée
+  </label>
+  <input type="date" id="datePaiement" name="Date de paiement" required class="w-full p-3 border rounded">
 
-<textarea name="Message" placeholder="Votre message ou intention de prière" rows="4" class="w-full p-3 border rounded"></textarea>
+  <textarea name="Message" placeholder="Votre message ou intention de prière" rows="4" class="w-full p-3 border rounded"></textarea>
 
-<button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Envoyer ma réservation</button>
+  <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Envoyer ma réservation</button>
 </form>
 
 <!-- Bouton pour accéder à la page de paiement -->
 <div class="text-center mt-8 mb-4">
-<button id="btnPaiement" type="button"
-class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition font-semibold">
-💳 Payer sa retraite ou soutenir l'œuvre
-</button>
+  <button id="btnPaiement" type="button"
+    class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition font-semibold">
+    💳 Payer sa retraite ou soutenir l'œuvre
+  </button>
 </div>
-</section>
 
 <!-- SCRIPT : INFOS RETRAITES + CALCUL DU TARIF -->
 <script>
 // Descriptions affichées sous le select "Type de retraite"
 const RETREAT_INFO = {
-"Retraite de discernement au mariage": "Une fois par trimestre, sur un week-end entier",
-"Retraite de couple": "Une fois par trimestre, sur un week-end entier"
-"Retraite de Pentecôte": "La semaine précédant la Pentecôte",
-"Retraite de la percée surnaturelle": "Premier trimestre, sur un week-end entier"
-"Retraite de repositionnement": "Second trimestre, sur un week-end entier"
-"Retraite de la transfiguration": "Troisième trimestre, sur un week-end entier"
-"Retraite de l’accomplissement": "Quatrième trimestre, sur un week-end entier"
-"Retraite de l'Assomption": "Les 3 jours précédant l'Assomption",
-"Retraite de libération et de délivrance": "Une fois par bimestre, et sur demande",
-"Pèlerinage Jeunes": "Selon calendrier annuel",
-"Retraite d'exercices spirituels": "Tout au long de l'année",
-"Autre retraite": ""
+  "Retraite de discernement au mariage": "Une fois par trimestre, sur un week-end entier",
+  "Retraite de couple": "Une fois par trimestre, sur un week-end entier",
+  "Retraite de Pentecôte": "La semaine précédant la Pentecôte",
+  "Retraite de la percée surnaturelle": "Premier trimestre, sur un week-end entier",
+  "Retraite de repositionnement": "Second trimestre, sur un week-end entier",
+  "Retraite de la transfiguration": "Troisième trimestre, sur un week-end entier",
+  "Retraite de l’accomplissement": "Quatrième trimestre, sur un week-end entier",
+  "Retraite de l'Assomption": "Les 3 jours précédant l'Assomption",
+  "Retraite de libération et de délivrance": "Une fois par bimestre, et sur demande",
+  "Pèlerinage Jeunes": "Selon calendrier annuel",
+  "Retraite d'exercices spirituels": "Tout au long de l'année",
+  "Autre retraite": ""
 };
 
 // Tarifs journaliers (FCFA) par type d'hébergement
 const TARIFS_JOUR = {
-"Chambre individuelle": { "Non": 15000, "Oui": 20000 },
-"Chambre partagée": { "Non": 3000, "Oui": 8000 },
-"Location d'espace": { "Non": 1000, "Oui": 2500 },
-"Location de salle": { "flat": 10000 } // pas de distinction nourriture
+  "Chambre individuelle": { "Non": 15000, "Oui": 20000 },
+  "Chambre partagée": { "Non": 3000, "Oui": 8000 },
+  "Location d'espace": { "Non": 1000, "Oui": 2500 },
+  "Location de salle": { "flat": 10000 } // pas de distinction nourriture
 };
 
 function formatFCFA(n) {
-return n.toLocaleString('fr-FR') + " FCFA";
+  return n.toLocaleString('fr-FR') + " FCFA";
 }
 
 // Affiche la fréquence de la retraite sélectionnée
 document.getElementById('type-retraite').addEventListener('change', function () {
-const info = document.getElementById('retraite-info');
-const desc = RETREAT_INFO[this.value] || "";
-info.textContent = desc;
+  const info = document.getElementById('retraite-info');
+  const desc = RETREAT_INFO[this.value] || "";
+  info.textContent = desc;
 });
 
 // Gère l'affichage du champ "Avec nourriture" selon l'hébergement choisi
@@ -231,63 +230,63 @@ const nourritureWrapper = document.getElementById('nourriture-wrapper');
 const nourritureSelect = document.getElementById('nourriture');
 
 hebergementSelect.addEventListener('change', function () {
-if (this.value === "Location de salle") {
-nourritureWrapper.classList.add('hidden');
-nourritureSelect.required = false;
-nourritureSelect.value = "";
-} else {
-nourritureWrapper.classList.remove('hidden');
-nourritureSelect.required = true;
-}
-updateTarif();
+  if (this.value === "Location de salle") {
+    nourritureWrapper.classList.add('hidden');
+    nourritureSelect.required = false;
+    nourritureSelect.value = "";
+  } else {
+    nourritureWrapper.classList.remove('hidden');
+    nourritureSelect.required = true;
+  }
+  updateTarif();
 });
 
 nourritureSelect.addEventListener('change', updateTarif);
 document.getElementById('jours').addEventListener('input', updateTarif);
 
 function updateTarif() {
-const hebergement = hebergementSelect.value;
-const nourriture = nourritureSelect.value;
-const jours = parseInt(document.getElementById('jours').value, 10) || 0;
-const affichage = document.getElementById('tarif-affichage');
-const hidden = document.getElementById('tarif-hidden');
+  const hebergement = hebergementSelect.value;
+  const nourriture = nourritureSelect.value;
+  const jours = parseInt(document.getElementById('jours').value, 10) || 0;
+  const affichage = document.getElementById('tarif-affichage');
+  const hidden = document.getElementById('tarif-hidden');
 
-if (!hebergement || jours <= 0) {
-affichage.textContent = "Complétez les champs ci-dessus pour voir le tarif";
-hidden.value = "";
-return;
-}
+  if (!hebergement || jours <= 0) {
+    affichage.textContent = "Complétez les champs ci-dessus pour voir le tarif";
+    hidden.value = "";
+    return;
+  }
 
-let tarifJour;
+  let tarifJour;
 
-if (hebergement === "Location de salle") {
-tarifJour = TARIFS_JOUR["Location de salle"]["flat"];
-} else {
-if (!nourriture) {
-affichage.textContent = "Précisez si vous souhaitez la nourriture";
-hidden.value = "";
-return;
-}
-tarifJour = TARIFS_JOUR[hebergement][nourriture];
-}
+  if (hebergement === "Location de salle") {
+    tarifJour = TARIFS_JOUR["Location de salle"]["flat"];
+  } else {
+    if (!nourriture) {
+      affichage.textContent = "Précisez si vous souhaitez la nourriture";
+      hidden.value = "";
+      return;
+    }
+    tarifJour = TARIFS_JOUR[hebergement][nourriture];
+  }
 
-const total = tarifJour * jours;
-affichage.textContent = ${formatFCFA(tarifJour)} / jour × ${jours} jour(s) = ${formatFCFA(total)}`;
-hidden.value = total;
+  const total = tarifJour * jours;
+  affichage.textContent = `${formatFCFA(tarifJour)} / jour × ${jours} jour(s) = ${formatFCFA(total)}`;
+  hidden.value = total;
 }
 </script>
 
 <!-- SCRIPT PAIEMENT -->
 <script>
 document.getElementById('btnPaiement').addEventListener('click', () => {
-const tarif = document.getElementById('tarif-hidden').value;
+  const tarif = document.getElementById('tarif-hidden').value;
 
-if (!tarif) {
-alert("Veuillez d'abord compléter la formule d'hébergement et le nombre de jours !");
-return;
-}
+  if (!tarif) {
+    alert("Veuillez d'abord compléter la formule d'hébergement et le nombre de jours !");
+    return;
+  }
 
-window.location.href = paiement.html?tarif=${tarif}`;
+  window.location.href = `paiement.html?tarif=${tarif}`;
 });
 </script>
 
