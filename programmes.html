@@ -86,10 +86,12 @@
     <!-- Filtres par thème -->
     <div class="flex flex-wrap justify-center gap-2">
       <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="all">Tous</button>
-      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="careme">Carême</button>
-      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="avent">Avent</button>
-      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="guerison">Guérison</button>
-      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="discernement">Discernement</button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="couple">Couple</button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="fetes">Fêtes liturgiques</button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="annuel">Cycle annuel</button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="guerison">Guérison & délivrance</button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="jeunes">Jeunes</button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-blue-300 text-blue-700 hover:bg-blue-100 transition" data-theme="autre">Autre</button>
     </div>
 
     <!-- Barre de recherche -->
@@ -103,45 +105,171 @@
     <!-- Programmes -->
     <div id="programmes-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- Programme 1 -->
-      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="careme">
-        <img src="images/careme.jpg" alt="Carême" class="h-40 w-full object-cover">
+      <!-- 1. Discernement au mariage -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="couple">
+        <img src="images/discernement-mariage.jpg" alt="Discernement au mariage" class="h-40 w-full object-cover">
         <div class="p-5">
-          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de Carême</h3>
-          <p class="text-sm mb-1"><strong>Dates :</strong> 15–20 mars</p>
-          <p class="text-sm mb-1"><strong>Durée :</strong> 6 jours</p>
-          <p class="text-sm mb-1"><strong>Public :</strong> Adultes</p>
-          <p class="text-sm mb-1"><strong>Objectif :</strong> Renouveler sa foi, recevoir le pardon</p>
-          <p class="text-sm mb-1"><strong>Activités :</strong> Messe, adoration, confessions</p>
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de discernement au mariage</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Une fois par trimestre, sur un week-end entier</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Week-end (2 jours)</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Fiancés / couples en projet de mariage</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Discerner l'appel au mariage dans la prière</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Enseignements, échanges en couple, prière, accompagnement</p>
           <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
         </div>
       </div>
 
-      <!-- Programme 2 -->
-      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="guerison">
-        <img src="images/guerison.jpg" alt="Guérison intérieure" class="h-40 w-full object-cover">
+      <!-- 2. Retraite de couple -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="couple">
+        <img src="images/couple.jpg" alt="Retraite de couple" class="h-40 w-full object-cover">
         <div class="p-5">
-          <h3 class="text-lg font-bold text-blue-600 mb-1">Guérison intérieure</h3>
-          <p class="text-sm mb-1"><strong>Dates :</strong> 10–12 avril</p>
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de couple</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Une fois par trimestre, sur un week-end entier</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Week-end (2 jours)</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Couples mariés</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Raviver l'union et la communion spirituelle du couple</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Enseignements, temps en couple, louange, prière</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
+        </div>
+      </div>
+
+      <!-- 3. Retraite de Pentecôte -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="fetes">
+        <img src="images/pentecote.jpg" alt="Retraite de Pentecôte" class="h-40 w-full object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de Pentecôte</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> La semaine précédant la Pentecôte</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> 1 semaine</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Tous</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Accueillir une effusion nouvelle de l'Esprit Saint</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Louange, enseignements, prière d'effusion</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
+        </div>
+      </div>
+
+      <!-- 4. Percée surnaturelle -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="annuel">
+        <img src="images/percee-surnaturelle.jpg" alt="Percée surnaturelle" class="h-40 w-full object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de la percée surnaturelle</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Premier trimestre, sur un week-end entier</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Week-end (2 jours)</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Adultes</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Ouvrir l'année à une percée spirituelle</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Jeûne, louange, prière de combat</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
+        </div>
+      </div>
+
+      <!-- 5. Repositionnement -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="annuel">
+        <img src="images/repositionnement.jpg" alt="Retraite de repositionnement" class="h-40 w-full object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de repositionnement</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Second trimestre, sur un week-end entier</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Week-end (2 jours)</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Adultes</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Se réajuster à la volonté de Dieu à mi-parcours</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Enseignements, silence, accompagnement</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
+        </div>
+      </div>
+
+      <!-- 6. Transfiguration -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="annuel">
+        <img src="images/transfiguration.jpg" alt="Retraite de la transfiguration" class="h-40 w-full object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de la transfiguration</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Troisième trimestre, sur un week-end entier</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Week-end (2 jours)</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Adultes</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Se laisser transformer à l'image du Christ</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Adoration, enseignements, prière contemplative</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
+        </div>
+      </div>
+
+      <!-- 7. Accomplissement -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="annuel">
+        <img src="images/accomplissement.jpg" alt="Retraite de l'accomplissement" class="h-40 w-full object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de l'accomplissement</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Quatrième trimestre, sur un week-end entier</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Week-end (2 jours)</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Adultes</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Rendre grâce et clôturer l'année dans l'action de grâce</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Louange, action de grâce, enseignements</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
+        </div>
+      </div>
+
+      <!-- 8. Assomption -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="fetes">
+        <img src="images/assomption.jpg" alt="Retraite de l'Assomption" class="h-40 w-full object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de l'Assomption</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Les 3 jours précédant l'Assomption</p>
           <p class="text-sm mb-1"><strong>Durée :</strong> 3 jours</p>
           <p class="text-sm mb-1"><strong>Public :</strong> Tous</p>
-          <p class="text-sm mb-1"><strong>Objectif :</strong> Se libérer des blessures du passé</p>
-          <p class="text-sm mb-1"><strong>Activités :</strong> Louange, prière, silence</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Se préparer à la fête de l'Assomption avec Marie</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Chapelet, messe, enseignements mariaux</p>
           <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
         </div>
       </div>
 
-      <!-- Programme 3 -->
-      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="discernement">
-        <img src="images/discernement.jpg" alt="Discernement" class="h-40 w-full object-cover">
+      <!-- 9. Libération et délivrance -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="guerison">
+        <img src="images/liberation-delivrance.jpg" alt="Libération et délivrance" class="h-40 w-full object-cover">
         <div class="p-5">
-          <h3 class="text-lg font-bold text-blue-600 mb-1">Discernement vocationnel</h3>
-          <p class="text-sm mb-1"><strong>Dates :</strong> 20–25 août</p>
-          <p class="text-sm mb-1"><strong>Durée :</strong> 6 jours</p>
-          <p class="text-sm mb-1"><strong>Public :</strong> Jeunes adultes</p>
-          <p class="text-sm mb-1"><strong>Objectif :</strong> Écouter l’appel de Dieu</p>
-          <p class="text-sm mb-1"><strong>Activités :</strong> Silence, méditation, accompagnement</p>
-          <p class="text-sm mb-3 text-red-600"><strong>Statut :</strong> Complet</p>
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite de libération et de délivrance</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Une fois par bimestre, et sur demande</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Variable</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Tous</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Se libérer des liens et blessures spirituelles</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Prière de délivrance, confessions, accompagnement</p>
+          <p class="text-sm mb-3 text-blue-700"><strong>Statut :</strong> Sur demande</p>
+        </div>
+      </div>
+
+      <!-- 10. Pèlerinage Jeunes -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="jeunes">
+        <img src="images/pelerinage-jeunes.jpg" alt="Pèlerinage Jeunes" class="h-40 w-full object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Pèlerinage Jeunes</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Selon calendrier annuel</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Variable</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Jeunes</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Vivre une expérience de foi en marchant vers un lieu saint</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Marche, louange, temps de partage</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
+        </div>
+      </div>
+
+      <!-- 11. Exercices spirituels -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="annuel">
+        <img src="images/exercices-spirituels.jpg" alt="Exercices spirituels" class="h-40 w-full object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Retraite d'exercices spirituels</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Tout au long de l'année</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Variable</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Tous</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Approfondir sa vie intérieure selon les exercices spirituels</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> Silence, méditation, direction spirituelle</p>
+          <p class="text-sm mb-3 text-green-700"><strong>Statut :</strong> Places encore disponibles</p>
+        </div>
+      </div>
+
+      <!-- 12. Autre retraite -->
+      <div class="programme-item bg-white rounded-lg shadow overflow-hidden" data-theme="autre">
+        <img src="images/autre-retraite.jpg" alt="Autre retraite" class="h-40 w-full object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-blue-600 mb-1">Autre retraite</h3>
+          <p class="text-sm mb-1"><strong>Fréquence :</strong> Selon besoin exprimé</p>
+          <p class="text-sm mb-1"><strong>Durée :</strong> Sur demande</p>
+          <p class="text-sm mb-1"><strong>Public :</strong> Selon besoin</p>
+          <p class="text-sm mb-1"><strong>Objectif :</strong> Retraite personnalisée organisée sur demande</p>
+          <p class="text-sm mb-1"><strong>Activités :</strong> À définir avec l'équipe d'accompagnement</p>
+          <p class="text-sm mb-3 text-blue-700"><strong>Statut :</strong> Sur demande</p>
         </div>
       </div>
 
@@ -337,6 +465,7 @@
     });
   });
 </script>
+
 
 </body>
 </html>
